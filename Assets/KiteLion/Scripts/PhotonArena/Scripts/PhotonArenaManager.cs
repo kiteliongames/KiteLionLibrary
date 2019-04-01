@@ -6,18 +6,19 @@ using System.Collections.Generic;
 using Photon.Realtime;
 using Random = UnityEngine.Random;
 using ExitGames.Client.Photon;
+using KiteLion.Debugging;
 /*
 todo provide structure for setting up scene items and other stuff.
 Problem: When referencing a singleton, several variables that exist that could cause issue.
- - Are you grabbing the CORRECT reference? Copies could exist because you got the reference before they deleted. OR they didn't delete.
- - The reference doesn't exist at all because the OG hasn't even been loaded in yet.
+- Are you grabbing the CORRECT reference? Copies could exist because you got the reference before they deleted. OR they didn't delete.
+- The reference doesn't exist at all because the OG hasn't even been loaded in yet.
 Solution:
- - The call to the server requires a list of all singletons (managers) that must eventually be spawned eventually.
- - Wrap ALL singleton references in PhotonArenaManager.instance.UseSingleton("ManagerName");
- For example, certain manager objects should exist only one per scene.
- roomProp "firstTimeSetupComplete = true"
- if true, 
- */
+- The call to the server requires a list of all singletons (managers) that must eventually be spawned eventually.
+- Wrap ALL singleton references in PhotonArenaManager.instance.UseSingleton("ManagerName");
+For example, certain manager objects should exist only one per scene.
+roomProp "firstTimeSetupComplete = true"
+if true, 
+*/
 public class PhotonArenaManager : Singleton<PhotonArenaManager>
 {
 

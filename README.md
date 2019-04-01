@@ -1,5 +1,7 @@
 # README #
 
+!!!SEE CHANGELOG IN ./ASSETS/ !!!
+
 Resources:
 productioncrate.com
 thomas brush mentor patreon

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6988858463374073725}
   - component: {fileID: 6988858463374073723}
   - component: {fileID: 6988858463374073724}
-  - component: {fileID: 6988858463374073722}
-  m_Layer: 16
+  - component: {fileID: 8970065232110613470}
+  m_Layer: 5
   m_Name: CBUG_Text
   m_TagString: CBUG
   m_Icon: {fileID: 0}
@@ -79,8 +79,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ~
---- !u!114 &6988858463374073722
+  m_Text: 
+--- !u!114 &8970065232110613470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,13 +89,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6988858463374073726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 286039459efaabf43a2eae6ac0eda53e, type: 3}
+  m_Script: {fileID: 11500000, guid: 804891aa51e3adc468c7320221b39545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ALL_DEBUG_ENABLED: 1
   SendToConsole: 1
   DisableOnScreen: 0
-  ClearTime: 10
+  ClearTime: 3
   Clear: 0
   ClearAmount: 1
   ClearAll: 0
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 6988858463525095524}
   - component: {fileID: 6988858463525095525}
   - component: {fileID: 6988858463525095526}
-  m_Layer: 16
+  m_Layer: 5
   m_Name: CBUG_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ Canvas:
   m_GameObject: {fileID: 6988858463525095545}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
