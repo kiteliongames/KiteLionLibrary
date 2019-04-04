@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using KiteLion.Debugging;
 
 public class CharacterControls : MonoBehaviour {
 
@@ -467,7 +468,7 @@ public class CharacterControls : MonoBehaviour {
     /// Activated whenever PC gets punched by iPC.
     /// </summary>
     private void direSituationActivate() {
-        MusicManager._SwitchTo(1);
+        //MusicManager._SwitchTo(1);
         EnemyIcon.SetActive(true);
         FriendIcon.SetActive(false);
         direSituation = true;
@@ -475,7 +476,7 @@ public class CharacterControls : MonoBehaviour {
     }
 
     private void safeSituationActivate() {
-        MusicManager._SwitchTo(1);
+        //MusicManager._SwitchTo(1);
         EnemyIcon.SetActive(false);
         direSituation = false;
     }

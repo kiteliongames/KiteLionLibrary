@@ -1,6 +1,8 @@
 NOTICE: PLEASE KEEP THIS CHANGELOG CLEAN. CONSIDER THIS A README.
 Organize in more recent as higher.
 
+v0.10 - 03/31/2019 - Redesigned to fit as an actual Library! And PHOTONARENA 1.X! Updated with the latest and greatest of Eliot's work as KiteLion Studios.
+
 v0.02 - 05/21/2017 - Made clipName in delayAnim optional.
 
 v0.01 - 05/21/2017 - First Commit. CBUG is a replacement for Debug.Log that allows for seeing debug logs on-screen post-editor. Tools is a script for simple and common functions. Please 

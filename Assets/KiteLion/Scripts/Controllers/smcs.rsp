@@ -1,0 +1,5 @@
+-unsafe
+-nowarn:CS0162
+-nowarn:CS0618
+-nowarn:0162
+-nowarn:0618

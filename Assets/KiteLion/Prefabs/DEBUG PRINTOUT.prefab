@@ -68,10 +68,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 6
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 6
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -92,13 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804891aa51e3adc468c7320221b39545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ALL_DEBUG_ENABLED: 1
-  SendToConsole: 1
-  DisableOnScreen: 0
+  Enabled: 0
+  EnabledOnConsole: 0
+  EnabledOnScreen: 0
   ClearTime: 5
-  Clear: 0
-  ClearAmount: 1
-  ClearAll: 0
+  ClearLinesAmount: 0
+  ClearScreenButton: 0
 --- !u!1 &1681842026303114
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &224749335361816406
 RectTransform:
   m_ObjectHideFlags: 0
