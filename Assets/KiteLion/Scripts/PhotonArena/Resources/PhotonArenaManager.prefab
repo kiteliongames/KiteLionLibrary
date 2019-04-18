@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 275708871132027892}
   m_Layer: 0
   m_Name: PhotonArenaManager
-  m_TagString: Untagged
+  m_TagString: PhotonArenaManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,6 +40,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1282992612601799365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b7c423c2943a64b971def02af0b214, type: 3}
+  m_Script: {fileID: 11500000, guid: 541dd417e3393eb4eb86996a76155d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

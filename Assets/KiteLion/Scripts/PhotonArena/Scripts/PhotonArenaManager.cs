@@ -283,7 +283,7 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
         else if (CurrentServerUserDepth == ServerDepthLevel.InRoom) {
             //ExitGames.Client.Photon.Hashtable roomProps = PhotonNetwork.CurrentRoom.CustomProperties;
             //roomProps.Add(label, data);
-           return PhotonNetwork.Instantiate("PhotonArenaPlayer", pos, rot);
+           return PhotonNetwork.Instantiate(ResourceName, pos, rot);
         }
         else {
             CBUG.Error("Spawn Player only available when Offline or InRoom, this was called at " + CurrentServerUserDepth.ToString() + ".");

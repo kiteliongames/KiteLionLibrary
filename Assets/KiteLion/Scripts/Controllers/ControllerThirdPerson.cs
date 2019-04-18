@@ -12,12 +12,16 @@ public abstract class ControllerThirdPerson : PlayerController {
     //    CBUG.Do("blah");
     //}
 
-    public float LerpThresholdHorizontal;
-    public float LerpThresholdForward;
+    public float LerpMaxThresholdHorizontal;
+    public float LerpMinThresholdHorizontal;
+    public float LerpMaxThresholdForward;
+    public float LerpMinThresholdForward;
+    public float LerpMinThresholdVertical;
     public float MaxSpeedHorizontalGrounded;
     public float MaxSpeedHorizontalAir;
     public float MaxSpeedForwardGrounded;
     public float MaxSpeedForwardAir;
+    public float MaxSpeedVertical; //todo jump rework
     public float AccelerationSpeedHorizontalGrounded = 0.5f;
     public float AccelerationSpeedForwardGrounded = 0.5f;
     public float AccelerationSpeedHorizontalAir = 0.5f;
@@ -28,12 +32,7 @@ public abstract class ControllerThirdPerson : PlayerController {
     public float DecelerationSpeedForwardAir = 0.5f;
     public float HorizontalSpeed;
     public float ForwardSpeed;
-    //    public float JumpForce;
-    //    public float DownJumpForce;
-    //    public float JumpDecel = 0.5f;
-    //    public float DownJumpDecel = 0.5f;
-    //    private float jumpForceTemp;
-    //    private float downJumpForceTemp;
+    public float JumpForce;
     public float GravityForce;
 
     //    public float MaxVelocityMag;
@@ -46,14 +45,13 @@ public abstract class ControllerThirdPerson : PlayerController {
     private PhotonView _PhotonView;
     private PhotonTransformView _PhotonTransform;
 
+    public int TotalJumpsAllowed;
+    public int jumpLag;
     private bool isGrounded;
     private bool wasGrounded;
-    //    private int jumpsRemaining;
-    //    private bool jumped;
-    //    private bool canDownJump;
-    //    private bool downJumped;
-    //    public int TotalJumpsAllowed;
-    //    public Vector2 JumpOffset;
+    private bool applyJumpPhysics;
+    private int jumpsRemaining;
+    private Vector3 jumpForceTemp;
 
     private float horizTilt;
     private float rightREMOVEME;
@@ -66,8 +64,6 @@ public abstract class ControllerThirdPerson : PlayerController {
 
     public bool isControlsDisabled;
 
-    //    public int jumpLag;
-    //    private int totalJumpFrames;
 
     //    private GameObject[] AttackObjs;
     //    public int AttackLag;
@@ -123,6 +119,8 @@ public abstract class ControllerThirdPerson : PlayerController {
             tag = "PlayerSelf";
             //_PhotonView.RPC("SetSlotNum", RpcTarget.All, NetID.ConvertToSlot(PhotonNetwork.player.ID));
         }
+
+        jumpsRemaining = TotalJumpsAllowed;
     }
 
 
@@ -131,7 +129,6 @@ public abstract class ControllerThirdPerson : PlayerController {
         //if (!_PhotonView.isMine)
         //    return;
 
-        //Jump Detection Only, no physics handling.
         //if (controlsPaused) {
         //    horizTilt = 0;
         //    rightREMOVEME = 0;
@@ -140,8 +137,7 @@ public abstract class ControllerThirdPerson : PlayerController {
 
 
         //updateSpecials();
-        //updateJumping();
-        //updateDownJumping();
+        updateJumping();
         //updateAttacks();
         updateMovement();
         //UpdateHurt();
@@ -155,7 +151,7 @@ public abstract class ControllerThirdPerson : PlayerController {
         //if (wasGrounded && isGrounded) {
         //    canDownJump = true;
         //}
-        //updateJumpingPhysics();
+        updateJumpingPhysics();
         //updateDownJumpingPhysics();
         updateMovementPhysics();
         ////limit max velocity.
@@ -163,24 +159,26 @@ public abstract class ControllerThirdPerson : PlayerController {
         ////if (m_Body.velocity.magnitude >= MaxVelocityMag)
         ////{
         ////}
-
-        velocity += Vector3.down * GravityForce;
+        jumpForceTemp += Vector3.down * GravityForce;
+        if (jumpForceTemp.sqrMagnitude < 0) {
+            jumpForceTemp = Vector3.zero;
+        } 
+        velocity += jumpForceTemp;
         if (!isControlsDisabled)
             _Rigibody3D.velocity = velocity;
         velocity = Vector3.zero;
     }
 
-    //    void LateUpdate()
-    //    {
-    //        if (!_PhotonView.isMine)
-    //            return;
+    void LateUpdate() {
+        //if (!_PhotonView.isMine)
+        //    return;
 
-    //        //Only recent hits count
-    //        if(Time.time - lastHitTime > lastHitForgetLength) {
-    //            lastHitBy = -1;
-    //            lastHitTime = Time.time;
-    //        }
-    //    }
+        ////Only recent hits count
+        //if (Time.time - lastHitTime > lastHitForgetLength) {
+        //    lastHitBy = -1;
+        //    lastHitTime = Time.time;
+        //}
+    }
 
     //    private void UpdateHurt()
     //    {
@@ -197,77 +195,49 @@ public abstract class ControllerThirdPerson : PlayerController {
     //        }
     //    }
 
-    //    private void updateJumping()
-    //    {
-    //        if ((Input.GetButtonDown("Jump") == true
-    //            || _MobileInput.GetButtonDown("Jump"))
-    //            && jumpsRemaining > 0 && totalJumpFrames < 0)
-    //        {
-    //            jumped = true;
-    //            //CBUG.Log("Jumped is true!");
-    //            jumpsRemaining -= 1;
-    //            totalJumpFrames = jumpLag;
-    //        }
-    //        totalJumpFrames -= 1;
-    //    }
-
-    //    private void updateDownJumping()
-    //    {
-    //        if ((Input.GetButtonDown("DownJump") == true
-    //            || _MobileInput.GetButtonDown("DownJump"))
-    //            && canDownJump)
-    //        {
-    //            downJumped = true;
-    //            canDownJump = false;
-    //        }
-    //    }
+    private void updateJumping() {
+        if (Input.GetButtonDown("Jump") == true && jumpsRemaining > 0) {
+            applyJumpPhysics = true;
+            CBUG.Do("Jumped is true!");
+            jumpsRemaining -= 1;
+        }
+    }
 
     private void updateMovement() {
-        //tempAxis left n right, keyboar axis left n right, or no input
+        //tempAxis left n right, keyboard axis left n right, or no input
         horizTilt = Input.GetAxis("MoveHorizontal");
         forwardTilt = Input.GetAxis("MoveForward");
     }
 
-    //    private void updateDownJumpingPhysics()
-    //    {
-    //        if (downJumped)
-    //        {
-    //            //CBUG.Log("DownJumped");
-    //            jumpForceTemp = DownJumpForce;
-    //            downJumped = false;
-    //        }
-    //        velocity.y -= downJumpForceTemp;
-    //        downJumpForceTemp = Mathf.Lerp(downJumpForceTemp, 0f, DownJumpDecel);
-    //    }
-
-    //    private void updateJumpingPhysics()
-    //    {
-    //        if (jumped)
-    //        {
-    //            jumpForceTemp = JumpForce;
-    //            jumped = false;
-    //            //CBUG.Log("Jumped is false!");
-    //        } 
-    //        velocity.y += jumpForceTemp;
-    //        jumpForceTemp = Mathf.Lerp(jumpForceTemp, 0f, JumpDecel);
-    //    }
+    private void updateJumpingPhysics() {
+        if (applyJumpPhysics) {
+            jumpForceTemp += Vector3.up * JumpForce;
+            applyJumpPhysics = false;
+            CBUG.Log("Jumped is false!");
+        }
+    }
 
 
     private void updateMovementPhysics() {
         //todo google: lerp "near zero" resolution
         //todo back and left don't work.
         //TODO  implement "play anyway." on version difference.
-        HorizontalSpeed = Mathf.Lerp(HorizontalSpeed, MaxSpeedHorizontalGrounded * horizTilt, AccelerationSpeedHorizontalGrounded);
-        //lerp fix
-        HorizontalSpeed = 1.0f - (HorizontalSpeed / MaxSpeedHorizontalGrounded) < LerpThresholdHorizontal ? MaxSpeedHorizontalGrounded : HorizontalSpeed;
-        HorizontalSpeed = 0f + (HorizontalSpeed / MaxSpeedHorizontalGrounded) < LerpThresholdHorizontal ? 0f : HorizontalSpeed;
-        ForwardSpeed = Mathf.Lerp(ForwardSpeed, MaxSpeedForwardGrounded * forwardTilt, AccelerationSpeedForwardGrounded);
-        //lerp fix
-        ForwardSpeed = 1.0f - (ForwardSpeed / MaxSpeedForwardGrounded) < LerpThresholdForward ? MaxSpeedForwardGrounded : ForwardSpeed;
-        ForwardSpeed = 0f + (ForwardSpeed / MaxSpeedForwardGrounded) < LerpThresholdForward ? 0f : ForwardSpeed;
+        float targetHorizontalSpeed = MaxSpeedHorizontalGrounded * horizTilt;
+        float targetForwardSpeed = MaxSpeedForwardGrounded * forwardTilt;
 
-        //TODO LANDING LOGIC
-        //TODO IN-AIR LOGIC
+        HorizontalSpeed = Mathf.Lerp(HorizontalSpeed, targetHorizontalSpeed, AccelerationSpeedHorizontalGrounded);
+        //lerp fix
+        HorizontalSpeed = (HorizontalSpeed / targetHorizontalSpeed) > LerpMaxThresholdHorizontal ? MaxSpeedHorizontalGrounded : HorizontalSpeed;
+        HorizontalSpeed = (HorizontalSpeed / targetHorizontalSpeed) < LerpMinThresholdHorizontal ? 0f : HorizontalSpeed;
+
+        ForwardSpeed = Mathf.Lerp(ForwardSpeed, targetForwardSpeed, AccelerationSpeedForwardGrounded);
+        //lerp fix
+        ForwardSpeed = (ForwardSpeed / targetForwardSpeed) > LerpMaxThresholdForward ? MaxSpeedForwardGrounded : ForwardSpeed;
+        ForwardSpeed = (ForwardSpeed / targetForwardSpeed) < LerpMinThresholdForward ? 0f : ForwardSpeed;
+
+
+        ////TODO LANDING LOGIC
+        ////TODO IN-AIR LOGIC
         //else if (isGrounded) {
         //    CurrentSpeed = Mathf.Lerp(CurrentSpeed, 0f, SpeedDecel);
         //}
