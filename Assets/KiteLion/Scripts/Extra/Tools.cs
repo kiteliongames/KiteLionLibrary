@@ -1,4 +1,5 @@
 ﻿using KiteLion.Debugging;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,9 @@ using UnityEngine.UI;
 /// Contributors:
 ///  - Eliot Leo Carney-Seim
 ///  
+/// Credit:
+/// https://benjaminbeagley.wordpress.com/2013/10/14/calling-a-static-ienumerator-in-unity/
+///  
 /// Further Reading:
 /// http://wiki.unity3d.com/index.php/Singleton
 /// http://wiki.unity3d.com/index.php/Toolbox
@@ -23,8 +27,32 @@ namespace KiteLion.Common {
 
         public delegate void VanillaFunction();
 
+        void Awake() {
+            if (instance == null) {
+                instance = this as Tools;
+            }
+            tag = "Tools";
+            DontDestroyOnLoad(gameObject);
+        }
+
         #region Singleton Control
         private int priority;
+
+        public static Tools instance {
+            get {
+                Tools currentInstance = GameObject.FindObjectOfType(typeof(Tools)) as Tools;
+                if (currentInstance == null) {
+                    currentInstance = new GameObject("Tools").AddComponent<Tools>();
+
+                }
+                return currentInstance;
+            }
+
+            set {
+                instance = value;
+            }
+        }
+
         #endregion
 
         protected Tools ()
@@ -32,19 +60,22 @@ namespace KiteLion.Common {
             //No instantiation!
         }
 
-        // Use this for initialization
-        void Start () {
-            tag = "Tools";
-            ensureSingleton();
-            DontDestroyOnLoad(gameObject);
-	    }
-	
-	    // Update is called once per frame
-	    void Update () {
-		
-	    }
-
         #region Public Static Hooks
+        public static string RemoveWhitespace(string inString) {
+            int inputLen = inString.Length;
+            string outString = inString;
+
+            int charPos = -1;
+            foreach (char ch in inString) {
+                charPos++;
+                if (char.IsWhiteSpace(ch)) {
+                    outString = outString.Replace(inString.Substring(charPos, 1), "");
+                }
+            }
+
+            return outString;
+        }
+
         /// <summary>
         /// For delaying a function call by a single frame.
         /// </summary>
@@ -53,16 +84,7 @@ namespace KiteLion.Common {
         /// <returns></returns>
         public static void DelayFunction(VanillaFunction Call, float Time)
         {
-            GetSelf()._delayFunction(Call, Time);
-        }
-
-        /// <summary>
-        /// Returns Tools class. GetComponent<Tools>() supplies the same functionality.
-        /// </summary>
-        /// <returns></returns>
-        public static Tools GetSelf()
-        {
-            return GameObject.FindGameObjectWithTag("Tools").GetComponent<Tools>()._getSelf();
+            instance.StartCoroutine(instance._delayFunction(Call, Time));
         }
 
         /// <summary>
@@ -79,18 +101,28 @@ namespace KiteLion.Common {
             bool boolParam = false,
             bool hasBoolParam = false)
         {
-            GetSelf()._delayAnim(anim, time, clipName,
-                trigger: trigger,
-                floatParam: floatParam,
-                intParam: intParam,
-                boolParam: boolParam,
-                hasBoolParam: hasBoolParam);
+            instance.StartCoroutine(instance._delayAnim( anim, time, clipName,
+                    trigger: trigger,
+                    floatParam: floatParam,
+                    intParam: intParam,
+                    boolParam: boolParam,
+                    hasBoolParam: hasBoolParam
+                )
+            );
+        }
+
+        /// <summary>
+        /// Returns Tools class. GetComponent<Tools>() supplies the same functionality.
+        /// </summary>
+        /// <returns></returns>
+        public static Tools GetSelf() {
+            return GameObject.FindGameObjectWithTag("Tools").GetComponent<Tools>()._getSelf();
         }
         #endregion
 
 
         #region Private Core Functionality 
-        private IEnumerator __delayAnim(Animator anim, float time, 
+        private IEnumerator _delayAnim(Animator anim, float time, 
             string clipName = "",
             string trigger = "",
             float floatParam = -1f,
@@ -115,7 +147,8 @@ namespace KiteLion.Common {
             else if (intParam != -1)
                 anim.SetFloat(clipName, intParam);
         }
-        private IEnumerator __DelayFunction(VanillaFunction call, float time)
+
+        private IEnumerator _delayFunction(VanillaFunction call, float time)
         {
             if (time <= 0f)
                 yield return 0f;
@@ -131,52 +164,9 @@ namespace KiteLion.Common {
         #endregion
 
         #region Helper Functions
-        private void _delayAnim(Animator anim, float time, 
-            string clipName = "",
-            string trigger = "",
-            float floatParam = -1f,
-            int intParam = -1,
-            bool boolParam = false,
-            bool hasBoolParam = false)
-        {
-            StartCoroutine(__delayAnim(anim, time, clipName, 
-                trigger: trigger,
-                floatParam: floatParam,
-                intParam  : intParam,
-                boolParam : boolParam,
-                hasBoolParam : hasBoolParam));
-        }
-        private void _delayFunction(VanillaFunction call, float time)
-        {
-            StartCoroutine(__DelayFunction(call, time));
-        }
         private void _fadeText(Text textToFade, float from, float to, float speed)
         {
 
-        }
-
-        private void ensureSingleton()
-        {
-            //Give all clones a chance to instantiate themselves.
-            _delayFunction(killSelfIfOthersExit, 0f);
-        }
-
-        private void killSelfIfOthersExit()
-        {
-            //All clones will get the list in the same order, applying th
-            if (GameObject.FindObjectsOfType(typeof(Tools)).Length > 1) { 
-                for (int x = 0; x < GameObject.FindObjectsOfType(typeof(Tools)).Length; x++)
-                {
-                    (GameObject.FindObjectsOfType(typeof(Tools))[x] as Tools).Priority = x;
-                }
-                _delayFunction(killSelf, 0f);
-            }
-        }
-
-        private void killSelf()
-        {
-            if (priority != 0)
-                Destroy(gameObject);
         }
         #endregion
 

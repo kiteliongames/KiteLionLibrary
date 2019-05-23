@@ -12,8 +12,8 @@ public abstract class PlayerController : MonoBehaviour {
 
     public abstract void Respawn(Vector3 spawnPoint);
 
-    public void Start () {
-        CBUG.Do("blah");
+    public void Initialize () {
+
     }
 
 }
