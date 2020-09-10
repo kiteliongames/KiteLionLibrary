@@ -1,6 +1,8 @@
 NOTICE: PLEASE KEEP THIS CHANGELOG CLEAN. CONSIDER THIS A README.
 Organize in more recent as higher.
 
+v0.14 - 09/10/2020 - Updated from GGJ2020 update. Changes completely unreviewed.
+
 v0.13 - 05/08/2019 - Updated TOOLS functionality to be proper Singleton. DelayFunction works!
 
 v0.12 - 04/24/2019 - Began to address how to handle verticality w/ movement. "External Forces" delegates. ALSO a new "RemoveWhitespace" tool.
