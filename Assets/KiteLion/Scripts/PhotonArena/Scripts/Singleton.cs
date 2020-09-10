@@ -36,6 +36,7 @@ public class Singleton<T> : MonoBehaviourPunCallbacks where T : MonoBehaviourPun
 
                         // Make instance persistent.
                         DontDestroyOnLoad(singletonObject);
+                        //DontDestroyThis.List.Add(singletonObject);
                     }
                 }
 

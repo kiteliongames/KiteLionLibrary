@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using Photon.Realtime;
 using Random = UnityEngine.Random;
 using ExitGames.Client.Photon;
-using KiteLion.Debugging;
 /*
 todo provide structure for setting up scene items and other stuff.
 Problem: When referencing a singleton, several variables that exist that could cause issue.
@@ -49,8 +48,11 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
     private Dictionary<string, GameObject> singletons;
     private bool needsNewRoom;
 
-    private RoomOptions roomOptions = new RoomOptions() {
-        MaxPlayers = 9,
+    /// <summary>
+    /// Default room options. ToDo: Support different room options.
+    /// </summary>
+    public RoomOptions RoomOptions = new RoomOptions() {
+        MaxPlayers = 2,
         CustomRoomProperties = new Hashtable() { {"GameStartTime", -1} },
         CustomRoomPropertiesForLobby = new string[] { "GameStartTime"}
     };
@@ -77,7 +79,7 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
         }
 
         CBUG.Do("Connecting!");
-        PhotonNetwork.GameVersion = "BlueCouch";
+        PhotonNetwork.GameVersion = "HotelGame";
 
         PhotonNetwork.NetworkingClient.AppId = PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime;
 
@@ -144,7 +146,7 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
     public int GetClockInSeconds() {
         if (CurrentServerUserDepth == ServerDepthLevel.Offline) {
             //            return DateTime.Now.TimeOfDay.Milliseconds;
-            return Convert.ToInt32((DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond) & int.MaxValue) / 60;
+            return Convert.ToInt32((DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond) & int.MaxValue) / 100;
         }
         else {
             return PhotonNetwork.ServerTimestamp;
@@ -349,7 +351,7 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
         CBUG.Log("Lobby Joined!");
         CBUG.Log("Joining Random Room ...");
         if(needsNewRoom) {
-            PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 9, CleanupCacheOnLeave = false }, null);
+            PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2, CleanupCacheOnLeave = false }, null);
         }
         else {
             //string sqlLobbyFilter = "GameStartTime = -1"; //todo ??? implement sql lobbying
@@ -382,7 +384,7 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
 
     public override void OnJoinRandomFailed(short returnCode, string message) {
         CBUG.Log("Room Join failed. Creating a room ...");
-        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 9, CleanupCacheOnLeave = false }, null);
+        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2, CleanupCacheOnLeave = false }, null);
     }
     #endregion
 }

@@ -64,8 +64,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 6
@@ -92,9 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804891aa51e3adc468c7320221b39545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enabled: 0
-  EnabledOnConsole: 0
-  EnabledOnScreen: 0
+  Enabled: 1
+  EnabledOnConsole: 1
+  EnabledOnScreen: 1
   ClearTime: 5
   ClearLinesAmount: 0
   ClearScreenButton: 0
@@ -161,8 +159,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 24

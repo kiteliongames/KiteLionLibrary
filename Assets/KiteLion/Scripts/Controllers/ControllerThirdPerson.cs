@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using System;
-using KiteLion.Debugging;
 
 namespace KiteLion {
 

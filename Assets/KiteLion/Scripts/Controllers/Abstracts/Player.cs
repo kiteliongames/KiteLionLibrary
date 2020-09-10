@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using KiteLion.Common;
-using KiteLion.Debugging;
 
 public abstract class PlayerController : MonoBehaviour {
 
