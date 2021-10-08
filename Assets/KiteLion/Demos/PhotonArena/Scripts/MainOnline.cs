@@ -9,10 +9,9 @@ public class MainOnline : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("CBUG_ON", 0);
+        PlayerPrefs.SetInt("CBUG_ON", 1);
 
         _PM = PhotonArenaManager.Instance;
-        
         
         _PM.ConnectAndJoinRoom("Player", null);
     }

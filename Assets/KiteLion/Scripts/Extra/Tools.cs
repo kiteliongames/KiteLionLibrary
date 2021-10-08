@@ -79,7 +79,7 @@ namespace KiteLion.Common {
         /// For delaying a function call by a single frame.
         /// </summary>
         /// <param name="Call">Parameter-less function</param>
-        /// <param name="Time">How long to delay by. To delay by 1 frame, Time == 0.</param>
+        /// <param name="Time">How long to delay by seconds. To delay by 1 frame, Time == 0.</param>
         /// <returns></returns>
         public static void DelayFunction(VanillaFunction Call, float Time)
         {

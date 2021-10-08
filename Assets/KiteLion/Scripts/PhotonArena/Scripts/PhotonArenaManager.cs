@@ -52,9 +52,10 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
     /// Default room options. ToDo: Support different room options.
     /// </summary>
     public RoomOptions RoomOptions = new RoomOptions() {
-        MaxPlayers = 2,
-        CustomRoomProperties = new Hashtable() { {"GameStartTime", -1} },
-        CustomRoomPropertiesForLobby = new string[] { "GameStartTime"}
+        MaxPlayers = 100,
+        CustomRoomProperties = new Hashtable() { { "GameStartTime", -1 } },
+        CustomRoomPropertiesForLobby = new string[] { "GameStartTime" },
+        CleanupCacheOnLeave = false
     };
 
     private ServerDepthLevel currentServerUserDepth = ServerDepthLevel.Offline;
@@ -79,7 +80,8 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
         }
 
         CBUG.Do("Connecting!");
-        PhotonNetwork.GameVersion = "HotelGame";
+
+        PhotonNetwork.GameVersion = "SnowmanGame" + SceneManager.GetActiveScene().name;//--t
 
         PhotonNetwork.NetworkingClient.AppId = PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime;
 
@@ -228,6 +230,15 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
         PhotonNetwork.LeaveRoom();
         CBUG.Log("Leaving current room ...");
         needsNewRoom = true;
+    }
+
+    /// <summary>
+    /// Caller Photon ID MUST == Obj Photon ID
+    /// </summary>
+    /// <param name="Obj"></param>
+    public void DestroyObject(GameObject Obj)
+    {
+        PhotonNetwork.Destroy(Obj);
     }
 
     public GameObject SpawnObject(string resourceName) {
@@ -384,7 +395,7 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
 
     public override void OnJoinRandomFailed(short returnCode, string message) {
         CBUG.Log("Room Join failed. Creating a room ...");
-        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2, CleanupCacheOnLeave = false }, null);
+        PhotonNetwork.CreateRoom(null, RoomOptions, null);
     }
     #endregion
 }

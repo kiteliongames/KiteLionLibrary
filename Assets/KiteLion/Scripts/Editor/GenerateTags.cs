@@ -18,7 +18,7 @@ public class GenerateTags : AssetPostprocessor
     }
 
     private static int maxTags = 10000;
-    private static int maxLayers = 31;
+    //private static int maxLayers = 31; //unused
 
     public static bool AddTag(string tagName) {
         // Open tag manager

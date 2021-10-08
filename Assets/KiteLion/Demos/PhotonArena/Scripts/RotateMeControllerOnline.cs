@@ -12,8 +12,6 @@ public class RotateMeControllerOnline : MonoBehaviour
     float _sideInput = 0;
     float _forwardInput = 0;
 
-    bool _isMine = false;
-
     PhotonArenaManager _PM;
 
     // Use this for initialization
