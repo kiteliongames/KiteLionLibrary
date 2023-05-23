@@ -1,17 +1,4 @@
-NOTICE: PLEASE KEEP THIS CHANGELOG CLEAN. CONSIDER THIS A README.
-Organize in more recent as higher.
+NOTICE: PLEASE KEEP THIS FILE CLEAN. CONSIDER THIS A README.
+Latest updates up top.
 
-v0.14 - 09/10/2020 - Updated from GGJ2020 update. Changes completely unreviewed.
-
-v0.13 - 05/08/2019 - Updated TOOLS functionality to be proper Singleton. DelayFunction works!
-
-v0.12 - 04/24/2019 - Began to address how to handle verticality w/ movement. "External Forces" delegates. ALSO a new "RemoveWhitespace" tool.
-
-v0.11 - 04/10/2019 - Working character controller for offline! And reorganized platformer character. Contains deep customization for movement and feel ion a 3D space.
-
-v0.10 - 03/31/2019 - Redesigned to fit as an actual Library! And PHOTONARENA 1.X! Updated with the latest and greatest of Eliot's work as KiteLion Studios.
-
-v0.02 - 05/21/2017 - Made clipName in delayAnim optional.
-
-v0.01 - 05/21/2017 - First Commit. CBUG is a replacement for Debug.Log that allows for seeing debug logs on-screen post-editor. Tools is a script for simple and common functions. Please 
-feel free to update it, but make your own fork first. Anything I find myself using more than once will likely be added to this, but anything added to this MUST be cleaned up and commented.
+20220506 - Creation.
