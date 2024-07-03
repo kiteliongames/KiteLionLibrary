@@ -1,23 +1,32 @@
+Unity Editor version:    2022.3.34f1 (4886f5360533)
+Branch:                  2022.3/staging
+Build type:              Release
+Batch mode:              YES
+System name:             Linux
+Distro version:          #41~22.04.2-Ubuntu SMP PREEMPT_DYNAMIC Mon Jun  3 11:32:55 UTC 2
+Kernel version:          6.5.0-41-generic
+Architecture:            x86_64
+Available memory:        39952 MB
 Using pre-set license
-Built from '2021.3/staging' branch; Version is '2021.3.23f1 (213b516bf396) revision 2177873'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 11  (10.0.22621) 64bit Core' Language: 'en' Physical Memory: 16167 MB
-BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+Pro License: YES
+Desktop is 4720 x 1920 @ 60 Hz
+Initialize udev device monitor.
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2021.3.23f1\Editor\Unity.exe
+Unity
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-D:/Development/UnityProjects/KiteLionLibrary
+/media/cseliot/Dev/Development/UnityProjects/KiteLionLibrary
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50558
-Successfully changed project path to: D:/Development/UnityProjects/KiteLionLibrary
-D:/Development/UnityProjects/KiteLionLibrary
+46695
+Successfully changed project path to: /media/cseliot/Dev/Development/UnityProjects/KiteLionLibrary
+/media/cseliot/Dev/Development/UnityProjects/KiteLionLibrary
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -39,6 +48,8 @@ D:/Development/UnityProjects/KiteLionLibrary
     "memorysetup-job-temp-allocator-block-size=2097152"
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
     "memorysetup-temp-allocator-size-background-worker=32768"
     "memorysetup-temp-allocator-size-job-worker=262144"
     "memorysetup-temp-allocator-size-preload-manager=33554432"
@@ -47,355 +58,494 @@ D:/Development/UnityProjects/KiteLionLibrary
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [51332] Host "[IP] 192.168.3.92 [Port] 0 [Flags] 2 [Guid] 3460802316 [EditorId] 3460802316 [Version] 1048832 [Id] WindowsEditor(7,SoupFire) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [123801218487232] Host "[IP] 192.168.100.5 [Port] 0 [Flags] 2 [Guid] 3541840107 [EditorId] 3541840107 [Version] 1048832 [Id] LinuxEditor(16,192.168.100.5) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [51332] Host "[IP] 192.168.3.92 [Port] 0 [Flags] 2 [Guid] 3460802316 [EditorId] 3460802316 [Version] 1048832 [Id] WindowsEditor(7,SoupFire) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [123801218487232] Host "[IP] 192.168.100.5 [Port] 0 [Flags] 2 [Guid] 3541840107 [EditorId] 3541840107 [Version] 1048832 [Id] LinuxEditor(16,192.168.100.5) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 38.75 ms, found 2 plugins.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+Refreshing native plugins compatible for Editor in 44.48 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Initialize engine version: 2021.3.23f1 (213b516bf396)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/Development/UnityProjects/KiteLionLibrary/Assets
-GfxDevice: creating device client; threaded=0; jobified=0
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 3050 Laptop GPU (ID=0x25e2)
-    Vendor:   NVIDIA
-    VRAM:     3977 MB
-    Driver:   31.0.15.3179
+Initialize engine version: 2022.3.34f1 (4886f5360533)
+[Subsystems] Discovering subsystems at path /home/cseliot/Unity/Hub/Editor/2022.3.34f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /media/cseliot/Dev/Development/UnityProjects/KiteLionLibrary/Assets
+GLX Extensions: GLX_ARB_get_proc_address GLX_ARB_multisample GLX_EXT_visual_info GLX_EXT_visual_rating GLX_EXT_import_context GLX_SGI_video_sync GLX_SGIX_fbconfig GLX_SGIX_pbuffer GLX_SGI_swap_control GLX_EXT_swap_control GLX_EXT_swap_control_tear GLX_EXT_buffer_age GLX_ARB_create_context GLX_ARB_create_context_profile GLX_NV_float_buffer GLX_ARB_fbconfig_float GLX_EXT_texture_from_pixmap GLX_EXT_framebuffer_sRGB GLX_NV_copy_image GLX_EXT_create_context_es_profile GLX_EXT_create_context_es2_profile GLX_ARB_create_context_no_error GLX_ARB_create_context_robustness GLX_NV_delay_before_swap GLX_EXT_stereo_tree GLX_ARB_context_flush_control GLX_NV_robustness_video_memory_purge GLX_NV_multigpu_context 
+Renderer: NVIDIA GeForce RTX 3050 Laptop GPU/PCIe/SSE2
+Vendor:   NVIDIA Corporation
+Version:  4.5.0 NVIDIA 535.183.01
+GLES:     0
+ GL_AMD_multi_draw_indirect GL_AMD_seamless_cubemap_per_texture GL_AMD_vertex_shader_viewport_index GL_AMD_vertex_shader_layer GL_ARB_arrays_of_arrays GL_ARB_base_instance GL_ARB_bindless_texture GL_ARB_blend_func_extended GL_ARB_buffer_storage GL_ARB_clear_buffer_object GL_ARB_clear_texture GL_ARB_clip_control GL_ARB_color_buffer_float GL_ARB_compressed_texture_pixel_storage GL_ARB_conservative_depth GL_ARB_compute_shader GL_ARB_compute_variable_group_size GL_ARB_conditional_render_inverted GL_ARB_copy_buffer GL_ARB_copy_image GL_ARB_cull_distance GL_ARB_debug_output GL_ARB_depth_buffer_float GL_ARB_depth_clamp GL_ARB_depth_texture GL_ARB_derivative_control GL_ARB_direct_state_access GL_ARB_draw_buffers GL_ARB_draw_buffers_blend GL_ARB_draw_indirect GL_ARB_draw_elements_base_vertex GL_ARB_draw_instanced GL_ARB_enhanced_layouts GL_ARB_ES2_compatibility GL_ARB_ES3_compatibility GL_ARB_ES3_1_compatibility GL_ARB_ES3_2_compatibility GL_ARB_explicit_attrib_location GL_ARB_explicit_uniform_location GL_ARB_fragmen
+t_coord_conventions GL_ARB_fragment_layer_viewport GL_ARB_fragment_program GL_ARB_fragment_program_shadow GL_ARB_fragment_shader GL_ARB_fragment_shader_interlock GL_ARB_framebuffer_no_attachments GL_ARB_framebuffer_object GL_ARB_framebuffer_sRGB GL_ARB_geometry_shader4 GL_ARB_get_program_binary GL_ARB_get_texture_sub_image GL_ARB_gl_spirv GL_ARB_gpu_shader5 GL_ARB_gpu_shader_fp64 GL_ARB_gpu_shader_int64 GL_ARB_half_float_pixel GL_ARB_half_float_vertex GL_ARB_imaging GL_ARB_indirect_parameters GL_ARB_instanced_arrays GL_ARB_internalformat_query GL_ARB_internalformat_query2 GL_ARB_invalidate_subdata GL_ARB_map_buffer_alignment GL_ARB_map_buffer_range GL_ARB_multi_bind GL_ARB_multi_draw_indirect GL_ARB_multisample GL_ARB_multitexture GL_ARB_occlusion_query GL_ARB_occlusion_query2 GL_ARB_parallel_shader_compile GL_ARB_pipeline_statistics_query GL_ARB_pixel_buffer_object GL_ARB_point_parameters GL_ARB_point_sprite GL_ARB_polygon_offset_clamp GL_ARB_post_depth_coverage GL_ARB_program_interface_query GL_ARB_provoki
+ng_vertex GL_ARB_query_buffer_object GL_ARB_robust_buffer_access_behavior GL_ARB_robustness GL_ARB_sample_locations GL_ARB_sample_shading GL_ARB_sampler_objects GL_ARB_seamless_cube_map GL_ARB_seamless_cubemap_per_texture GL_ARB_separate_shader_objects GL_ARB_shader_atomic_counter_ops GL_ARB_shader_atomic_counters GL_ARB_shader_ballot GL_ARB_shader_bit_encoding GL_ARB_shader_clock GL_ARB_shader_draw_parameters GL_ARB_shader_group_vote GL_ARB_shader_image_load_store GL_ARB_shader_image_size GL_ARB_shader_objects GL_ARB_shader_precision GL_ARB_shader_storage_buffer_object GL_ARB_shader_subroutine GL_ARB_shader_texture_image_samples GL_ARB_shader_texture_lod GL_ARB_shading_language_100 GL_ARB_shader_viewport_layer_array GL_ARB_shading_language_420pack GL_ARB_shading_language_include GL_ARB_shading_language_packing GL_ARB_shadow GL_ARB_sparse_buffer GL_ARB_sparse_texture GL_ARB_sparse_texture2 GL_ARB_sparse_texture_clamp GL_ARB_spirv_extensions GL_ARB_stencil_texturing GL_ARB_sync GL_ARB_tessellation_shader GL_A
+RB_texture_barrier GL_ARB_texture_border_clamp GL_ARB_texture_buffer_object GL_ARB_texture_buffer_object_rgb32 GL_ARB_texture_buffer_range GL_ARB_texture_compression GL_ARB_texture_compression_bptc GL_ARB_texture_compression_rgtc GL_ARB_texture_cube_map GL_ARB_texture_cube_map_array GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_crossbar GL_ARB_texture_env_dot3 GL_ARB_texture_filter_anisotropic GL_ARB_texture_filter_minmax GL_ARB_texture_float GL_ARB_texture_gather GL_ARB_texture_mirror_clamp_to_edge GL_ARB_texture_mirrored_repeat GL_ARB_texture_multisample GL_ARB_texture_non_power_of_two GL_ARB_texture_query_levels GL_ARB_texture_query_lod GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_rgb10_a2ui GL_ARB_texture_stencil8 GL_ARB_texture_storage GL_ARB_texture_storage_multisample GL_ARB_texture_swizzle GL_ARB_texture_view GL_ARB_timer_query GL_ARB_transform_feedback2 GL_ARB_transform_feedback3 GL_ARB_transform_feedback_instanced GL_ARB_transform_feedback_overflow_query GL_ARB_t
+ranspose_matrix GL_ARB_uniform_buffer_object GL_ARB_vertex_array_bgra GL_ARB_vertex_array_object GL_ARB_vertex_attrib_64bit GL_ARB_vertex_attrib_binding GL_ARB_vertex_buffer_object GL_ARB_vertex_program GL_ARB_vertex_shader GL_ARB_vertex_type_10f_11f_11f_rev GL_ARB_vertex_type_2_10_10_10_rev GL_ARB_viewport_array GL_ARB_window_pos GL_ATI_draw_buffers GL_ATI_texture_float GL_ATI_texture_mirror_once GL_S3_s3tc GL_EXT_texture_env_add GL_EXT_abgr GL_EXT_bgra GL_EXT_bindable_uniform GL_EXT_blend_color GL_EXT_blend_equation_separate GL_EXT_blend_func_separate GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_compiled_vertex_array GL_EXT_Cg_shader GL_EXT_depth_bounds_test GL_EXT_direct_state_access GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXTX_framebuffer_mixed_formats GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_geometry_shader4 GL_EXT_gpu_program_parameters 
+GL_EXT_gpu_shader4 GL_EXT_multi_draw_arrays GL_EXT_multiview_texture_multisample GL_EXT_multiview_timer_query GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_packed_pixels GL_EXT_pixel_buffer_object GL_EXT_point_parameters GL_EXT_polygon_offset_clamp GL_EXT_post_depth_coverage GL_EXT_provoking_vertex GL_EXT_raster_multisample GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_shader_objects GL_EXT_separate_specular_color GL_EXT_shader_image_load_formatted GL_EXT_shader_image_load_store GL_EXT_shader_integer_mix GL_EXT_shadow_funcs GL_EXT_sparse_texture2 GL_EXT_stencil_two_side GL_EXT_stencil_wrap GL_EXT_texture3D GL_EXT_texture_array GL_EXT_texture_buffer_object GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_latc GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_cube_map GL_EXT_texture_edge_clamp GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_filter_anisotropic GL_EXT_texture_filter_minmax GL_EXT_texture_integer GL_EXT_texture_lod G
+L_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_shadow_lod GL_EXT_texture_shared_exponent GL_EXT_texture_sRGB GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_decode GL_EXT_texture_storage GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_transform_feedback2 GL_EXT_vertex_array GL_EXT_vertex_array_bgra GL_EXT_vertex_attrib_64bit GL_EXT_window_rectangles GL_EXT_x11_sync_object GL_EXT_import_sync_object GL_NV_robustness_video_memory_purge GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_KHR_context_flush_control GL_KHR_debug GL_EXT_memory_object GL_EXT_memory_object_fd GL_NV_memory_object_sparse GL_KHR_parallel_shader_compile GL_KHR_no_error GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_EXT_semaphore GL_EXT_semaphore_fd GL_NV_timeline_semaphore GL_KHR_shader_subgroup GL_KTX_buffer_region GL_NV_alpha_to_coverage_dither_control GL_NV_bindless_multi_draw_indirect GL_NV_bindless_multi_draw_indirect_count GL_NV_bindless_texture GL_NV_blend_equation_advanced GL_NV_
+blend_equation_advanced_coherent GL_NVX_blend_equation_advanced_multi_draw_buffers GL_NV_blend_minmax_factor GL_NV_blend_square GL_NV_clip_space_w_scaling GL_NV_command_list GL_NV_compute_program5 GL_NV_compute_shader_derivatives GL_NV_conditional_render GL_NV_conservative_raster GL_NV_conservative_raster_dilate GL_NV_conservative_raster_pre_snap GL_NV_conservative_raster_pre_snap_triangles GL_NV_conservative_raster_underestimation GL_NV_copy_depth_to_color GL_NV_copy_image GL_NV_depth_buffer_float GL_NV_depth_clamp GL_NV_draw_texture GL_NV_draw_vulkan_image GL_NV_ES1_1_compatibility GL_NV_ES3_1_compatibility GL_NV_explicit_multisample GL_NV_feature_query GL_NV_fence GL_NV_fill_rectangle GL_NV_float_buffer GL_NV_fog_distance GL_NV_fragment_coverage_to_color GL_NV_fragment_program GL_NV_fragment_program_option GL_NV_fragment_program2 GL_NV_fragment_shader_barycentric GL_NV_fragment_shader_interlock GL_NV_framebuffer_mixed_samples GL_NV_framebuffer_multisample_coverage GL_NV_geometry_shader4 GL_NV_geometry_sha
+der_passthrough GL_NV_gpu_program4 GL_NV_internalformat_sample_query GL_NV_gpu_program4_1 GL_NV_gpu_program5 GL_NV_gpu_program5_mem_extended GL_NV_gpu_program_fp64 GL_NV_gpu_shader5 GL_NV_half_float GL_NV_light_max_exponent GL_NV_memory_attachment GL_NV_mesh_shader GL_NV_multisample_coverage GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_parameter_buffer_object GL_NV_parameter_buffer_object2 GL_NV_path_rendering GL_NV_path_rendering_shared_edge GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_primitive_shading_rate GL_NV_query_resource GL_NV_query_resource_tag GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_representative_fragment_test GL_NV_sample_locations GL_NV_sample_mask_override_coverage GL_NV_scissor_exclusive GL_NV_shader_atomic_counters GL_NV_shader_atomic_float GL_NV_shader_atomic_float64 GL_NV_shader_atomic_fp16_vector GL_NV_shader_atomic_int64 GL_NV_shader_buffer_load GL_NV_shader_storage_buffer_object GL_NV_shader_subgroup_par
+titioned GL_NV_shader_texture_footprint GL_NV_shading_rate_image GL_NV_stereo_view_rendering GL_NV_texgen_reflection GL_NV_texture_barrier GL_NV_texture_compression_vtc GL_NV_texture_dirty_tile_map GL_NV_texture_env_combine4 GL_NV_texture_multisample GL_NV_texture_rectangle GL_NV_texture_rectangle_compressed GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_shader3 GL_NV_transform_feedback GL_NV_transform_feedback2 GL_NV_uniform_buffer_unified_memory GL_NV_uniform_buffer_std430_layout GL_NV_vdpau_interop GL_NV_vdpau_interop2 GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_attrib_integer_64bit GL_NV_vertex_buffer_unified_memory GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NV_viewport_array2 GL_NV_viewport_swizzle GL_NVX_conditional_render GL_NV_gpu_multicast GL_NVX_progress_fence GL_NVX_gpu_memory_info GL_NVX_nvenc_interop GL_NV_shader_thread_group GL_NV_shader_thread_shuffle GL_KHR_blend_equation_advanced GL_KH
+R_blend_equation_advanced_coherent GL_OVR_multiview GL_OVR_multiview2 GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum
+OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle -1839434216
+Shader 'TextMeshPro/Distance Field SSD': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
+Shader 'TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
+Shader 'TextMeshPro/Distance Field Overlay': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56236
+Mono path[0] = '/home/cseliot/Unity/Hub/Editor/2022.3.34f1/Editor/Data/Managed'
+Mono path[1] = '/home/cseliot/Unity/Hub/Editor/2022.3.34f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-linux'
+Mono config path = '/home/cseliot/Unity/Hub/Editor/2022.3.34f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56486
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.23f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004482 seconds.
-Native extension for WindowsStandalone target not found
+Register platform support module: /home/cseliot/Unity/Hub/Editor/2022.3.34f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /home/cseliot/Unity/Hub/Editor/2022.3.34f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.008278 seconds.
+- Loaded All Assemblies, in  0.234 seconds
+Native extension for LinuxStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 31.42 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.476 seconds
-Domain Reload Profiling:
-	ReloadAssembly (477ms)
-		BeginReloadAssembly (68ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (0ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (333ms)
-			LoadAssemblies (67ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (88ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (21ms)
-			SetupLoadedEditorAssemblies (184ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (32ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (109ms)
-				ProcessInitializeOnLoadMethodAttributes (35ms)
-				AfterProcessingInitializeOnLoad (0ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (0ms)
-Platform modules already initialized, skipping
-Registering precompiled user dll's ...
-Registered in 0.005297 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.830 seconds
-Domain Reload Profiling:
-	ReloadAssembly (831ms)
-		BeginReloadAssembly (111ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (22ms)
-		EndReloadAssembly (637ms)
-			LoadAssemblies (75ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (153ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (39ms)
-			SetupLoadedEditorAssemblies (349ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (54ms)
-				ProcessInitializeOnLoadAttributes (178ms)
-				ProcessInitializeOnLoadMethodAttributes (105ms)
-				AfterProcessingInitializeOnLoad (6ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (4ms)
-Platform modules already initialized, skipping
+- Finished resetting the current domain, in  0.225 seconds
+Domain Reload Profiling: 460ms
+	BeginReloadAssembly (52ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (5ms)
+	initialDomainReloadingComplete (50ms)
+	LoadAllAssembliesAndSetupDomain (102ms)
+		LoadAssemblies (51ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (100ms)
+			TypeCache.Refresh (99ms)
+				TypeCache.ScanAssembly (89ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (225ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (173ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (120ms)
+			ProcessInitializeOnLoadMethodAttributes (38ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.68 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2512 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 66 unused Assets / (57.3 KB). Loaded Objects now: 2948.
-Memory consumption went from 95.7 MB to 95.7 MB.
-Total: 4.925600 ms (FindLiveObjects: 0.196300 ms CreateObjectMapping: 0.056200 ms MarkObjects: 4.595300 ms  DeleteObjects: 0.076400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 481521.367285 seconds.
-  path: Assets/KiteLionLibrary
-  artifactKey: Guid(7dd15eb9ed6f7874f9d117f4765773c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLionLibrary using Guid(7dd15eb9ed6f7874f9d117f4765773c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a444b780bec921e421edb5d2aafca40') in 0.007923 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.516402 seconds.
-  path: Assets/KiteLion
-  artifactKey: Guid(ed79d3930abbc1a43961efaadc3da62d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion using Guid(ed79d3930abbc1a43961efaadc3da62d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18ea88f6cafd0edf39dfe92bacd3934a') in 0.003498 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 53031.322812 seconds.
-  path: Assets/KiteLion/COPYME
-  artifactKey: Guid(ab937b30e8f04dd44b7a6603e4676cc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/COPYME using Guid(ab937b30e8f04dd44b7a6603e4676cc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '411ed0892d2d7401d21cebde62ef76a8') in 0.046533 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.081304 seconds.
-  path: Assets/KiteLion/COPYME/README.txt
-  artifactKey: Guid(761dd0801a1b03b42b0b327c0c40907f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/COPYME/README.txt using Guid(761dd0801a1b03b42b0b327c0c40907f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3f38ed999e8c51ca810dbdc76ec1d66') in 0.265437 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 10.178040 seconds.
-  path: Assets/KiteLion/COPYME/Assets.zip
-  artifactKey: Guid(cbb4038d3844fc04b8d8d57ee598c74f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/COPYME/Assets.zip using Guid(cbb4038d3844fc04b8d8d57ee598c74f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd65bebbb56731a7d6db8e684ec25e4c7') in 0.017506 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 40.164417 seconds.
-  path: Assets/KiteLion/SceneTemplates
-  artifactKey: Guid(83d8a10fc65d7b243bab4414c9a28cf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/SceneTemplates using Guid(83d8a10fc65d7b243bab4414c9a28cf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '533dc4eb0745638bac40e437f0bf133e') in 0.031729 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.594826 seconds.
-  path: Assets/KiteLion/PhotonArena
-  artifactKey: Guid(844d6faf4b4839a4f8f4dc5d884d2e52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/PhotonArena using Guid(844d6faf4b4839a4f8f4dc5d884d2e52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82bcc57b9f9f53a6019cb604922e92b0') in 0.032352 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.149312 seconds.
-  path: Assets/KiteLion/Music
-  artifactKey: Guid(46b0b362e1e134b4bb88d94a7f602b80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/Music using Guid(46b0b362e1e134b4bb88d94a7f602b80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e2ca5d2718693e6fce110f724a10e04') in 0.004157 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.192547 seconds.
-  path: Assets/KiteLion/Legal
-  artifactKey: Guid(cb96478a1f25e9d41b293aa22938d0e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/Legal using Guid(cb96478a1f25e9d41b293aa22938d0e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17ad70968fbf0ca680a0d9dd94ed2349') in 0.005149 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.191038 seconds.
-  path: Assets/KiteLion/Environmental
-  artifactKey: Guid(388c6afcc73dfb6459c66a37f539f4a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/Environmental using Guid(388c6afcc73dfb6459c66a37f539f4a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e364371e52bd8971d5013837baa0a60') in 0.005352 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.073528 seconds.
-  path: Assets/KiteLion/EmptyFolder
-  artifactKey: Guid(110072b872c23f84eb7fa815673a3aa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/EmptyFolder using Guid(110072b872c23f84eb7fa815673a3aa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97a9a4bde8f876788c8230ac6e623be0') in 0.004180 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.893196 seconds.
-  path: Assets/KiteLion/EmptyFolder/empty.keep
-  artifactKey: Guid(217cc28f467f6d64bbba34680f0fd081) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/EmptyFolder/empty.keep using Guid(217cc28f467f6d64bbba34680f0fd081) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd57412003400855e07e34b19cb45e9b') in 0.010358 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.218222 seconds.
-  path: Assets/KiteLion/EmptyFolder/README.txt
-  artifactKey: Guid(2933fb8b9596cb74a8ea5d91e0fb5167) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/EmptyFolder/README.txt using Guid(2933fb8b9596cb74a8ea5d91e0fb5167) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec19bf5591f0a328200606e1538b4954') in 0.004011 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 22.926450 seconds.
-  path: Assets/KiteLion/SceneTemplates/Boot
-  artifactKey: Guid(458e4d014344f1d49b44cc1070857245) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/SceneTemplates/Boot using Guid(458e4d014344f1d49b44cc1070857245) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f45e47c4258090bce440ff1c7840da44') in 0.004655 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.665909 seconds.
-  path: Assets/KiteLion/SceneTemplates/Boot/Boot.cs
-  artifactKey: Guid(4196342d45bba6b4caf89acc74a8f0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/SceneTemplates/Boot/Boot.cs using Guid(4196342d45bba6b4caf89acc74a8f0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1c311a56339e4e78aff22c702da5fb0') in 0.011353 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.448496 seconds.
-  path: Assets/KiteLion/SceneTemplates/Boot/Boot.prefab
-  artifactKey: Guid(ef6ac68bfca47414b9419e22aa63188c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/SceneTemplates/Boot/Boot.prefab using Guid(ef6ac68bfca47414b9419e22aa63188c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38a82382be28368316a7304bed793cef') in 0.041063 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.536152 seconds.
-  path: Assets/KiteLion/SceneTemplates/Boot/Boot.scenetemplate
-  artifactKey: Guid(8fc0efdbbd3c1bc419c3992c8bfaef21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/SceneTemplates/Boot/Boot.scenetemplate using Guid(8fc0efdbbd3c1bc419c3992c8bfaef21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fee6be9152b927243770cedeebd6425') in 0.037398 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.718715 seconds.
-  path: Assets/KiteLion/SceneTemplates/Boot/Boot.unity
-  artifactKey: Guid(999f9681d50436447bfb199c62f184ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/KiteLion/SceneTemplates/Boot/Boot.unity using Guid(999f9681d50436447bfb199c62f184ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e25000dfbc455f9767febb06482b0ee') in 0.032504 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005270 seconds.
 Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.753 seconds
+Refreshing native plugins compatible for Editor in 34.29 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Completed reload, in  1.311 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1312ms)
-		BeginReloadAssembly (423ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (27ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (196ms)
-		EndReloadAssembly (780ms)
-			LoadAssemblies (129ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (202ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (36ms)
-			SetupLoadedEditorAssemblies (425ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (54ms)
-				ProcessInitializeOnLoadAttributes (220ms)
-				ProcessInitializeOnLoadMethodAttributes (135ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 4.55 ms, found 2 plugins.
+- Finished resetting the current domain, in  0.629 seconds
+Domain Reload Profiling: 1369ms
+	BeginReloadAssembly (87ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (18ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (5ms)
+	initialDomainReloadingComplete (40ms)
+	LoadAllAssembliesAndSetupDomain (584ms)
+		LoadAssemblies (479ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (144ms)
+			TypeCache.Refresh (118ms)
+				TypeCache.ScanAssembly (100ms)
+			ScanForSourceGeneratedMonoScriptInfo (21ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (630ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (508ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (96ms)
+			ProcessInitializeOnLoadAttributes (275ms)
+			ProcessInitializeOnLoadMethodAttributes (121ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 37.41 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2505 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 55 unused Assets / (25.9 KB). Loaded Objects now: 2955.
-Memory consumption went from 99.0 MB to 99.0 MB.
-Total: 7.243600 ms (FindLiveObjects: 0.171000 ms CreateObjectMapping: 0.105000 ms MarkObjects: 6.939000 ms  DeleteObjects: 0.027800 ms)
+Unloading 4840 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 97 unused Assets / (72.8 KB). Loaded Objects now: 5264.
+Memory consumption went from 156.8 MB to 156.7 MB.
+Total: 7.609429 ms (FindLiveObjects: 0.372753 ms CreateObjectMapping: 0.151198 ms MarkObjects: 6.679113 ms  DeleteObjects: 0.404696 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 232f87dd983dbecb2a4e21e08eb2cef8 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 2f0ff77a95e0ac474e3e8eeba4e2f7cb -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 29241.457417 seconds.
+  path: Assets/KiteLion Games/Portables/Legal/Icon.png
+  artifactKey: Guid(9bf1dc43cab72bb47b4456ef974ae5d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Legal/Icon.png using Guid(9bf1dc43cab72bb47b4456ef974ae5d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '47cfe845716dec9d31d9e0ea3da9e4f9') in 0.044170 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 11.24 ms, found 2 plugins.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.734 seconds
+Refreshing native plugins compatible for Editor in 32.00 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.314 seconds
+Domain Reload Profiling: 2034ms
+	BeginReloadAssembly (128ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (36ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (6ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (532ms)
+		LoadAssemblies (479ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (100ms)
+			TypeCache.Refresh (75ms)
+				TypeCache.ScanAssembly (63ms)
+			ScanForSourceGeneratedMonoScriptInfo (19ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (1315ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (474ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (94ms)
+			ProcessInitializeOnLoadAttributes (230ms)
+			ProcessInitializeOnLoadMethodAttributes (135ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Refreshing native plugins compatible for Editor in 32.50 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 55 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 55 unused Assets / (23.2 KB). Loaded Objects now: 2955.
-Memory consumption went from 49.9 MB to 49.9 MB.
-Total: 6.808600 ms (FindLiveObjects: 0.205600 ms CreateObjectMapping: 0.061800 ms MarkObjects: 6.514000 ms  DeleteObjects: 0.025700 ms)
+Unloading 4819 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 76 unused Assets / (56.0 KB). Loaded Objects now: 5271.
+Memory consumption went from 152.4 MB to 152.4 MB.
+Total: 6.938963 ms (FindLiveObjects: 0.509731 ms CreateObjectMapping: 0.215141 ms MarkObjects: 6.074409 ms  DeleteObjects: 0.138154 ms)
 
+Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 232f87dd983dbecb2a4e21e08eb2cef8 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 2f0ff77a95e0ac474e3e8eeba4e2f7cb -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 489.601160 seconds.
-  path: Packages/com.unity.analytics/Editor/AnalyticsEventTracker icon.png
-  artifactKey: Guid(5e7c9ab97e5884e4eaa5967e9024f39d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.analytics/Editor/AnalyticsEventTracker icon.png using Guid(5e7c9ab97e5884e4eaa5967e9024f39d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b39e5661df6aa4e9183838858d6ba87') in 0.105065 seconds 
+  Time since last request: 70.841303 seconds.
+  path: Assets/KiteLion Games
+  artifactKey: Guid(ed79d3930abbc1a43961efaadc3da62d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games using Guid(ed79d3930abbc1a43961efaadc3da62d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '8b86439df3f04b988350b34a8936465c') in 0.002122 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000044 seconds.
-  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignBaseLine_Light.psd
-  artifactKey: Guid(18775b51e3bd42299fd30bd036ea982f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignBaseLine_Light.psd using Guid(18775b51e3bd42299fd30bd036ea982f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c2f8c0d94c53870b7b24a62ce949a43') in 0.019289 seconds 
+  Time since last request: 1.042451 seconds.
+  path: Assets/Editor
+  artifactKey: Guid(9b99cdc89670f0145b144214786c658f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor using Guid(9b99cdc89670f0145b144214786c658f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '024f5c46a86ea13e85374b300246d4be') in 0.000880 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Skin/BoxText.png
-  artifactKey: Guid(761ff1491b1f86c4d924261c553ac9cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Skin/BoxText.png using Guid(761ff1491b1f86c4d924261c553ac9cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2c30eb9a77c57c84bd47e71544b22f5') in 0.014666 seconds 
+  Time since last request: 2.214688 seconds.
+  path: Assets/Editor/MediationAdapterDependencies.xml
+  artifactKey: Guid(5aad03315bad12c4180cadaa96080a74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor/MediationAdapterDependencies.xml using Guid(5aad03315bad12c4180cadaa96080a74) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '6128837060b41f60aae998f3d067337b') in 0.007627 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Skin/BoxOrange.png
-  artifactKey: Guid(13548d8d0fcb5c44b8044ce08a99c697) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Skin/BoxOrange.png using Guid(13548d8d0fcb5c44b8044ce08a99c697) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94ef72a9107387665ca44600b4b9053b') in 0.039179 seconds 
+  Time since last request: 0.268171 seconds.
+  path: Assets/MobileDependencyResolver
+  artifactKey: Guid(333d24e71d12446ba5c77815e64b0ca8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileDependencyResolver using Guid(333d24e71d12446ba5c77815e64b0ca8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'b1898b6c0980dc5752197a5428b2f34a') in 0.000890 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Skin/BoxOrangeRed.png
-  artifactKey: Guid(72708a25103c3fe4f9074f7296e86b7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Skin/BoxOrangeRed.png using Guid(72708a25103c3fe4f9074f7296e86b7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd1bcd7f0eab5039af3bca420cdd867d') in 0.012258 seconds 
+  Time since last request: 0.135072 seconds.
+  path: Assets/Photon
+  artifactKey: Guid(98951132346795f438babe7a3183da43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Photon using Guid(98951132346795f438babe7a3183da43) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'bda4752146724cddbc78d7f3065f4dc6') in 0.000662 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 1.051025 seconds.
-  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignBottom.psd
-  artifactKey: Guid(ca51b19024094d1b87f3e07edb0a75fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignBottom.psd using Guid(ca51b19024094d1b87f3e07edb0a75fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c05a6f0f7842c4b1343fa606ae4838d') in 0.012635 seconds 
+  Time since last request: 3.572652 seconds.
+  path: Assets/KiteLion Games/Photon - PUN2
+  artifactKey: Guid(46231faaaf83b4ae1b223374264df707) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Photon - PUN2 using Guid(46231faaaf83b4ae1b223374264df707) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '11f946841b327a068a2093cd70be0bc1') in 0.000717 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 0.183659 seconds.
-  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCapLine.psd
-  artifactKey: Guid(0d9a36012a224080966c7b55896aa0f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCapLine.psd using Guid(0d9a36012a224080966c7b55896aa0f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '887743c2008184350a45e8fbaca967e3') in 0.010176 seconds 
+  Time since last request: 4.971433 seconds.
+  path: Assets/KiteLion Games/Portables
+  artifactKey: Guid(3d69d1046efab604db69950f5a0ec6cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables using Guid(3d69d1046efab604db69950f5a0ec6cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'aca1362405ea01c1f89c492efdf0d202') in 0.000792 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenter.psd
-  artifactKey: Guid(81ed8c76d2bc4a4c95d092c98af4e58f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenter.psd using Guid(81ed8c76d2bc4a4c95d092c98af4e58f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8eb3420a20e3f650a51199b5181fdd26') in 0.010505 seconds 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+  Time since last request: 73.106463 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/BetterTag/Editor
+  artifactKey: Guid(67d3e57aa2049e94b9ac9e98112d4621) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/BetterTag/Editor using Guid(67d3e57aa2049e94b9ac9e98112d4621) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '6213861fca1d4feac488c723ef018299') in 0.000875 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 5.057945 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/BetterTag/Tag.cs
+  artifactKey: Guid(374bb086994797d479ca7087cf29bf60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/BetterTag/Tag.cs using Guid(374bb086994797d479ca7087cf29bf60) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '6c04703e151264fa9f299a4ead5fea5f') in 0.000902 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.132151 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/BetterTag/GameObjectHelper.cs
+  artifactKey: Guid(a598336f96a07474880fafa6bd7da234) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/BetterTag/GameObjectHelper.cs using Guid(a598336f96a07474880fafa6bd7da234) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'b91368decf59bb486d34ef11846ff388') in 0.000836 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 18.313177 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator
+  artifactKey: Guid(98e9155c2ff167d47935fa4c1541dade) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator using Guid(98e9155c2ff167d47935fa4c1541dade) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '5a026cb3e337e3665bb9c59519866181') in 0.000808 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.779582 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Attributes
+  artifactKey: Guid(21387aa584694434a88ae5b1f7ed8da5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Attributes using Guid(21387aa584694434a88ae5b1f7ed8da5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '732a7eae21ba81c7eba579f74e0ac838') in 0.000790 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.783852 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Attributes/FoldAttribute.cs
+  artifactKey: Guid(4c31e8c7042cb004a9c8a893054beb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Attributes/FoldAttribute.cs using Guid(4c31e8c7042cb004a9c8a893054beb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '7f4b87da8c857534e3e0b70b3c05cd74') in 0.001029 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.176963 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Editor
+  artifactKey: Guid(c16bd30bde929ae4088df3d602f3144f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Editor using Guid(c16bd30bde929ae4088df3d602f3144f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '55fae3935177877b26d2d93a87d1a34a') in 0.000749 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 7.818113 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Editor/Resources
+  artifactKey: Guid(2a6db674a7fa01642a94bbd18229c623) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Editor/Resources using Guid(2a6db674a7fa01642a94bbd18229c623) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'c4df7a6a43af918b5ca677ae455c4b4b') in 0.000985 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.152158 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Editor/EditorOverride.cs
+  artifactKey: Guid(9ec3691b81e9b5842b49079b5c8a59e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Editor/EditorOverride.cs using Guid(9ec3691b81e9b5842b49079b5c8a59e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '627299e29140c020c90b4b8a590f07d5') in 0.000835 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.136844 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Editor/EditorOverride.cs.bak
+  artifactKey: Guid(eb5a7b390cbb78f42a1ac855244e1daa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/FoldoutDecorator/Editor/EditorOverride.cs.bak using Guid(eb5a7b390cbb78f42a1ac855244e1daa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '6ce6f8b095b739ed4065db4ab5156957') in 0.001622 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 131.174658 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/BetterTag
+  artifactKey: Guid(d652dfe1d361cc7459938fd9191f53e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/BetterTag using Guid(d652dfe1d361cc7459938fd9191f53e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'f1919695e1e34fcf3a9906af017683af') in 0.001019 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 8.790589 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox/CopyToNewProjects
+  artifactKey: Guid(8d0c8ed5682681944843934f17c10b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox/CopyToNewProjects using Guid(8d0c8ed5682681944843934f17c10b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'abc1932a58be8b44b60f1aa54a6e4d68') in 0.000761 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 7.286049 seconds.
+  path: Assets/KiteLion Games/Portables/Toolbox
+  artifactKey: Guid(6dbed9772518d64748733253b715cbf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Toolbox using Guid(6dbed9772518d64748733253b715cbf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '2f73dead82a45b3cafe799656966d49c') in 0.000722 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.161206 seconds.
+  path: Assets/KiteLion Games/Portables/SceneTemplates
+  artifactKey: Guid(83d8a10fc65d7b243bab4414c9a28cf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/SceneTemplates using Guid(83d8a10fc65d7b243bab4414c9a28cf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'da4990363b18f353087b0a4e3c097501') in 0.000719 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.491800 seconds.
+  path: Assets/KiteLion Games/Portables/Music
+  artifactKey: Guid(46b0b362e1e134b4bb88d94a7f602b80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Music using Guid(46b0b362e1e134b4bb88d94a7f602b80) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '94e6a6adaa77239dfb371e444a2ca863') in 0.000750 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.044726 seconds.
+  path: Assets/KiteLion Games/Portables/Legal
+  artifactKey: Guid(cb96478a1f25e9d41b293aa22938d0e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Legal using Guid(cb96478a1f25e9d41b293aa22938d0e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '059cafb6ec61b238aeacda21390a9d02') in 0.000710 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.022754 seconds.
+  path: Assets/KiteLion Games/Portables/Environmental
+  artifactKey: Guid(388c6afcc73dfb6459c66a37f539f4a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Environmental using Guid(388c6afcc73dfb6459c66a37f539f4a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '1d3ad9941461a5271b54f7b79d1c304d') in 0.000602 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.037358 seconds.
+  path: Assets/KiteLion Games/Portables/EmptyFolder
+  artifactKey: Guid(110072b872c23f84eb7fa815673a3aa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/EmptyFolder using Guid(110072b872c23f84eb7fa815673a3aa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '8e1b7e4381c06360114269a185f251ea') in 0.000731 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.041692 seconds.
+  path: Assets/KiteLion Games/Portables/Editor
+  artifactKey: Guid(d0c6e65b32b5795489750dd41e854537) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/Editor using Guid(d0c6e65b32b5795489750dd41e854537) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '61615ce475a8bc49b47d1714cfb224bd') in 0.000627 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.032930 seconds.
+  path: Assets/KiteLion Games/Portables/COPYME
+  artifactKey: Guid(ab937b30e8f04dd44b7a6603e4676cc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/COPYME using Guid(ab937b30e8f04dd44b7a6603e4676cc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '62e00f33c25892724f39be6ea2a06a5c') in 0.000827 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.010941 seconds.
+  path: Assets/KiteLion Games/Portables/COPYME/Assets.zip
+  artifactKey: Guid(cbb4038d3844fc04b8d8d57ee598c74f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/COPYME/Assets.zip using Guid(cbb4038d3844fc04b8d8d57ee598c74f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'd766265f01e327dfd3ed1d2b5b3499d1') in 0.001806 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.487519 seconds.
+  path: Assets/KiteLion Games/Portables/COPYME/README.txt
+  artifactKey: Guid(761dd0801a1b03b42b0b327c0c40907f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/COPYME/README.txt using Guid(761dd0801a1b03b42b0b327c0c40907f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '6323b8c37e0610932a52a699d2f308c2') in 0.001550 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 111.569967 seconds.
+  path: Assets/KiteLion Games/Portables/SceneTemplates/Boot
+  artifactKey: Guid(458e4d014344f1d49b44cc1070857245) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/KiteLion Games/Portables/SceneTemplates/Boot using Guid(458e4d014344f1d49b44cc1070857245) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '1edc269c2358ce7fcdf7f186020ec61d') in 0.001056 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0

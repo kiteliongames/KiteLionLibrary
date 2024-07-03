@@ -6,12 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/KiteLion/SceneTemplates/Boot/Boot.unity
+    path: Assets/KiteLion Games/Portables/SceneTemplates/Boot/Boot.unity
     guid: 999f9681d50436447bfb199c62f184ee
   - enabled: 1
-    path: Assets/KiteLion/SceneTemplates/Splash/Splash.unity
+    path: Assets/KiteLion Games/Portables/SceneTemplates/Splash/Splash.unity
     guid: 1d7393b56d1803f4380b980cb582422c
   - enabled: 1
-    path: Assets/KiteLion/SceneTemplates/OnlineMultiplayer/PhotonArena Demo 3D.unity
+    path: Assets/KiteLion Games/Photon - PUN2/SceneTemplates/OnlineMultiplayer/PhotonArena
+      Demo 3D.unity
     guid: 92793cc9f22d63d40ae8a95ffd15113d
   m_configObjects: {}
