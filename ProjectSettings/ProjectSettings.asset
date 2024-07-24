@@ -773,11 +773,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 3adc7060-fb5a-46b7-8454-c4f52310f383
+  cloudProjectId: f9237e95-6006-42d8-84bd-465ff77ab53a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: KiteLion Games Core Tools
-  organizationId: eliot_kiteliongames
+  projectName: KiteLionLibrary
+  organizationId: kitelion-games
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

@@ -1,1 +1,0 @@
-Hello! Some tools and files must exist outside of the imported KiteLionGamesLibrary folder. So extract the /Assets/ from the COPYME.zip  and paste on top of your project's /Assets/ folder.
