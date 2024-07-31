@@ -9,16 +9,6 @@ namespace KiteLionGames.Toolbox.CopyToNewProjects
     /// </summary>
     public class Main_ : MonoBehaviour
     {
-        public enum Addressable //todo delete?
-        {
-            Scenery,
-        }
-
-        public static Dictionary<Addressable, string> Addressables = new()
-        {
-            { Addressable.Scenery, "Scenery" }, //todo delete?
-        };
-
         /// <summary>
         /// These scenes must match the scenes in the build settings, letter by letter.
         /// !! DO NOT REARRANGE!!
@@ -26,35 +16,17 @@ namespace KiteLionGames.Toolbox.CopyToNewProjects
         public enum Scenes
         {
             //DO NOT REARRANGE BELOW!!
-            BootCardPlusEngine,
-            MenuCardPlusEngine,
-            BootMyFantasyDemo,
-            SplashMyFantasyDemo,
-            MenuMyFantasyDemo,
-            BootMy52ClassicDemo,
-            SplashMy52ClassicDemo,
-            MenuMy52ClassicDemo,
-            SettingsMainLoaderScene,
-            BootImageProcessing,
-            SplashImageProcessing,
-            ImageProcessing,
-            BootStackablesDesigner,
-            SplashStackablesDesigner,
-            StackablesDesigner,
-            Session,
-            LightingAndSceneryStackDesigner,
+            BootSample,
+            SplashSample,
+            MenuSample,
             // DO NOT REARRANGE ABOVE!!
             //ADD YOUR OWN SCENES BELOW
         }
 
         public static readonly List<string> EditorOnlyScenes = new() {
-            Scenes.BootImageProcessing.ToString(),
-            Scenes.SplashImageProcessing.ToString(),
-            Scenes.ImageProcessing.ToString(),
-            Scenes.BootStackablesDesigner.ToString(),
-            Scenes.SplashStackablesDesigner.ToString(),
-            Scenes.StackablesDesigner.ToString(),
-            Scenes.LightingAndSceneryStackDesigner.ToString(),
+            Scenes.BootSample.ToString(),
+            Scenes.SplashSample.ToString(),
+            Scenes.MenuSample.ToString(),
         };
 
 
