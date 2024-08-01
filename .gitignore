@@ -133,3 +133,6 @@ Assets/Debug/Node2.obj.meta
 # Project User Unique #
 # =================== #
 /Assets/Photon/
+/[Rr]ubbish/
+/.debris/
+.megaignore
