@@ -5,6 +5,9 @@
 		}
 	],
 	"settings": {
-		"dotnet.defaultSolution": "KiteLionLibrary.sln"
+		"dotnet.defaultSolution": "KiteLionLibrary.sln",
+		"omnisharp.enableAsyncCompletion": true,
+		"csharp.preview.improvedLaunchExperience": true,
+		"dotnet.automaticallySyncWithActiveItem": true
 	}
 }

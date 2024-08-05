@@ -1,6 +1,0 @@
-Code:
-
-
-Unity Settings:
- - Scene Settings:
-	Lighting Settings Autogenerate = False
