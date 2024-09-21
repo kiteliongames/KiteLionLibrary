@@ -49,7 +49,7 @@
 //        {
 //            if(buttons.Length > MAX_BUTTONS)
 //            {
-//                Debug.LogError("Max Buttons allowed per Menu Page is " + MAX_BUTTONS + "!");
+//                Debug.LogError("Max Buttons allowed per Main Page is " + MAX_BUTTONS + "!");
 //                Application.Quit();
 //                return;
 //            }
@@ -70,7 +70,7 @@
 //            public pButton(Page nextPage)
 //            {
 //                this.nextPage = nextPage;
-//                this.name = UFE.Localization.GetTextValue("Menu.Page.Name." + nextPage.Name.ToString());
+//                this.name = UFE.Localization.GetTextValue("Main.Page.Name." + nextPage.Name.ToString());
 //                this.toNewScene = null;
 //            }
 
@@ -223,7 +223,7 @@
 //    private Page Options;
 //    #endregion
 
-//    #region Menu Nav Live Storing Data
+//    #region Main Nav Live Storing Data
 //    private Page currentPage;
 //    private PageName currentPageName;
 //    private bool canMove; //True if the joystick is reset back to 0.
@@ -243,12 +243,12 @@
 //    // Use this for initialization
 //    void Start()
 //    {
-//        #region Menu Construction
+//        #region Main Construction
 //        Options = new Page(this, PageName.Options, new Page.pButton[]
 //        {
-//            new Page.pButton(UFE.Localization.GetTextValue("Menu.Options.Button.Controls"), null),
-//            new Page.pButton(UFE.Localization.GetTextValue("Menu.Options.Button.Audio"), null),
-//            new Page.pButton(UFE.Localization.GetTextValue("Menu.Options.Button.Video"), null)
+//            new Page.pButton(UFE.Localization.GetTextValue("Main.Options.Button.Controls"), null),
+//            new Page.pButton(UFE.Localization.GetTextValue("Main.Options.Button.Audio"), null),
+//            new Page.pButton(UFE.Localization.GetTextValue("Main.Options.Button.Video"), null)
 //        });
 
 //        Page.pButton.OnPress toTraining = new Page.pButton.OnPress(GoToTrainingModeScreen);
@@ -256,9 +256,9 @@
 //        Page.pButton.OnPress toStory = new Page.pButton.OnPress(GoToStoryModeScreen);
 //        Offline = new Page(this, PageName.Offline, new Page.pButton[]
 //        {
-//            new Page.pButton(UFE.Localization.GetTextValue("Menu.Offline.Button.Story"), toStory),
-//            new Page.pButton(UFE.Localization.GetTextValue("Menu.Offline.Button.Versus"), toVersus),
-//            new Page.pButton(UFE.Localization.GetTextValue("Menu.Offline.Button.Training"), toTraining)
+//            new Page.pButton(UFE.Localization.GetTextValue("Main.Offline.Button.Story"), toStory),
+//            new Page.pButton(UFE.Localization.GetTextValue("Main.Offline.Button.Versus"), toVersus),
+//            new Page.pButton(UFE.Localization.GetTextValue("Main.Offline.Button.Training"), toTraining)
 //        });
 
 //        Page.pButton.OnPress QuitButton = new Page.pButton.OnPress(Quit);
@@ -267,7 +267,7 @@
 //            new Page.pButton("Single Player", new Page.pButton.OnPress(MenuActions.GoToPlayerVsCpuScreen)), //NULL MUST BE SET HERE // TO Player vs AI
 //            new Page.pButton("Multi Player", new Page.pButton.OnPress(MenuActions.GoToPlayerVsPlayerScreen)), // To Player vs Player
 //            new Page.pButton("Training", new Page.pButton.OnPress(MenuActions.GoToTrainingModeScreen)), // Options aren't done so just going to Training.
-//            new Page.pButton(UFE.Localization.GetTextValue("Menu.OnLaunch.Button.Exit"), Quit)
+//            new Page.pButton(UFE.Localization.GetTextValue("Main.OnLaunch.Button.Exit"), Quit)
 //        });
 //        #endregion
 
@@ -343,7 +343,7 @@
 //    public void _SelectTarget(int targetButton)
 //    {
 //        if (targetButton > MAX_BUTTONS - 1 || targetButton < 0) {
-//            KiteLionGames.BetterDebug.CBUG.Error("TARGET BUTTON EXCEEDS MAXIMUM BUTTONS OF: " + MAX_BUTTONS);
+//            CBUG.Error("TARGET BUTTON EXCEEDS MAXIMUM BUTTONS OF: " + MAX_BUTTONS);
 //            return;
 //        }
 //        currentPage.SelectTarget(targetButton);

@@ -1,0 +1,724 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.BetterTag
+{
+    public static class GameObjectExtension
+    {
+        public static UnityEngine.GameObject[] FindGameObjectsWithBetterTag(this UnityEngine.GameObject gameObject, Tag.label tag, bool includeInactive = false);
+        public static UnityEngine.GameObject FindGameObjectWithBetterTag(this UnityEngine.GameObject gameObject, Tag.label tag, bool includeInactive = false);
+        public static Tag GetTag(this UnityEngine.Component component);
+        public static Tag GetTag(this UnityEngine.GameObject gameObject);
+        public static Tag GetTag(this UnityEngine.MonoBehaviour monoBehaviour);
+        public static Tag GetTag(this UnityEngine.Transform transform);
+    }
+
+    public static class GameObjectHelper
+    {
+        public static UnityEngine.GameObject[] FindGameObjectsWithTag(Tag.label label);
+        public static UnityEngine.GameObject FindGameObjectWithTag(Tag.label label);
+    }
+
+    [Unity.VisualScripting.InspectorLabel(@"Better Tag")] public class Tag : UnityEngine.MonoBehaviour
+    {
+        public static bool ADD_COMPONENT_IF_NOT_FOUND = true;
+        public static System.Collections.Generic.Dictionary<Tag.label, UnityEngine.GameObject> TAGGED_GAMEOBJECTS;
+        public Tag.label Flags { get; }
+        public Tag() {}
+        public void AddFlag(Tag.label flag);
+        public bool ContainsFlag(Tag.label flag);
+        public static void CreateTagComponent(UnityEngine.GameObject TaglessObj, Tag.label flags);
+        public static UnityEngine.GameObject[] FindGameObjectsWithBetterTag(Tag.label label, bool includeInactive = false);
+        public static UnityEngine.GameObject FindGameObjectWithBetterTag(Tag.label label, bool includeInactive = false);
+        public Tag.label Get();
+        public static System.Nullable<Tag.label> Get(UnityEngine.GameObject Tagged);
+        public static System.Nullable<Tag.label> Get(UnityEngine.Transform Tagged);
+        public int GetFlagCount();
+        public Tag.label[] GetLabels();
+        public static Tag GetTagComponent(UnityEngine.GameObject Tagged);
+        public static Tag GetTagComponent(UnityEngine.GameObject Tagged, bool createIfNotFound, Tag.label tag = Tag.label.Untagged);
+        public bool HasFlag(Tag.label flag);
+        public static Tag.label op_Explicit(Tag tag);
+        public void OverwriteFlags(Tag.label flags);
+        public void RemoveFlag(Tag.label flag);
+        public override string ToString();
+        [System.Flags] public enum label
+        {
+            ________________________________unused = -2147483648,
+            _______________________________unused = 1073741824,
+            ______________________________unused = 536870912,
+            _____________________________unused = 268435456,
+            ____________________________unused = 134217728,
+            ___________________________unused = 67108864,
+            _________________________unused = 16777216,
+            _____________________unused = 1048576,
+            ___________________unused = 262144,
+            ________________unused = 32768,
+            _______________unused = 16384,
+            ___________unused = 1024,
+            ___unused = 4,
+            BlankSpace = 4194304,
+            Card = 512,
+            Deck = 2048,
+            Discard = 2097152,
+            Dragger = 8192,
+            Enemy = 32,
+            EnemyHand = 128,
+            EnemyPlayZone = 64,
+            Everything = -1,
+            GameplayCode = 8388608,
+            Hand = 4096,
+            Hoverable = 33554432,
+            InvisibleWall = 524288,
+            Locals = 2,
+            MainCamera = 8,
+            Player = 16,
+            PlayZone = 131072,
+            PlayZoneBarrier = 256,
+            Tabletop = 65536,
+            Tools = 1,
+            Untagged = 0,
+        }
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.BetterTag.Editor
+{
+    [UnityEditor.CanEditMultipleObjects] [UnityEditor.CustomEditor(typeof(Tag))] public class TagEditor : UnityEditor.Editor
+    {
+        public TagEditor() {}
+        public override void OnInspectorGUI();
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.CBUG
+{
+    [UnityEngine.RequireComponent(typeof(UnityEngine.UI.Text))] public class CBUG : UnityEngine.MonoBehaviour, DuckProject.KiteLionGames.KiteLionLibrary.Portables.Legal.Legal.ILegal
+    {
+        public static int CCounter = 0;
+        [JetBrains.Annotations.ItemNotNull] public static object[] INSPECT_OBJECTS;
+        public static bool isSceneLoaded;
+        public CBUGOptions Options;
+        public static System.Nullable<bool> DEBUG_ON { get; }
+        public string KiteLionGamesSoftwareName { get; }
+        public CBUG() {}
+        public static void ClearLines(int amount);
+        public static void Do(object line);
+        public static void Error(string line);
+        public static void Log(object line, bool trimLinesForBrevity = true);
+        public static void LogError(string line);
+        public static void LogToFile(string line);
+        public static void LogWarning(string line);
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.AfterSceneLoad)] public static void OnSceneLoaded();
+        public static void Print(string line);
+        public static void SeriousError(string line);
+    }
+
+    public class CBugEditor
+    {
+        public CBugEditor() {}
+        public static void OnEditorPlayModeChanged(bool isPlaying);
+        [UnityEditor.InitializeOnLoad] public static class PlayModeStateChangedExample
+        {
+        }
+    }
+
+    public class CBUGOptions : UnityEngine.MonoBehaviour
+    {
+        public float clearLineTimeInSeconds = 10f;
+        public bool clearNow;
+        public bool isEnabledForDevelopmentBuild = true;
+        public bool isEnabledForEditor = true;
+        public bool isEnabledForReleaseBuild;
+        public bool isEnabledForUnityLog = true;
+        public bool isEnabledOnConsole = true;
+        public bool isEnabledOnScreen = true;
+        public int maxCharactersPerLine = 100;
+        public CBUGOptions() {}
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.Abstracts
+{
+    public abstract class PlayerController : UnityEngine.MonoBehaviour
+    {
+        protected PlayerController() {}
+        public abstract void Die();
+        public void Initialize();
+        public abstract void Respawn(UnityEngine.Vector3 spawnPoint);
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.Flying
+{
+    public class PlaneControls : UnityEngine.MonoBehaviour
+    {
+        public float Ceiling;
+        public float ClosingSpeed;
+        public UnityEngine.GameObject EndGameText;
+        public float Floor;
+        public string FriendCode;
+        public float LeftWall;
+        public float MovSpeedX;
+        public float MovSpeedY;
+        public float OpeningSpeed;
+        public float RightWall;
+        public float RotSpeedX;
+        public float RotSpeedZ;
+        public float TargetRotX;
+        public float TargetRotZ;
+        public float TextFadeInSpeed;
+        public float TextFadeInTime;
+        public float TextFadeOutSpeed;
+        public float TextFadeOutTime;
+        public UnityEngine.UI.Text TextToFade;
+        public float TotalPlayTime;
+        public PlaneControls() {}
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS
+{
+    public class TPSGenericController : UnityEngine.MonoBehaviour
+    {
+        public UnityEngine.Transform BodyTransform;
+        public UnityEngine.Transform CameraTransform;
+        public float forwardSpeed = 20f;
+        public float MouseSensitivity = 50f;
+        public float rotateSpeed = 6f;
+        public UnityEngine.Transform TorsoTransform;
+        public TPSGenericController() {}
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS.Controllers
+{
+    public abstract class ControllerThirdPerson : DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.Abstracts.PlayerController
+    {
+        public float AccelerationSpeedForwardAir = 0.5f;
+        public float AccelerationSpeedForwardGrounded = 0.5f;
+        public float AccelerationSpeedHorizontalAir = 0.5f;
+        public float AccelerationSpeedHorizontalGrounded = 0.5f;
+        public float DecelerationSpeedForwardAir = 0.5f;
+        public float DecelerationSpeedForwardGrounded = 0.5f;
+        public float DecelerationSpeedHorizontalAir = 0.5f;
+        public float DecelerationSpeedHorizontalGrounded = 0.5f;
+        public bool EnableDefaultGravity;
+        public DuckProject.KiteLionGames.KiteLionLibrary.Portables.Environmental.Forces.ExternalForce ExternalForces;
+        public float ForwardSpeed;
+        public float HorizontalSpeed;
+        public bool isControlsDisabled;
+        public float JumpForce;
+        public int jumpLag;
+        public float LerpMaxThresholdForward;
+        public float LerpMaxThresholdHorizontal;
+        public float LerpMinThresholdForward;
+        public float LerpMinThresholdHorizontal;
+        public float LerpMinThresholdVertical;
+        public float MaxSpeedForwardAir;
+        public float MaxSpeedForwardGrounded;
+        public float MaxSpeedHorizontalAir;
+        public float MaxSpeedHorizontalGrounded;
+        public float MaxSpeedVertical;
+        public int TotalJumpsAllowed;
+        protected ControllerThirdPerson() {}
+        public void AddExternalForce(DuckProject.KiteLionGames.KiteLionLibrary.Portables.Environmental.Forces.ExternalForce newForce);
+        public override void Die();
+        public void RemoveExternalForce();
+        public override void Respawn(UnityEngine.Vector3 spawnPoint);
+        public void Start();
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Editor
+{
+    public class GenerateTags : UnityEditor.AssetPostprocessor
+    {
+        public GenerateTags() {}
+        public static bool AddTag(string tagName);
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Environmental
+{
+    public static class Forces
+    {
+        public static float G = 9.81f;
+        public static UnityEngine.Vector3 Gravity3 { get; }
+        public delegate UnityEngine.Vector3 ExternalForce();
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Legal.Legal
+{
+    public static class Copyright
+    {
+        public static void RecordUsage(ILegal Obj);
+    }
+
+    public interface ILegal
+    {
+        public string KiteLionGamesSoftwareName { get; }
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.Boot.Toolbox
+{
+    public class CopyMeBoot : UnityEngine.MonoBehaviour
+    {
+        public DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.CopyToNewProjects.CopyMeMain.Scenes FirstScene;
+        public static bool IsBooted;
+        public CopyMeBoot() {}
+        protected void Start();
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.SanityTests.Scripts
+{
+    public class SanityTestCharacterController : UnityEngine.MonoBehaviour
+    {
+        public float forwardSpeed = 20f;
+        public float MouseSensitivity = 50f;
+        public float rotateSpeed = 6f;
+        public SanityTestCharacterController() {}
+    }
+
+    public class SanityTestScript : UnityEngine.MonoBehaviour
+    {
+        public int SanityCheckCount;
+        public float UpdatesPerSecond;
+        public SanityTestScript() {}
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.SanityTests.SinglePlayerLocalHDRP
+{
+    public class SanityTestScriptHDRP : UnityEngine.MonoBehaviour
+    {
+        public int SanityCheckCount;
+        public SanityTestScriptHDRP() {}
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox
+{
+    [System.Obsolete(@"No alternative in unity!")] public class Connection
+    {
+        public Connection() {}
+        public static void CheckForInternetConnectionAsync(System.Action onConnect, System.Action onFail, int timeoutMs = 10000, string url = default(string));
+        public static bool GetInternetConnectionAsync(int timeoutMS = 10000, string url = default(string));
+    }
+
+    public static class CopyMeBootSceneEnforcer
+    {
+        public static System.Collections.Generic.Dictionary<string, string> ActiveSceneToBootScene { get; }
+        public static bool CanEnforce { get; }
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)] public static void OnBeforeSceneLoad();
+    }
+
+    public class CopyMeSplashToNextScene : UnityEngine.MonoBehaviour
+    {
+        public UnityEngine.Camera[] CamerasToDisable;
+        public CopyToNewProjects.CopyMeMain.Scenes[] NextScenes;
+        [UnityEngine.Min(0.01f)] public float SkipCooldownAfter = 0.5f;
+        public UnityEngine.AudioListener SplashAudioListener;
+        public UnityEngine.MeshRenderer SplashScreenImageRenderer;
+        public UnityEngine.Video.VideoPlayer SplashScreenVideoPlayer;
+        public CopyMeSplashToNextScene() {}
+        protected void LateUpdate();
+        protected void Start();
+        public class SplashData
+        {
+            public float Duration;
+            public UnityEngine.Sprite Image;
+            public CopyMeSplashToNextScene.SplashData.SplashType Type;
+            public string URL;
+            public UnityEngine.Video.VideoClip Video;
+            public SplashData() {}
+            public enum SplashType
+            {
+                Image = 1,
+                URL = 2,
+                Video = 0,
+            }
+        }
+    }
+
+    public class DontDestroyThis : UnityEngine.MonoBehaviour
+    {
+        public static System.Collections.Generic.List<UnityEngine.GameObject> List;
+        public DontDestroyThis() {}
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Method)] public class EnumActionAttribute : UnityEngine.PropertyAttribute
+    {
+        public System.Type EnumType { get; }
+        public EnumActionAttribute(System.Type enumType) {}
+    }
+
+    public static class FileUtilities
+    {
+        public static string FindFileInProject(string fileName);
+        public static string GetPath(string fileName, string fileExtension, string folderPath = @"");
+    }
+
+    public class GameSaveLoad : DuckProject.KiteLionGames.KiteLionLibrary.Portables.Legal.Legal.ILegal
+    {
+        public static bool SafeToMakeChanges = true;
+        public static bool IsGameDataLoaded { get; }
+        public string KiteLionGamesSoftwareName { get; }
+        public static DuckProject.KiteLionGames.KiteLionLibrary.Portables.Utilities.Tools.ByteArrayExtensions.ByteArrayPool SAVE_DATA { get; }
+        public static string SaveDirectoryPath { get; }
+        public static string SaveFilePath { get; }
+        public GameSaveLoad() {}
+        public static bool DeleteData(string key);
+        public static byte[] GetData(string key);
+        public static void Initialize();
+        public static void LoadGameDataFromDisk();
+        public static void Save(string key, byte[] data);
+        public static void SaveGameDataToDisk();
+        public static void WipeSaveFile();
+    }
+
+    public class ImageImporter : DuckProject.KiteLionGames.KiteLionLibrary.Portables.Legal.Legal.ILegal
+    {
+        public bool Complete { get; }
+        public string KiteLionGamesSoftwareName { get; }
+        public System.Action<byte[]> OnFinishedLoading { get; set; }
+        public ImportOptions Options { get; set; }
+        public System.Nullable<float> Progress { get; }
+        public byte[] ResultImageBytes { get; }
+        public string URI { get; }
+        public ImageImporter(string uri, ImportOptions options = ImportOptions.None, UnityEngine.Material targetToBlitTo = default(UnityEngine.Material)) {}
+        public ImageImporter ImportAsync();
+    }
+
+    [System.Flags] public enum ImportOptions
+    {
+        BlitOntoTemplate = 8,
+        Crop = 4,
+        None = 0,
+        ScaleToFill = 2,
+        ScaleToFit = 1,
+    }
+
+    public class MinMaxSliderAttribute : UnityEngine.PropertyAttribute
+    {
+        public readonly float max;
+        public readonly float min;
+        public MinMaxSliderAttribute(float min, float max) {}
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(MinMaxSliderAttribute))] public class MinMaxSliderDrawer : UnityEditor.PropertyDrawer
+    {
+        public float floatFieldWidth = 50f;
+        public float labelWidth = 100f;
+        public MinMaxSliderDrawer() {}
+        public override void OnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    public class ReadOnlyAttribute : UnityEngine.PropertyAttribute
+    {
+        public ReadOnlyAttribute() {}
+    }
+
+    public class RotateMe : UnityEngine.MonoBehaviour
+    {
+        public float RotSpeedX;
+        public float RotSpeedY;
+        public float RotSpeedZ;
+        public float SpeedMultiplier = 1f;
+        public RotateMe() {}
+    }
+
+    public class SceneLoader
+    {
+        public bool IfExistsThenReload;
+        public bool LoadAdditive;
+        public float LoadDelay;
+        public CopyToNewProjects.CopyMeMain.Scenes SceneToLoad;
+        public SceneLoader(CopyToNewProjects.CopyMeMain.Scenes sceneToLoad, bool reloadIfExists = false, bool loadAdditive = false, float loadDelay = 0f) {}
+        public void DoLoad();
+    }
+
+    public class URLLoader : UnityEngine.MonoBehaviour
+    {
+        public static bool DoneInstatiating;
+        public static string URL;
+        public URLLoader() {}
+        public static string BuildURL(params URLLoader.DataPoint[] AllPoints);
+        public static System.Collections.Generic.List<URLLoader.DataPoint> GetDataFrom(string URL);
+        public struct DataPoint
+        {
+            public string CityCode = @"";
+            public int CityCodeLength = 7;
+            public string StateCode = @"";
+            public int StateCodeLength = 2;
+            public string Time = @"";
+            public int TimeLength = 10;
+            public int TotalLength;
+            public string TruckID = @"";
+            public int TruckIDLength = 4;
+            public DataPoint(string ALL_NULL) {}
+            public DataPoint(string Time, string CityCode, string StateCode, string TruckID) {}
+        }
+        public class OneSetData
+        {
+            public string status;
+            public string trailerType;
+            public OneSetData() {}
+        }
+    }
+
+    public class Version : UnityEngine.MonoBehaviour
+    {
+        public UnityEngine.UI.Text[] AppendTo;
+        public Version() {}
+    }
+
+    [UnityEngine.RequireComponent(typeof(YAETScript))] public class YAAAETScript : UnityEngine.MonoBehaviour
+    {
+        public YAAAETScript() {}
+    }
+
+    public class YAAETScript : YAETScript
+    {
+        public YAAETScript() {}
+    }
+
+    [UnityEngine.RequireComponent(typeof(YAAAETScript))] public class YAETScript : UnityEngine.MonoBehaviour
+    {
+        public int x;
+        public YAETScript() {}
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.Common
+{
+    public class SetMainCamera : UnityEngine.MonoBehaviour
+    {
+        public UnityEngine.Camera MainCamera;
+        public SetMainCamera() {}
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.CopyToNewProjects
+{
+    public class CopyMeMain : UnityEngine.MonoBehaviour
+    {
+        public static readonly System.Collections.Generic.List<string> EditorOnlyScenes;
+        public CopyMeMain() {}
+        public static string FindScenePath(string sceneName);
+        public static void LoadSceneBuildAgnostic(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode);
+        public static UnityEngine.AsyncOperation LoadSceneBuildAgnosticAsync(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode);
+        protected void Start();
+        protected void Update();
+        public enum Scenes
+        {
+            BootSample = 0,
+            MenuSample = 2,
+            SplashSample = 1,
+        }
+    }
+
+    [UnityEditor.InitializeOnLoad] public static class CopyMeStartup
+    {
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.Editor
+{
+    public class ForceReserialization : UnityEngine.MonoBehaviour
+    {
+        public ForceReserialization() {}
+    }
+
+    public class NewBehaviourScript : UnityEngine.MonoBehaviour
+    {
+        public NewBehaviourScript() {}
+    }
+
+    [UnityEditor.InitializeOnLoad] public static class OnSceneLoadScript
+    {
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(ReadOnlyAttribute))] public class ReadOnlyDrawer : UnityEditor.PropertyDrawer
+    {
+        public ReadOnlyDrawer() {}
+        public override void OnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent), true)] public class UnityEventDrawer : UnityEditor.PropertyDrawer
+    {
+        public UnityEventDrawer() {}
+        protected virtual void DrawEventHeader(UnityEngine.Rect headerRect);
+        public override float GetPropertyHeight(UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+        public static bool IsPersistentListenerValid(UnityEngine.Events.UnityEventBase dummyEvent, string methodName, UnityEngine.Object uObject, UnityEngine.Events.PersistentListenerMode modeEnum, System.Type argumentType);
+        public override void OnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+        protected class State
+        {
+            public int LastSelectedIndex;
+            public State() {}
+        }
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Attributes
+{
+    public class FoldoutAttribute : UnityEngine.PropertyAttribute
+    {
+        public bool foldEverything;
+        public string name;
+        public FoldoutAttribute(string name, bool foldEverything = false) {}
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Editor
+{
+    [UnityEditor.InitializeOnLoad] public static class EditorFramework
+    {
+    }
+
+    [UnityEditor.CanEditMultipleObjects] [UnityEditor.CustomEditor(typeof(UnityEngine.Object), true, isFallback = true)] public class EditorOverride : UnityEditor.Editor
+    {
+        public EditorOverride() {}
+        public void HandleFoldProp(UnityEditor.SerializedProperty prop);
+        public override void OnInspectorGUI();
+        public override bool RequiresConstantRepaint();
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.Utilities.Camera
+{
+    public class RotateFollow : UnityEngine.MonoBehaviour
+    {
+        public UnityEngine.GameObject FollowTarget;
+        [UnityEngine.Header(@"Disable any axis you don't want to follow.")] public bool FollowX = true;
+        public bool FollowY = true;
+        public bool FollowZ = true;
+        [MinMaxSlider(-180f, 180f)] public UnityEngine.Vector2 RangePitch;
+        [MinMaxSlider(-180f, 180f)] public UnityEngine.Vector2 RangeRoll;
+        [MinMaxSlider(-100f, 100f)] public UnityEngine.Vector2 RangeX;
+        [MinMaxSlider(-100f, 100f)] public UnityEngine.Vector2 RangeY;
+        [MinMaxSlider(-180f, 180f)] public UnityEngine.Vector2 RangeYaw;
+        [MinMaxSlider(-100f, 100f)] public UnityEngine.Vector2 RangeZ;
+        [UnityEngine.Header(@"Change the axis the target position impacts.")] public RotateFollow.FollowAxis XAffects;
+        public RotateFollow.FollowAxis YAffects;
+        public RotateFollow.FollowAxis ZAffects;
+        public RotateFollow() {}
+        public enum FollowAxis
+        {
+            Pitch = 0,
+            Roll = 2,
+            Yaw = 1,
+        }
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.WebGL
+{
+    public class WebGLDownload : UnityEngine.MonoBehaviour
+    {
+        public WebGLDownload() {}
+        public void DownloadFile(byte[] bytes, string fileName, string fileExtension);
+        public void DownloadFileByPath(string path, string fileExtension);
+        public void GetScreenshot(WebGLDownload.ImageFormat imageFormat, int screenshotUpscale, string fileName = @"");
+        public enum ImageFormat
+        {
+            jpg = 0,
+            png = 1,
+        }
+    }
+
+    public class WebGLJSLib : UnityEngine.MonoBehaviour
+    {
+        public WebGLJSLib() {}
+    }
+
+    public class WebGLUpDownExamples : UnityEngine.MonoBehaviour
+    {
+        public UnityEngine.UI.Image _targetImage;
+        public static WebGLDownload _webGLDownload;
+        public static WebGLUpload _webGLUpload;
+        public WebGLUpDownExamples() {}
+        public void SelectLocalImage();
+        public void UploadFdx();
+    }
+
+    public class WebGLUpload : UnityEngine.MonoBehaviour
+    {
+        public System.Action<byte[]> OnLoadFile;
+        public System.Action<string> OnLoadString;
+        public System.Action<UnityEngine.Texture> OnLoadTexture;
+        public WebGLUpload() {}
+        public static string ByteToString(byte[] buff);
+        public void SetMaterialTexture(UnityEngine.Material mat, UnityEngine.Texture2D tex, bool emissionInclusive);
+        public void UploadFile(WebGLUpload.FileExtension fileExtension);
+        public void UploadTexture(WebGLUpload.ImageFormat imageFormat, int maxSize, bool nonReadable, UnityEngine.Material targetMaterial = default(UnityEngine.Material), UnityEngine.UI.Image targetImage = default(UnityEngine.UI.Image));
+        public enum FileExtension
+        {
+            fdx = 1,
+            zip = 0,
+        }
+        public enum ImageFormat
+        {
+            jpg = 0,
+            png = 1,
+        }
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Utilities
+{
+    public class Tools : UnityEngine.MonoBehaviour
+    {
+        public static Tools instance { get; set; }
+        public int Priority { set; }
+        protected Tools() {}
+        public static void DelayAnim(UnityEngine.Animator anim, float time, string clipName = @"", string trigger = @"", float floatParam = -1f, int intParam = -1, bool boolParam = false, bool hasBoolParam = false);
+        public static void DelayFunction(Tools.VanillaFunction Call, float Time);
+        public static void DelayFunction<T>(System.Action<T> Call, T param, float Time);
+        public static T FindComponentInAllScenes<T>() where T : UnityEngine.Component;
+        public static Tools GetSelf();
+        public static string RemoveWhitespace(string inString);
+        public static class ByteArrayExtensions
+        {
+            public struct ByteArrayItem
+            {
+                public byte[] Data;
+                public string Key;
+            }
+            public class ByteArrayPool
+            {
+                public byte[][] Data;
+                public string[] Keys;
+                public int TotalItems;
+                public ByteArrayPool() {}
+                public bool AddItem(ref Tools.ByteArrayExtensions.ByteArrayItem item);
+                public bool AddItem(string itemKey, byte[] itemData);
+                public Tools.ByteArrayExtensions.ByteArrayItem GetItem(Tools.ByteArrayExtensions.ByteArrayItem item);
+                public Tools.ByteArrayExtensions.ByteArrayItem GetItem(string itemKey);
+                public bool RemoveItem(ref Tools.ByteArrayExtensions.ByteArrayItem item);
+                public bool RemoveItem(string itemKey);
+                public bool UpdateItem(ref Tools.ByteArrayExtensions.ByteArrayItem item);
+                public bool UpdateItem(string itemKey, byte[] itemData);
+            }
+        }
+        public delegate void VanillaFunction();
+    }
+}
+
+namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Utilities.Scripts
+{
+    public static class Logging
+    {
+        public static void WriteEnd();
+        public static void WriteOnce(string line, string folder, string file);
+        public static void WriteStart(string line, string folder, string file);
+    }
+
+    public static class MethodExtensionForMonoBehaviourTransform
+    {
+        public static T GetOrAddComponent<T>(this UnityEngine.GameObject child) where T : UnityEngine.Component;
+    }
+}

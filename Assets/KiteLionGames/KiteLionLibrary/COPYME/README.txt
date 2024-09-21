@@ -1,0 +1,1 @@
+Hello! Some tools and files must exist outside of the imported KiteLionGamesLibrary folder. So copy-paste this Assets folder on top yours and remove 'CopyMe' from classes, scene names, etc.

@@ -1,25 +1,55 @@
-using KiteLionGames.Utilities.Editor;
+#region FileHeader
+
+// test
+// Project: Assembly-CSharp
+// File:    RotateFollow.cs
+// Author:  Eliot CS
+// Created: 2024.09.18.01.09.15
+// Edited: 2024.09.19.01.09.58
+//
+// Copyright (c) 2024 SomeGameDevs, LLC. All rights reserved.
+//
+// This source code is the property of SomeGameDevs, LLC and may not be
+// copied, distributed, modified, or used in any way without prior written
+// permission from SomeGameDevs, LLC.
+//
+// Description:
+// [Provide a brief description of what this file/class does.]
+//
+// Previous Header (if any):
+//
+// License:
+// This code is provided "as is," without warranty of any kind, express or
+// implied, including but not limited to the warranties of merchantability,
+// fitness for a particular purpose, and noninfringement. In no event shall
+// the authors or copyright holders be liable for any claim, damages, or
+// other liability, whether in an action of contract, tort, or otherwise,
+// arising from, out of, or in connection with the software or the use or
+// other dealings in the software.
+
+#endregion
+
 using UnityEngine;
 
-
-namespace KiteLionGames
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox
 {
     namespace Utilities.Camera
     {
         /// <summary>
-        /// Given a target, this script will rotate the object to follow the target like a CCTV Camera.
-        /// Set a limit on how far the object can rotate on each axis. And also how far the target can go before the object stops following.
+        ///     Given a target, this script will rotate the object to follow the target like a CCTV Camera.
+        ///     Set a limit on how far the object can rotate on each axis. And also how far the target can go before the object
+        ///     stops following.
         /// </summary>
         public class RotateFollow : MonoBehaviour
         {
             /// <summary>
-            /// You can assign target's X position to affect Pitch/Yaw/Roll, for example.
+            ///     You can assign target's X position to affect Pitch/Yaw/Roll, for example.
             /// </summary>
             public enum FollowAxis
             {
                 Pitch,
                 Yaw,
-                Roll
+                Roll,
             }
 
             public GameObject FollowTarget;
@@ -28,7 +58,7 @@ namespace KiteLionGames
             private float _FollowSpeed = 1.0f;
 
             /// <summary>
-            /// Disable any axis you don't want to follow.
+            ///     Disable any axis you don't want to follow.
             /// </summary>
             [Header("Disable any axis you don't want to follow.")]
             public bool FollowX = true;
@@ -36,16 +66,16 @@ namespace KiteLionGames
             public bool FollowZ = true;
 
             /// <summary>
-            /// Set which axis you want to affect when the target moves on the X axis.
+            ///     Set which axis you want to affect when the target moves on the X axis.
             /// </summary>
             [Header("Change the axis the target position impacts.")]
             public FollowAxis XAffects;
             /// <summary>
-            /// Set which axis you want to affect when the target moves on the Y axis.
+            ///     Set which axis you want to affect when the target moves on the Y axis.
             /// </summary>
             public FollowAxis YAffects;
             /// <summary>
-            /// Set which axis you want to affect when the target moves on the Z axis.
+            ///     Set which axis you want to affect when the target moves on the Z axis.
             /// </summary>
             public FollowAxis ZAffects;
 
@@ -57,7 +87,7 @@ namespace KiteLionGames
             public Vector2 RangeRoll;
 
             /// <summary>
-            /// Range limits of -100 and 100 are abitrary. You can set them to whatever you want for your designer.
+            ///     Range limits of -100 and 100 are abitrary. You can set them to whatever you want for your designer.
             /// </summary>
             [MinMaxSlider(-100, 100)]
             public Vector2 RangeX;
@@ -65,29 +95,47 @@ namespace KiteLionGames
             public Vector2 RangeY;
             [MinMaxSlider(-100, 100)]
             public Vector2 RangeZ;
-
-            private float MinX => RangeX.x;
-            private float MaxX => RangeX.y;
-            private float MinY => RangeY.x;
-            private float MaxY => RangeY.y;
-            private float MinZ => RangeZ.x;
-            private float MaxZ => RangeZ.y;
             private float percentX;
             private float percentY;
             private float percentZ;
-            private float targetPitch; // on the x axis
-            private float targetYaw; // on the y axis
-            private float targetRoll; // on the z axis
+            private float targetPitch;// on the x axis
+            private float targetRoll;// on the z axis
             private Quaternion targetRotation;
+            private float targetYaw;// on the y axis
 
-            void Start()
+            private float MinX
             {
-                targetPitch = transform.rotation.eulerAngles.x;
-                targetYaw = transform.rotation.eulerAngles.y;
-                targetRoll = transform.rotation.eulerAngles.z;
+                get => RangeX.x;
+            }
+            private float MaxX
+            {
+                get => RangeX.y;
+            }
+            private float MinY
+            {
+                get => RangeY.x;
+            }
+            private float MaxY
+            {
+                get => RangeY.y;
+            }
+            private float MinZ
+            {
+                get => RangeZ.x;
+            }
+            private float MaxZ
+            {
+                get => RangeZ.y;
             }
 
-            void Update()
+            private void Start()
+            {
+                targetPitch = this.transform.rotation.eulerAngles.x;
+                targetYaw = this.transform.rotation.eulerAngles.y;
+                targetRoll = this.transform.rotation.eulerAngles.z;
+            }
+
+            private void Update()
             {
                 if (FollowTarget == null)
                     return;
@@ -152,16 +200,16 @@ namespace KiteLionGames
                     }
                 }
 
-                targetPitch *= -1; // invert the pitch fix
+                targetPitch *= -1;// invert the pitch fix
 
                 targetRotation = Quaternion.Euler(targetPitch, targetYaw, targetRoll);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _FollowSpeed);
+                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * _FollowSpeed);
             }
+
             private float MathHelper(float position, float min, float max)
             {
                 return Mathf.Abs(position - min) / Mathf.Abs(max - min);
             }
         }
-
     }
 }

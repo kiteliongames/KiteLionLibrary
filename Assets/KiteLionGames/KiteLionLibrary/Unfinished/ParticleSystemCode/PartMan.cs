@@ -89,7 +89,7 @@
 //        deltaHeatUpWaitTime = HeatUpMaxWaitTime / heatUpStates;
 //        minHeatUpWaitTime = HeatUpMaxWaitTime - (deltaHeatUpWaitTime * (float)(heatUpStates));
 //        if (minHeatUpWaitTime < 0) {
-//            KiteLionGames.BetterDebug.CBUG.SeriousError("MIN HEAT RATE TOO LOW, LOWER DELTA or RAISE MAXSECONDS: " + minHeatUpWaitTime);
+//            CBUG.SeriousError("MIN HEAT RATE TOO LOW, LOWER DELTA or RAISE MAXSECONDS: " + minHeatUpWaitTime);
 //        }
 //        sqrAvgSpd = mainPartSys.startSpeed.constant * mainPartSys.startSpeed.constant;
 //    }
@@ -133,7 +133,7 @@
 //        //    totalSpd += partArray[Random.Range(0, partArrayLen)].velocity.magnitude;
 //        //    totalSamples++;
 //        //    avgSpd = totalSpd / totalSamples;
-//        //    KiteLionGames.BetterDebug.CBUG.Do("Spd AVG: " + avgSpd);
+//        //    CBUG.Do("Spd AVG: " + avgSpd);
 //        //}
 //    }
 
@@ -336,7 +336,7 @@
 //    #region Helper Functions
 //    private IEnumerator StartBoilBuffer()
 //    {
-//        KiteLionGames.BetterDebug.CBUG.Do("STARTING BOIL!!");
+//        CBUG.Do("STARTING BOIL!!");
 //        isBuffered = true;
 //        yield return boilBuffer;
 //        if (CanBoil && !GameControls.IsQuizTime())

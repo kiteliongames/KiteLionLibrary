@@ -1,30 +1,65 @@
-﻿//  Project : UNITY FOLDOUT
+#region FileHeader
+
+// test
+// Project: Assembly-CSharp-Editor
+// File:    EditorOverride.cs
+// Author:  Eliot CS
+// Created: 2024.09.18.01.09.15
+// Edited: 2024.09.19.01.09.05
+//
+// Copyright (c) 2024 SomeGameDevs, LLC. All rights reserved.
+//
+// This source code is the property of SomeGameDevs, LLC and may not be
+// copied, distributed, modified, or used in any way without prior written
+// permission from SomeGameDevs, LLC.
+//
+// Description:
+// [Provide a brief description of what this file/class does.]
+//
+// Previous Header (if any):
+//
+// License:
+// This code is provided "as is," without warranty of any kind, express or
+// implied, including but not limited to the warranties of merchantability,
+// fitness for a particular purpose, and noninfringement. In no event shall
+// the authors or copyright holders be liable for any claim, damages, or
+// other liability, whether in an action of contract, tort, or otherwise,
+// arising from, out of, or in connection with the software or the use or
+// other dealings in the software.
+
+#endregion
+
+//  Project : UNITY FOLDOUT
 // Contacts : Pix - ask@pixeye.games
 
+#if UNITY_EDITOR
+#endif
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Attributes;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 
-namespace Pixeye.Unity
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Editor
 {
+    #if UNITY_EDITOR
     [CustomEditor(typeof(Object), true, isFallback = true)]
     [CanEditMultipleObjects]
-    public class EditorOverride : Editor
+    public class EditorOverride : UnityEditor.Editor
     {
         //===============================//
         // Members
         //===============================//
 
 
-        Dictionary<string, CacheFoldProp> cacheFolds = new Dictionary<string, CacheFoldProp>();
-        List<SerializedProperty> props = new List<SerializedProperty>();
-        List<MethodInfo> methods = new List<MethodInfo>();
-        bool initialized;
+        private readonly Dictionary<string, CacheFoldProp> cacheFolds = new Dictionary<string, CacheFoldProp>();
+        private bool initialized;
+        private readonly List<MethodInfo> methods = new List<MethodInfo>();
+        private readonly List<SerializedProperty> props = new List<SerializedProperty>();
 
 
         //===============================//
@@ -32,25 +67,23 @@ namespace Pixeye.Unity
         //===============================//
 
 
-        void OnEnable()
+        private void OnEnable()
         {
             initialized = false;
         }
 
-
-        void OnDisable()
+        private void OnDisable()
         {
             //if (Application.wantsToQuit)
             //if (applicationIsQuitting) return;
-            //	if (Toolbox.isQuittingOrChangingScene()) return;
-            if (target != null)
+            //  if (Toolbox.isQuittingOrChangingScene()) return;
+            if (this.target != null)
                 foreach (var c in cacheFolds)
                 {
                     EditorPrefs.SetBool(string.Format($"{c.Value.atr.name}{c.Value.props[0].name}"), c.Value.expanded);
                     c.Value.Dispose();
                 }
         }
-
 
         public override bool RequiresConstantRepaint()
         {
@@ -59,21 +92,21 @@ namespace Pixeye.Unity
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
+            this.serializedObject.Update();
 
 
             Setup();
 
             if (props.Count == 0)
             {
-                DrawDefaultInspector();
+                this.DrawDefaultInspector();
                 return;
             }
 
             Header();
             Body();
 
-            serializedObject.ApplyModifiedProperties();
+            this.serializedObject.ApplyModifiedProperties();
 
             void Header()
             {
@@ -99,7 +132,7 @@ namespace Pixeye.Unity
                 {
                     // if (props[i].isArray)
                     // {
-                    // 	DrawPropertySortableArray(props[i]);
+                    //  DrawPropertySortableArray(props[i]);
                     // }
                     // else
                     // {
@@ -110,7 +143,7 @@ namespace Pixeye.Unity
                 EditorGUILayout.Space();
 
                 if (methods == null) return;
-                foreach (MethodInfo memberInfo in methods)
+                foreach (var memberInfo in methods)
                 {
                     this.UseButton(memberInfo);
                 }
@@ -119,13 +152,13 @@ namespace Pixeye.Unity
             void Foldout(CacheFoldProp cache)
             {
                 cache.expanded = EditorGUILayout.Foldout(cache.expanded, cache.atr.name, true,
-                        StyleFramework.foldout);
+                    StyleFramework.foldout);
 
                 if (cache.expanded)
                 {
                     EditorGUI.indentLevel = 1;
 
-                    for (int i = 0; i < cache.props.Count; i++)
+                    for (var i = 0; i < cache.props.Count; i++)
                     {
                         this.UseVerticalLayout(() => Child(i), StyleFramework.boxChild);
                     }
@@ -135,7 +168,7 @@ namespace Pixeye.Unity
                 {
                     // if (cache.props[i].isArray)
                     // {
-                    // 	DrawPropertySortableArray(cache.props[i]);
+                    //  DrawPropertySortableArray(cache.props[i]);
                     // }
                     // else
                     // {
@@ -149,12 +182,12 @@ namespace Pixeye.Unity
                 EditorFramework.currentEvent = Event.current;
                 if (!initialized)
                 {
-                    //	SetupButtons();
+                    //  SetupButtons();
 
                     List<FieldInfo> objectFields;
                     FoldoutAttribute prevFold = default;
 
-                    var length = EditorTypes.Get(target, out objectFields);
+                    var length = EditorTypes.Get(this.target, out objectFields);
 
                     for (var i = 0; i < length; i++)
                     {
@@ -168,7 +201,14 @@ namespace Pixeye.Unity
                             {
                                 if (!cacheFolds.TryGetValue(prevFold.name, out c))
                                 {
-                                    cacheFolds.Add(prevFold.name, new CacheFoldProp { atr = prevFold, types = new HashSet<string> { objectFields[i].Name } });
+                                    cacheFolds.Add(prevFold.name, new CacheFoldProp
+                                    {
+                                        atr = prevFold,
+                                        types = new HashSet<string>
+                                        {
+                                            objectFields[i].Name,
+                                        },
+                                    });
                                 }
                                 else
                                 {
@@ -184,21 +224,30 @@ namespace Pixeye.Unity
                         if (!cacheFolds.TryGetValue(fold.name, out c))
                         {
                             var expanded = EditorPrefs.GetBool(string.Format($"{fold.name}{objectFields[i].Name}"), false);
-                            cacheFolds.Add(fold.name, new CacheFoldProp { atr = fold, types = new HashSet<string> { objectFields[i].Name }, expanded = expanded });
+                            cacheFolds.Add(fold.name, new CacheFoldProp
+                            {
+                                atr = fold,
+                                types = new HashSet<string>
+                                {
+                                    objectFields[i].Name,
+                                },
+                                expanded = expanded,
+                            });
                         }
                         else c.types.Add(objectFields[i].Name);
 
                         #endregion
                     }
 
-                    var property = serializedObject.GetIterator();
+                    var property = this.serializedObject.GetIterator();
                     var next = property.NextVisible(true);
                     if (next)
                     {
                         do
                         {
                             HandleFoldProp(property);
-                        } while (property.NextVisible(false));
+                        }
+                        while (property.NextVisible(false));
                     }
 
                     initialized = true;
@@ -207,30 +256,30 @@ namespace Pixeye.Unity
 
             // void SetupButtons()
             // {
-            // 	var members = GetButtonMembers(target);
+            //  var members = GetButtonMembers(target);
             //
-            // 	foreach (var memberInfo in members)
-            // 	{
-            // 		var method = memberInfo as MethodInfo;
-            // 		if (method == null)
-            // 		{
-            // 			continue;
-            // 		}
+            //  foreach (var memberInfo in members)
+            //  {
+            //      var method = memberInfo as MethodInfo;
+            //      if (method == null)
+            //      {
+            //          continue;
+            //      }
             //
-            // 		if (method.GetParameters().Length > 0)
-            // 		{
-            // 			continue;
-            // 		}
+            //      if (method.GetParameters().Length > 0)
+            //      {
+            //          continue;
+            //      }
             //
-            // 		if (methods == null) methods = new List<MethodInfo>();
-            // 		methods.Add(method);
-            // 	}
+            //      if (methods == null) methods = new List<MethodInfo>();
+            //      methods.Add(method);
+            //  }
             // }
         }
 
         public void HandleFoldProp(SerializedProperty prop)
         {
-            bool shouldBeFolded = false;
+            var shouldBeFolded = false;
 
             foreach (var pair in cacheFolds)
             {
@@ -253,22 +302,22 @@ namespace Pixeye.Unity
 
         // IEnumerable<MemberInfo> GetButtonMembers(object target)
         // {
-        // 	return target.GetType()
-        // 			.GetMembers(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.NonPublic)
-        // 			.Where(CheckButtonAttribute);
+        //  return target.GetType()
+        //          .GetMembers(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.NonPublic)
+        //          .Where(CheckButtonAttribute);
         // }
 
         // bool CheckButtonAttribute(MemberInfo memberInfo)
         // {
-        // 	return Attribute.IsDefined(memberInfo, typeof(ButtonAttribute));
+        //  return Attribute.IsDefined(memberInfo, typeof(ButtonAttribute));
         // }
 
-        class CacheFoldProp
+        private class CacheFoldProp
         {
-            public HashSet<string> types = new HashSet<string>();
-            public List<SerializedProperty> props = new List<SerializedProperty>();
             public FoldoutAttribute atr;
             public bool expanded;
+            public readonly List<SerializedProperty> props = new List<SerializedProperty>();
+            public HashSet<string> types = new HashSet<string>();
 
             public void Dispose()
             {
@@ -279,16 +328,16 @@ namespace Pixeye.Unity
         }
     }
 
-    static class ditorUIHelper
+    internal static class ditorUIHelper
     {
-        public static void UseVerticalLayout(this Editor e, Action action, GUIStyle style)
+        public static void UseVerticalLayout(this UnityEditor.Editor e, Action action, GUIStyle style)
         {
             EditorGUILayout.BeginVertical(style);
             action();
             EditorGUILayout.EndVertical();
         }
 
-        public static void UseButton(this Editor e, MethodInfo m)
+        public static void UseButton(this UnityEditor.Editor e, MethodInfo m)
         {
             if (GUILayout.Button(m.Name))
             {
@@ -298,7 +347,7 @@ namespace Pixeye.Unity
     }
 
 
-    static class StyleFramework
+    internal static class StyleFramework
     {
         public static GUIStyle box;
         public static GUIStyle boxChild;
@@ -308,7 +357,7 @@ namespace Pixeye.Unity
 
         static StyleFramework()
         {
-            bool pro = EditorGUIUtility.isProSkin;
+            var pro = EditorGUIUtility.isProSkin;
 
             var uiTex_in = Resources.Load<Texture2D>("IN foldout focus-6510");
             var uiTex_in_on = Resources.Load<Texture2D>("IN foldout focus on-5718");
@@ -316,12 +365,18 @@ namespace Pixeye.Unity
             var c_on = pro ? Color.white : new Color(51 / 255f, 102 / 255f, 204 / 255f, 1);
 
             button = new GUIStyle(EditorStyles.miniButton);
-            button.font = Font.CreateDynamicFontFromOSFont(new[] { "Terminus (TTF) for Windows", "Calibri" }, 17);
+            button.font = Font.CreateDynamicFontFromOSFont(new[]
+            {
+                "Terminus (TTF) for Windows", "Calibri",
+            }, 17);
 
             text = new GUIStyle(EditorStyles.label);
             text.richText = true;
             text.contentOffset = new Vector2(0, 5);
-            text.font = Font.CreateDynamicFontFromOSFont(new[] { "Terminus (TTF) for Windows", "Calibri" }, 14);
+            text.font = Font.CreateDynamicFontFromOSFont(new[]
+            {
+                "Terminus (TTF) for Windows", "Calibri",
+            }, 14);
 
             foldout = new GUIStyle(EditorStyles.foldout);
 
@@ -400,7 +455,7 @@ namespace Pixeye.Unity
         }
     }
 
-    static class EditorTypes
+    internal static class EditorTypes
     {
         public static Dictionary<int, List<FieldInfo>> fields = new Dictionary<int, List<FieldInfo>>(FastComparable.Default);
 
@@ -413,9 +468,9 @@ namespace Pixeye.Unity
             {
                 var typeTree = t.GetTypeTree();
                 objectFields = target.GetType()
-                        .GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.NonPublic)
-                        .OrderByDescending(x => typeTree.IndexOf(x.DeclaringType))
-                        .ToList();
+                    .GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.NonPublic)
+                    .OrderByDescending(x => typeTree.IndexOf(x.DeclaringType))
+                    .ToList();
                 fields.Add(hash, objectFields);
             }
 
@@ -424,7 +479,7 @@ namespace Pixeye.Unity
     }
 
 
-    class FastComparable : IEqualityComparer<int>
+    internal class FastComparable : IEqualityComparer<int>
     {
         public static FastComparable Default = new FastComparable();
 
@@ -453,8 +508,7 @@ namespace Pixeye.Unity
             EditorApplication.update += Updating;
         }
 
-
-        static void Updating()
+        private static void Updating()
         {
             CheckMouse();
 
@@ -470,7 +524,7 @@ namespace Pixeye.Unity
             }
         }
 
-        static void CheckMouse()
+        private static void CheckMouse()
         {
             var ev = currentEvent;
             if (ev == null) return;
@@ -479,4 +533,5 @@ namespace Pixeye.Unity
                 needToRepaint = true;
         }
     }
+#endif
 }

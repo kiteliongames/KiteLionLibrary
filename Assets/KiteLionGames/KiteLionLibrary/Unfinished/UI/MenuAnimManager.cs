@@ -93,7 +93,7 @@
 //    private StateWatcher Watch;
 //    #endregion
 
-//    #region In-game Menu Objs
+//    #region In-game Main Objs
 //    public GameObject[] MenuHolders;
 //    private Text[] menuTexts;
 //    private Button[] menuButtons;
@@ -215,7 +215,7 @@
 //            }
 //        }
 
-//        string tempTitleKey = "Menu.Page.Name." + menuMan.CurrentPage.Name.ToString();
+//        string tempTitleKey = "Main.Page.Name." + menuMan.CurrentPage.Name.ToString();
 //        string tempTitleValue = UFE.Localization.GetTextValue(tempTitleKey);
 //        TitleText.text = tempTitleValue;
 //    }

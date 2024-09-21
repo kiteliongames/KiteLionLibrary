@@ -1,13 +1,46 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+#region FileHeader
+
+// test
+// Project: Assembly-CSharp
+// File:    ControllerThirdPerson.cs
+// Author:  Eliot CS
+// Created: 2024.09.18.01.09.15
+// Edited: 2024.09.19.01.09.16
+//
+// Copyright (c) 2024 SomeGameDevs, LLC. All rights reserved.
+//
+// This source code is the property of SomeGameDevs, LLC and may not be
+// copied, distributed, modified, or used in any way without prior written
+// permission from SomeGameDevs, LLC.
+//
+// Description:
+// [Provide a brief description of what this file/class does.]
+//
+// Previous Header (if any):
+//
+// License:
+// This code is provided "as is," without warranty of any kind, express or
+// implied, including but not limited to the warranties of merchantability,
+// fitness for a particular purpose, and noninfringement. In no event shall
+// the authors or copyright holders be liable for any claim, damages, or
+// other liability, whether in an action of contract, tort, or otherwise,
+// arising from, out of, or in connection with the software or the use or
+// other dealings in the software.
+
+#endregion
+
 using System;
+using KiteLionGames.KiteLionLibrary.Portables.BetterDebug;
+using KiteLionGames.KiteLionLibrary.Portables.Controllers.Abstracts;
+using KiteLionGames.KiteLionLibrary.Portables.Environmental;
+using UnityEngine;
 
-namespace KiteLionGames {
-
-    namespace Controllers {
-
-        public abstract class ControllerThirdPerson : PlayerController {
-
+namespace KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS
+{
+    namespace Controllers
+    {
+        public abstract class ControllerThirdPerson : PlayerController
+        {
             public float LerpMaxThresholdHorizontal;
             public float LerpMinThresholdHorizontal;
             public float LerpMaxThresholdForward;
@@ -17,7 +50,7 @@ namespace KiteLionGames {
             public float MaxSpeedHorizontalAir;
             public float MaxSpeedForwardGrounded;
             public float MaxSpeedForwardAir;
-            public float MaxSpeedVertical; //todo jump rework
+            public float MaxSpeedVertical;//todo jump rework
             public float AccelerationSpeedHorizontalGrounded = 0.5f;
             public float AccelerationSpeedForwardGrounded = 0.5f;
             public float AccelerationSpeedHorizontalAir = 0.5f;
@@ -29,6 +62,28 @@ namespace KiteLionGames {
             public float HorizontalSpeed;
             public float ForwardSpeed;
             public float JumpForce;
+            //private PhotonView _PhotonView;
+            //private PhotonTransformView _PhotonTransform;
+
+            public int TotalJumpsAllowed;
+            public int jumpLag;
+            /// <summary>
+            ///     Define your own Gravity via
+            ///     'player.GetComponent
+            ///     <MyComponent>
+            ///         ().ExternalForces += new Forces.ExternalForce( MyGravityFunction );'
+            ///         Where your "MyComponent" inherits from ControllerThirdPerson and MyGravityFunction returns a Vector3.
+            /// </summary>
+            public bool EnableDefaultGravity;
+
+            public bool isControlsDisabled;
+            private readonly bool isGrounded;
+            private readonly float rightREMOVEME;
+            private readonly bool wasGrounded;
+
+            //    public float GroundCheckEndPoint;
+
+            private Vector3 _position;
 
             //    public float MaxVelocityMag;
 
@@ -37,38 +92,18 @@ namespace KiteLionGames {
             //    public int SlotNum;
 
             private Rigidbody _Rigibody3D;
-            //private PhotonView _PhotonView;
-            //private PhotonTransformView _PhotonTransform;
-            
-            public int TotalJumpsAllowed;
-            public int jumpLag;
-            private readonly bool isGrounded;
-            private readonly bool wasGrounded;
+            private Vector3 _velocity;
             private bool applyJumpPhysics;
-            private int jumpsRemaining;
-            private Vector3 jumpForceTemp;
 
             /// <summary>
-            /// Subscribe and Remove your forces via "+=" and "-="
+            ///     Subscribe and Remove your forces via "+=" and "-="
             /// </summary>
             public Forces.ExternalForce ExternalForces;
-            /// <summary>
-            /// Define your own Gravity via 
-            ///     'player.GetComponent<MyComponent>().ExternalForces += new Forces.ExternalForce( MyGravityFunction );'
-            /// Where your "MyComponent" inherits from ControllerThirdPerson and MyGravityFunction returns a Vector3.
-            /// </summary>
-            public bool EnableDefaultGravity;
-
-            private float horizTilt;
-            private readonly float rightREMOVEME;
             private float forwardTilt;
 
-            //    public float GroundCheckEndPoint;
-
-            private Vector3 _position;
-            private Vector3 _velocity;
-
-            public bool isControlsDisabled;
+            private float horizTilt;
+            private Vector3 jumpForceTemp;
+            private int jumpsRemaining;
 
             //private PhotonArenaManager PM;
 
@@ -94,7 +129,7 @@ namespace KiteLionGames {
             //    private float punchForceForward_UpTemp;
             //    private float punchForceDownTemp;
             //    private Dictionary<string, float> StrengthsList;
-            //	private bool punchForceApplied;
+            //  private bool punchForceApplied;
             //    public float PunchDisablePerc;
 
             //    private float damage;
@@ -117,19 +152,21 @@ namespace KiteLionGames {
 
             /// todo GOOGLE: New keyword vs OVERRIDE
             //public void Start() {
-            //    KiteLionGames.BetterDebug.CBUG.Do("blah");
+            //    CBUG.Do("blah");
             //}
-
-            public void Start() {
+            public void Start()
+            {
                 _position = new Vector2();
-                _Rigibody3D = GetComponent<Rigidbody>();
+                _Rigibody3D = this.GetComponent<Rigidbody>();
                 //fixthis_PhotonView = GetComponent<PhotonView>();
                 //_PhotonTransform = GetComponent<PhotonTransformView>();
 
                 ExternalForces = null;
 
-                if(EnableDefaultGravity) {
-                    ExternalForces += () => {
+                if (EnableDefaultGravity)
+                {
+                    ExternalForces += () =>
+                    {
                         return Forces.Gravity3;
                     };
                 }
@@ -141,11 +178,10 @@ namespace KiteLionGames {
                 jumpsRemaining = TotalJumpsAllowed;
 
                 //PM = PhotonArenaManager.Instance;
-        
             }
 
-
-            void Update() {
+            private void Update()
+            {
                 //_PhotonTransform.SetSynchronizedValues(_Rigibody2D.velocity, 0f);
                 //if (!_PhotonView.isMine)
                 //    return;
@@ -164,10 +200,11 @@ namespace KiteLionGames {
                 //UpdateHurt();
             }
 
-            void FixedUpdate() {
+            private void FixedUpdate()
+            {
                 _velocity = Vector3.zero;
 
-                  //fixthistoo
+                //fixthistoo
                 //if (!_PhotonView.IsMine || PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.Offline)
                 //    return;
 
@@ -191,11 +228,12 @@ namespace KiteLionGames {
                 //jumpForceTemp += Vector3.down * GravityForce;
                 //if (jumpForceTemp.sqrMagnitude < 0) {
                 //    jumpForceTemp = Vector3.zero;
-                //} 
+                //}
                 //velocity += jumpForceTemp;
             }
 
-            void LateUpdate() {
+            private void LateUpdate()
+            {
                 //if (!_PhotonView.isMine)
                 //    return;
 
@@ -221,24 +259,29 @@ namespace KiteLionGames {
             //        }
             //    }
 
-            private void updateJumping() {
-                if (Input.GetButtonDown("Jump") == true && jumpsRemaining > 0) {
+            private void updateJumping()
+            {
+                if (Input.GetButtonDown("Jump") && jumpsRemaining > 0)
+                {
                     applyJumpPhysics = true;
-                    KiteLionGames.BetterDebug.CBUG.Do("Jumped is true!");
+                    CBUG.Do("Jumped is true!");
                     jumpsRemaining -= 1;
                 }
             }
 
-            private void updateMovement() {
+            private void updateMovement()
+            {
                 //tempAxis left n right, keyboard axis left n right, or no input
                 horizTilt = Input.GetAxis("MoveHorizontal");
                 forwardTilt = Input.GetAxis("MoveForward");
             }
 
-            private void updateJumpingPhysics() {
-                if (applyJumpPhysics) {
-                    KiteLionGames.BetterDebug.CBUG.Do("JUMP!");
-                    KiteLionGames.BetterDebug.CBUG.Do("JUMP!");
+            private void updateJumpingPhysics()
+            {
+                if (applyJumpPhysics)
+                {
+                    CBUG.Do("JUMP!");
+                    CBUG.Do("JUMP!");
                     applyJumpPhysics = false;
                     _Rigibody3D.isKinematic = true;
                     _Rigibody3D.position += new Vector3(0f, 500f, 0f);
@@ -246,23 +289,27 @@ namespace KiteLionGames {
                 }
             }
 
-            private void updateExternalForces() {
+            private void updateExternalForces()
+            {
                 //externalForces += new Forces.ExternalForce(delegate { CBUG.Do("DEL"); });
 
-                if (ExternalForces != null ) {
+                if (ExternalForces != null)
+                {
                     var results = ExternalForces.GetInvocationList();//.Select(x => (int)x.DynamicInvoke(2, 3));
-                    foreach (Forces.ExternalForce force in results) {
+                    foreach (Forces.ExternalForce force in results)
+                    {
                         _velocity += force();
                     }
                 }
             }
 
-            private void updateMovementPhysics() {
+            private void updateMovementPhysics()
+            {
                 //todo google: lerp "near zero" resolution
                 //todo back and left don't work.
                 //TODO  implement "play anyway." on version difference.
-                float targetHorizontalSpeed = MaxSpeedHorizontalGrounded * horizTilt;
-                float targetForwardSpeed = MaxSpeedForwardGrounded * forwardTilt;
+                var targetHorizontalSpeed = MaxSpeedHorizontalGrounded * horizTilt;
+                var targetForwardSpeed = MaxSpeedForwardGrounded * forwardTilt;
 
                 HorizontalSpeed = Mathf.Lerp(HorizontalSpeed, targetHorizontalSpeed, AccelerationSpeedHorizontalGrounded);
                 //lerp fix
@@ -287,10 +334,11 @@ namespace KiteLionGames {
                 _velocity.z = ForwardSpeed;
             }
 
-            private void updateIsGrounded() {
+            private void updateIsGrounded()
+            {
                 set3DPosition();
 
-                //RaycastHit2D hit = 
+                //RaycastHit2D hit =
                 //    Physics2D.Raycast(position + JumpOffset,
                 //                      -Vector2.up,
                 //                      GroundCheckEndPoint,
@@ -320,10 +368,11 @@ namespace KiteLionGames {
                 ////if(!m_IsGrounded && down)
             }
 
-            private void set3DPosition() {
-                _position.x = transform.position.x;
-                _position.y = transform.position.y;
-                _position.z = transform.position.z;
+            private void set3DPosition()
+            {
+                _position.x = this.transform.position.x;
+                _position.y = this.transform.position.y;
+                _position.z = this.transform.position.z;
             }
 
             //    private void updateAttacks()
@@ -374,8 +423,8 @@ namespace KiteLionGames {
             //    void SetSlotNum(int SlotNUm)
             //    {
             //        this.SlotNum = SlotNUm;
-            //        KiteLionGames.BetterDebug.CBUG.Do("Recording ID " + SlotNUm + " with Gamemaster.");
-            //        KiteLionGames.BetterDebug.CBUG.Do("Character is: " + gameObject.name);
+            //        CBUG.Do("Recording ID " + SlotNUm + " with Gamemaster.");
+            //        CBUG.Do("Character is: " + gameObject.name);
             //        GameManager.AddPlayer(SlotNUm, gameObject);
             //    }
 
@@ -421,7 +470,7 @@ namespace KiteLionGames {
             //                anim.SetBool("HurtBig", true);
             //                break;
             //            default:
-            //                KiteLionGames.BetterDebug.CBUG.Error("BAD ANIM NUMBER GIVEN");
+            //                CBUG.Error("BAD ANIM NUMBER GIVEN");
             //                break;
             //        }
             //    }
@@ -475,7 +524,7 @@ namespace KiteLionGames {
             //        }
 
             //        _Rigibody2D.isKinematic = false;
-            //        StartCoroutine(spawnProtection()); 
+            //        StartCoroutine(spawnProtection());
             //    }
             //    private IEnumerator spawnProtection()
             //    {
@@ -501,7 +550,7 @@ namespace KiteLionGames {
             //    {
             //        //if (col.name == "Physics Box(Clone)")
             //        //{
-            //        //    KiteLionGames.BetterDebug.CBUG.Log("PUNCH");
+            //        //    CBUG.Log("PUNCH");
             //        //    if(transform.localScale.x > 0){
             //        //        col.GetComponent<Rigidbody2D>().AddForce(new Vector2(BoxPunch, BoxPunch), ForceMode2D.Impulse);
             //        //    }else{
@@ -613,12 +662,12 @@ namespace KiteLionGames {
             //                tempPunchForce.magnitude < punchForce.magnitude * PunchDisablePerc)
             //            {
             //                isTempForceLow = true;
-            //                //if the force goes below 25%, let the character move again. 
-            //	        	punchForceApplied = false;
+            //                //if the force goes below 25%, let the character move again.
+            //              punchForceApplied = false;
             //            }
             //            else if(!isTempForceLow)
             //            {
-            //			    punchForceApplied = true;
+            //              punchForceApplied = true;
             //            }
             //            yield return null;
             //        }
@@ -635,7 +684,7 @@ namespace KiteLionGames {
             //            return;
 
             //        _PhotonView.RPC("OnDeath", PhotonTargets.All, lastHitBy, SlotNum);
-            //    }	  	
+            //    }
 
 
             //    public bool GetIsDead()
@@ -660,25 +709,26 @@ namespace KiteLionGames {
             ////        BattleUI.Won();
             ////    }
 
-            public void AddExternalForce(Forces.ExternalForce newForce) {
-                ExternalForces += new Forces.ExternalForce(newForce);
+            public void AddExternalForce(Forces.ExternalForce newForce)
+            {
+                ExternalForces += newForce;
             }
 
-            public void RemoveExternalForce() {
-
+            public void RemoveExternalForce()
+            {
             }
 
-            public override void Die() {
-                throw new System.NotImplementedException();
+            public override void Die()
+            {
+                throw new NotImplementedException();
             }
 
-            public override void Respawn(Vector3 spawnPoint) {
-                throw new System.NotImplementedException();
+            public override void Respawn(Vector3 spawnPoint)
+            {
+                throw new NotImplementedException();
             }
-
 
             //public Forces.ExternalForce ExternalForces { get => externalForces; set => externalForces += value; }
-
         }
     }
 }

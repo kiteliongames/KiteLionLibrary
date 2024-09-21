@@ -1,41 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using KiteLionGames.KiteLionLibrary.Networking.PUN2.Scripts.PhotonArena.Scripts;
+using KiteLionGames.KiteLionLibrary.Portables.BetterDebug;
 using UnityEngine;
-using KiteLionGames.Common;
-public class RunGamePAM : MonoBehaviour
+
+namespace KiteLionGames.KiteLionLibrary.Networking.PUN2.Scripts.OnlineMultiplayer.Scripts
 {
-    PhotonArenaManager _PM;
-    public GameObject PlayerSpawn;
-    public GameObject FooblesSpawn;
-    private bool isSpawned;
-
-    private GameObject player;
-
-    bool _isFooblesSpawned = false;
-
-    // Start is called before the first frame update
-    void Start()
+    public class RunGamePAM : MonoBehaviour 
     {
-        _PM = PhotonArenaManager.Instance;
-        isSpawned = false;
-        //Forces.G = GravityForce; //todo improve "forces" layout
-    }
+        PhotonArenaManager _PM;
+        public GameObject PlayerSpawn;
+        public GameObject FooblesSpawn;
+        private bool isSpawned;
 
-    // Update is called once per frame
-    void Update() {
-        if (_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom && isSpawned == false) {
+        private GameObject player;
 
-            player = _PM.SpawnPlayer(PlayerSpawn.transform.position, PlayerSpawn.transform.rotation, "Character 3D Online");
-            KiteLionGames.BetterDebug.CBUG.Do("Spawing player");
-            isSpawned = true;
+        bool _isFooblesSpawned = false;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            _PM = PhotonArenaManager.Instance;
+            isSpawned = false;
+            //Forces.G = GravityForce; //todo improve "forces" layout
         }
 
-        if (_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom && _isFooblesSpawned == false) {
-            if(_PM.GetData("_IsFooblesSpawned") == null || ((bool)_PM.GetData("_IsFooblesSpawned") == false)) {
+        // Update is called once per frame
+        void Update() {
+            if (_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom && isSpawned == false) {
 
-                _PM.SpawnObject("FoobleOnline", FooblesSpawn.transform.position, FooblesSpawn.transform.rotation);
-                _PM.SaveData("_IsFooblesSpawned", true);
-                _isFooblesSpawned = true;
+                player = _PM.SpawnPlayer(PlayerSpawn.transform.position, PlayerSpawn.transform.rotation, "Character 3D Online");
+                CBUG.Do("Spawing player");
+                isSpawned = true;
+            }
+
+            if (_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom && _isFooblesSpawned == false) {
+                if(_PM.GetData("_IsFooblesSpawned") == null || ((bool)_PM.GetData("_IsFooblesSpawned") == false)) {
+
+                    _PM.SpawnObject("FoobleOnline", FooblesSpawn.transform.position, FooblesSpawn.transform.rotation);
+                    _PM.SaveData("_IsFooblesSpawned", true);
+                    _isFooblesSpawned = true;
+                }
             }
         }
     }

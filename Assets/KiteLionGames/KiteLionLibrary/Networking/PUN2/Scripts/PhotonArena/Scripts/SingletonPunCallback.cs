@@ -1,57 +1,61 @@
-﻿using UnityEngine;
+﻿using KiteLionGames.KiteLionLibrary.Portables.Utilities.Scripts;
 using Photon.Pun;
+using UnityEngine;
 
-/// <summary>
-/// http://wiki.unity3d.com/index.php/Singleton
-/// </summary>
-/// <typeparam name="T">Same as Inheriting class.</typeparam>
-public class SingletonPunCallbacks<T> : MonoBehaviourPunCallbacks where T : MonoBehaviourPunCallbacks {
-    // Check to see if we're about to be destroyed.
-    private static bool m_ShuttingDown = false;
-    private static readonly object m_Lock = new();
-    private static T m_Instance;
-
+namespace KiteLionGames.KiteLionLibrary.Networking.PUN2.Scripts.PhotonArena.Scripts
+{
     /// <summary>
-    /// Access singleton instance through this propriety.
+    /// http://wiki.unity3d.com/index.php/Singleton
     /// </summary>
-    public static T Instance {
-        get {
-            if (m_ShuttingDown) {
-                Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
-                    "' already destroyed. Returning null.");
-                return null;
-            }
+    /// <typeparam name="T">Same as Inheriting class.</typeparam>
+    public class SingletonPunCallbacks<T> : MonoBehaviourPunCallbacks where T : MonoBehaviourPunCallbacks {
+        // Check to see if we're about to be destroyed.
+        private static bool m_ShuttingDown = false;
+        private static readonly object m_Lock = new();
+        private static T m_Instance;
 
-            lock (m_Lock) {
-                if (m_Instance == null) {
-                    // Search for existing instance.
-                    m_Instance = (T)FindObjectOfType(typeof(T));
-
-                    // Create new instance if one doesn't already exist.
-                    if (m_Instance == null) {
-                        // Need to create a new GameObject to attach the singleton to.
-                        var singletonObject = new GameObject();
-                        m_Instance = singletonObject.GetOrAddComponent<T>();
-                        singletonObject.name = typeof(T).ToString() + " (Singleton)";
-
-                        // Make instance persistent.
-                        DontDestroyOnLoad(singletonObject);
-                        //DontDestroyThis.List.Add(singletonObject);
-                    }
+        /// <summary>
+        /// Access singleton instance through this propriety.
+        /// </summary>
+        public static T Instance {
+            get {
+                if (m_ShuttingDown) {
+                    Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
+                                     "' already destroyed. Returning null.");
+                    return null;
                 }
 
-                return m_Instance;
+                lock (m_Lock) {
+                    if (m_Instance == null) {
+                        // Search for existing instance.
+                        m_Instance = (T)FindObjectOfType(typeof(T));
+
+                        // Create new instance if one doesn't already exist.
+                        if (m_Instance == null) {
+                            // Need to create a new GameObject to attach the singleton to.
+                            var singletonObject = new GameObject();
+                            m_Instance = singletonObject.GetOrAddComponent<T>();
+                            singletonObject.name = typeof(T).ToString() + " (Singleton)";
+
+                            // Make instance persistent.
+                            DontDestroyOnLoad(singletonObject);
+                            //DontDestroyThis.List.Add(singletonObject);
+                        }
+                    }
+
+                    return m_Instance;
+                }
             }
         }
-    }
 
 
-    private void OnApplicationQuit() {
-        m_ShuttingDown = true;
-    }
+        private void OnApplicationQuit() {
+            m_ShuttingDown = true;
+        }
 
 
-    private void OnDestroy() {
-        m_ShuttingDown = true;
+        private void OnDestroy() {
+            m_ShuttingDown = true;
+        }
     }
 }

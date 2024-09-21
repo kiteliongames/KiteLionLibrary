@@ -1,30 +1,60 @@
-using UnityEngine;
-using KiteLionGames.BetterDebug;
+#region FileHeader
+
+// test
+// Project: Assembly-CSharp
+// File:    Logging.cs
+// Author:  Eliot CS
+// Created: 2024.09.18.01.09.15
+// Edited: 2024.09.19.01.09.18
+//
+// Copyright (c) 2024 SomeGameDevs, LLC. All rights reserved.
+//
+// This source code is the property of SomeGameDevs, LLC and may not be
+// copied, distributed, modified, or used in any way without prior written
+// permission from SomeGameDevs, LLC.
+//
+// Description:
+// [Provide a brief description of what this file/class does.]
+//
+// Previous Header (if any):
+//
+// License:
+// This code is provided "as is," without warranty of any kind, express or
+// implied, including but not limited to the warranties of merchantability,
+// fitness for a particular purpose, and noninfringement. In no event shall
+// the authors or copyright holders be liable for any claim, damages, or
+// other liability, whether in an action of contract, tort, or otherwise,
+// arising from, out of, or in connection with the software or the use or
+// other dealings in the software.
+
+#endregion
+
 using System;
 using System.IO;
-using System.Text;
-using System.Linq;
-using System.Collections.Generic;
+using KiteLionGames.KiteLionLibrary.Portables.BetterDebug;
+using UnityEngine;
 
-namespace KiteLionGames.Common
+namespace KiteLionGames.KiteLionLibrary.Portables.Utilities.Scripts
 {
-
     /// <summary>
-    /// Writes a log "line"
-    /// COPIED FROM: https://stackoverflow.com/questions/69147519/save-and-load-line-from-application-persistentdatapath-works-in-unity-but-not-o
+    ///     Writes a log "line"
+    ///     COPIED FROM:
+    ///     https://stackoverflow.com/questions/69147519/save-and-load-line-from-application-persistentdatapath-works-in-unity-but-not-o
     /// </summary>
     /// <typeparam name="string"></typeparam>
     public static class Logging
     {
-
-        private static StreamWriter StreamWriter = null;
+        private static StreamWriter StreamWriter;
 
         /// <summary>
-        /// WriteOnce line to a file. DO.NOT.WRITE.A.LOT. This is for single, intermittent logging.
+        ///     WriteOnce line to a file. DO.NOT.WRITE.A.LOT. This is for single, intermittent logging.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="line">not really a line but whatever</param>
-        /// <param name="folder">folder name inside Unity default Application.streamingAssetsPath if on OSX, otherwise Application.persistentDataPath.</param>
+        /// <param name="folder">
+        ///     folder name inside Unity default Application.streamingAssetsPath if on OSX, otherwise
+        ///     Application.persistentDataPath.
+        /// </param>
         /// <param name="file"></param>
         public static void WriteOnce(string line, string folder, string file)
         {
@@ -34,7 +64,7 @@ namespace KiteLionGames.Common
                 return;
             }
 
-            bool isWebGLBuild = false;
+            var isWebGLBuild = false;
 #if UNITY_WEBGL
             isWebGLBuild = true;
 #endif
@@ -53,7 +83,7 @@ namespace KiteLionGames.Common
 
 
             // get the path of this save line
-            string dataPath = GetFilePath(folder, file);
+            var dataPath = GetFilePath(folder, file);
 
             // create the file in the path if it doesn't exist
             // if the file path or name does not exist, return the default SO
@@ -66,8 +96,9 @@ namespace KiteLionGames.Common
             try
             {
                 // save data here
-                Debug.Log("WriteOnce line to: " + dataPath);
-                using StreamWriter w = File.AppendText(dataPath);
+                //todo create a coded-in reminder to empty the logging location.
+                // Debug.Log("WriteOnce line to: " + dataPath);
+                using var w = File.AppendText(dataPath);
                 w.Write("\r\nLog Entry : ");
                 w.WriteLine($"{DateTime.Now.ToLongTimeString()} {DateTime.Now.ToLongDateString()}");
                 w.WriteLine("  :");
@@ -83,7 +114,7 @@ namespace KiteLionGames.Common
         }
 
         /// <summary>
-        /// WriteStart line to a file. DO.NOT.WRITE.A.LOT. This is for single, intermittent logging.
+        ///     WriteStart line to a file. DO.NOT.WRITE.A.LOT. This is for single, intermittent logging.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="line">not really a line but whatever</param>
@@ -97,7 +128,7 @@ namespace KiteLionGames.Common
                 return;
             }
 
-            bool isWebGLBuild = false;
+            var isWebGLBuild = false;
 #if UNITY_WEBGL
             isWebGLBuild = true;
 #endif
@@ -115,7 +146,7 @@ namespace KiteLionGames.Common
             }
 
             // get the path of this save line
-            string dataPath = GetFilePath(folder, file);
+            var dataPath = GetFilePath(folder, file);
 
             // create the file in the path if it doesn't exist
             // if the file path or name does not exist, return the default SO
@@ -136,7 +167,6 @@ namespace KiteLionGames.Common
                 StreamWriter.WriteLine("  :");
                 StreamWriter.WriteLine($"  :{line}");
                 StreamWriter.WriteLine("-------------------------------");
-
             }
             catch (Exception e)
             {
@@ -153,7 +183,7 @@ namespace KiteLionGames.Common
         }
 
         /// <summary>
-        /// Create file path for where a file is stored on the specific platform given a folder name and file name
+        ///     Create file path for where a file is stored on the specific platform given a folder name and file name
         /// </summary>
         /// <param name="FolderName"></param>
         /// <param name="FileName"></param>
@@ -162,11 +192,11 @@ namespace KiteLionGames.Common
         {
             string filePath;
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
-        // mac
-        filePath = Path.Combine(Application.streamingAssetsPath, ("data/" + FolderName));
+            // mac
+            filePath = Path.Combine(Application.streamingAssetsPath, ("data/" + FolderName));
 
-        if (FileName != "")
-            filePath = Path.Combine(filePath, (FileName + ".txt"));
+            if (FileName != "")
+                filePath = Path.Combine(filePath, (FileName + ".txt"));
 #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
             // windows
             filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
@@ -174,28 +204,28 @@ namespace KiteLionGames.Common
             if (FileName != "")
                 filePath = Path.Combine(filePath, (FileName + ".txt"));
 #elif UNITY_ANDROID
-        // android
-        filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
+            // android
+            filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
 
-        if(FileName != "")
-            filePath = Path.Combine(filePath, (FileName + ".txt"));
+            if (FileName != "")
+                filePath = Path.Combine(filePath, (FileName + ".txt"));
 #elif UNITY_IOS
-        // ios
-        filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
+            // ios
+            filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
 
-        if(FileName != "")
-            filePath = Path.Combine(filePath, (FileName + ".txt"));
-#elif UNITY_WEBGL          
+            if (FileName != "")
+                filePath = Path.Combine(filePath, (FileName + ".txt"));
+#elif UNITY_WEBGL
             // webgl
             filePath = "";
 #elif UNITY_LINUX || UNITY_STANDALONE_LINUX
-        // linux
-        filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
+            // linux
+            filePath = Path.Combine(Application.persistentDataPath, "data/" + FolderName);
 
-        if(FileName != "")
-            filePath = Path.Combine(filePath, (FileName + ".txt"));
+            if (FileName != "")
+                filePath = Path.Combine(filePath, FileName + ".txt");
 #endif
-        return filePath;
+            return filePath;
         }
     }
 }

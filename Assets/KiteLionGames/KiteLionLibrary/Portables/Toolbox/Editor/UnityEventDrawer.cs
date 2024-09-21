@@ -1,50 +1,91 @@
-﻿using System;
+﻿#region FileHeader
+
+// test
+// Project: Assembly-CSharp-Editor
+// File:    UnityEventDrawer.cs
+// Author:  Eliot CS
+// Created: 2024.09.18.01.09.15
+// Edited: 2024.09.19.01.09.22
+// 
+// Copyright (c) 2024 SomeGameDevs, LLC. All rights reserved.
+// 
+// This source code is the property of SomeGameDevs, LLC and may not be
+// copied, distributed, modified, or used in any way without prior written
+// permission from SomeGameDevs, LLC.
+// 
+// Description:
+// [Provide a brief description of what this file/class does.]
+// 
+// Previous Header (if any):
+// 
+// License:
+// This code is provided "as is," without warranty of any kind, express or
+// implied, including but not limited to the warranties of merchantability,
+// fitness for a particular purpose, and noninfringement. In no event shall
+// the authors or copyright holders be liable for any claim, damages, or
+// other liability, whether in an action of contract, tort, or otherwise,
+// arising from, out of, or in connection with the software or the use or
+// other dealings in the software.
+
+#endregion
+
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditorInternal;
+#endif
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using com.llamagod;
-using KiteLionGames.Toolbox;
-using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 using Object = UnityEngine.Object;
 
-namespace com.llamagod.Editor
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.Editor
 {
+    #if UNITY_EDITOR
     /// <summary>
-    /// From https://forum.unity.com/threads/ability-to-add-enum-argument-to-button-functions.270817
+    ///     From https://forum.unity.com/threads/ability-to-add-enum-argument-to-button-functions.270817
     /// </summary>
     [CustomPropertyDrawer(typeof(UnityEvent), true)]
     public class UnityEventDrawer : PropertyDrawer
     {
-        private readonly Dictionary<string, State> _mStates = new Dictionary<string, State>();
 
         // Find internal methods with reflection
         private static readonly MethodInfo FindMethod = typeof(UnityEventBase).GetMethod("FindMethod",
             BindingFlags.NonPublic | BindingFlags.Instance, null, CallingConventions.Standard,
-            new[] { typeof(string), typeof(Type), typeof(PersistentListenerMode), typeof(Type) }, null);
+            new[]
+            {
+                typeof(string), typeof(Type), typeof(PersistentListenerMode), typeof(Type),
+            }, null);
 
         private static readonly MethodInfo Temp = typeof(GUIContent).GetMethod("Temp",
-            BindingFlags.NonPublic | BindingFlags.Static, null, CallingConventions.Standard, new[] { typeof(string) },
+            BindingFlags.NonPublic | BindingFlags.Static, null, CallingConventions.Standard, new[]
+            {
+                typeof(string),
+            },
             null);
 
         private static readonly PropertyInfo MixedValueContent =
             typeof(EditorGUI).GetProperty("mixedValueContent", BindingFlags.NonPublic | BindingFlags.Static);
+        private readonly Dictionary<string, State> _mStates = new Dictionary<string, State>();
+        private UnityEventBase _mDummyEvent;
+        private int _mLastSelectedIndex;
+        private SerializedProperty _mListenersArray;
+        private SerializedProperty _mProp;
+        private ReorderableList _mReorderableList;
 
         private Styles _mStyles;
         private string _mText;
-        private UnityEventBase _mDummyEvent;
-        private SerializedProperty _mProp;
-        private SerializedProperty _mListenersArray;
-        private ReorderableList _mReorderableList;
-        private int _mLastSelectedIndex;
 
         private static string GetEventParams(UnityEventBase evt)
         {
             var method = (MethodInfo)FindMethod.Invoke(evt,
-                new object[] { "Invoke", evt.GetType(), PersistentListenerMode.EventDefined, null });
+                new object[]
+                {
+                    "Invoke", evt.GetType(), PersistentListenerMode.EventDefined, null,
+                });
             var stringBuilder = new StringBuilder();
             stringBuilder.Append(" (");
             var array = method.GetParameters().Select(x => x.ParameterType).ToArray();
@@ -75,7 +116,7 @@ namespace com.llamagod.Editor
                     onReorderCallback = EndDragChild,
                     onAddCallback = AddEventListener,
                     onRemoveCallback = RemoveButton,
-                    elementHeight = 43f
+                    elementHeight = 43f,
                 };
             _mStates[propertyPath] = state;
             return state;
@@ -132,8 +173,10 @@ namespace com.llamagod.Editor
             GUI.Label(headerRect, text);
         }
 
-        private static PersistentListenerMode GetMode(SerializedProperty mode) =>
-            (PersistentListenerMode)mode.enumValueIndex;
+        private static PersistentListenerMode GetMode(SerializedProperty mode)
+        {
+            return (PersistentListenerMode)mode.enumValueIndex;
+        }
 
         private void DrawEventListener(Rect rect, int index, bool isActive, bool isFocused)
         {
@@ -167,7 +210,7 @@ namespace com.llamagod.Editor
                 PersistentListenerMode.Float => propertyRelative3.FindPropertyRelative("m_FloatArgument"),
                 PersistentListenerMode.String => propertyRelative3.FindPropertyRelative("m_StringArgument"),
                 PersistentListenerMode.Bool => propertyRelative3.FindPropertyRelative("m_BoolArgument"),
-                _ => propertyRelative3.FindPropertyRelative("m_IntArgument")
+                _ => propertyRelative3.FindPropertyRelative("m_IntArgument"),
             };
             var stringValue = propertyRelative3.FindPropertyRelative("m_ObjectArgumentAssemblyTypeName").stringValue;
             var type = typeof(Object);
@@ -182,8 +225,8 @@ namespace com.llamagod.Editor
                     propertyRelative6.objectReferenceValue = @object;
             }
             else if (persistentListenerMode != PersistentListenerMode.Void &&
-                     persistentListenerMode != PersistentListenerMode.EventDefined &&
-                     !propertyRelative6.serializedObject.isEditingMultipleObjects)
+                persistentListenerMode != PersistentListenerMode.EventDefined &&
+                !propertyRelative6.serializedObject.isEditingMultipleObjects)
             {
                 // Try to find Find the EnumActionAttribute
                 var method = GetMethod(_mDummyEvent, propertyRelative5.stringValue,
@@ -217,7 +260,7 @@ namespace com.llamagod.Editor
                     string.IsNullOrEmpty(propertyRelative5.stringValue))
                     stringBuilder.Append("No Function");
                 else if (!IsPersistentListenerValid(_mDummyEvent, propertyRelative5.stringValue,
-                             propertyRelative4.objectReferenceValue, GetMode(propertyRelative2), type))
+                    propertyRelative4.objectReferenceValue, GetMode(propertyRelative2), type))
                 {
                     var str = "UnknownComponent";
                     var objectReferenceValue = propertyRelative4.objectReferenceValue;
@@ -237,7 +280,10 @@ namespace com.llamagod.Editor
                     }
                 }
 
-                content = (GUIContent)Temp.Invoke(null, new object[] { stringBuilder.ToString() });
+                content = (GUIContent)Temp.Invoke(null, new object[]
+                {
+                    stringBuilder.ToString(),
+                });
             }
 
             if (GUI.Button(rect1, content, EditorStyles.popup))
@@ -310,11 +356,20 @@ namespace com.llamagod.Editor
             propertyRelative5.FindPropertyRelative("m_ObjectArgumentAssemblyTypeName").stringValue = null;
         }
 
-        private void SelectEventListener(ReorderableList list) => _mLastSelectedIndex = list.index;
+        private void SelectEventListener(ReorderableList list)
+        {
+            _mLastSelectedIndex = list.index;
+        }
 
-        private void EndDragChild(ReorderableList list) => _mLastSelectedIndex = list.index;
+        private void EndDragChild(ReorderableList list)
+        {
+            _mLastSelectedIndex = list.index;
+        }
 
-        private static UnityEventBase GetDummyEvent(SerializedProperty _) => new UnityEvent();
+        private static UnityEventBase GetDummyEvent(SerializedProperty _)
+        {
+            return new UnityEvent();
+        }
 
         private static IEnumerable<ValidMethodMap> CalculateMethodMap(Object target, IReadOnlyList<Type> t,
             bool allowSubclasses)
@@ -351,8 +406,7 @@ namespace com.llamagod.Editor
                 if (flag)
                     validMethodMapList.Add(new ValidMethodMap
                     {
-                        Target = target,
-                        MethodInfo = current
+                        Target = target, MethodInfo = current,
                     });
             }
 
@@ -368,8 +422,14 @@ namespace com.llamagod.Editor
         }
 
         private static MethodInfo GetMethod(UnityEventBase dummyEvent, string methodName, Object uObject,
-            PersistentListenerMode modeEnum, Type argumentType) => (MethodInfo)FindMethod.Invoke(dummyEvent,
-            new object[] { methodName, uObject.GetType(), modeEnum, argumentType });
+            PersistentListenerMode modeEnum, Type argumentType)
+        {
+            return (MethodInfo)FindMethod.Invoke(dummyEvent,
+                new object[]
+                {
+                    methodName, uObject.GetType(), modeEnum, argumentType,
+                });
+        }
 
         private static GenericMenu BuildPopupList(Object target, UnityEventBase dummyEvent, SerializedProperty listener)
         {
@@ -413,19 +473,34 @@ namespace com.llamagod.Editor
                 if (methods.Count > 0)
                 {
                     menu.AddDisabledItem(new GUIContent(targetName + "/Dynamic " +
-                                                        string.Join(", ",
-                                                            delegateArgumentsTypes.Select(GetTypeName).ToArray())));
+                        string.Join(", ",
+                            delegateArgumentsTypes.Select(GetTypeName).ToArray())));
                     AddMethodsToMenu(menu, listener, methods, targetName);
                     flag = true;
                 }
             }
 
             methods.Clear();
-            GetMethodsForTargetAndMode(target, new[] { typeof(float) }, methods, PersistentListenerMode.Float);
-            GetMethodsForTargetAndMode(target, new[] { typeof(int) }, methods, PersistentListenerMode.Int);
-            GetMethodsForTargetAndMode(target, new[] { typeof(string) }, methods, PersistentListenerMode.String);
-            GetMethodsForTargetAndMode(target, new[] { typeof(bool) }, methods, PersistentListenerMode.Bool);
-            GetMethodsForTargetAndMode(target, new[] { typeof(Object) }, methods, PersistentListenerMode.Object, true);
+            GetMethodsForTargetAndMode(target, new[]
+            {
+                typeof(float),
+            }, methods, PersistentListenerMode.Float);
+            GetMethodsForTargetAndMode(target, new[]
+            {
+                typeof(int),
+            }, methods, PersistentListenerMode.Int);
+            GetMethodsForTargetAndMode(target, new[]
+            {
+                typeof(string),
+            }, methods, PersistentListenerMode.String);
+            GetMethodsForTargetAndMode(target, new[]
+            {
+                typeof(bool),
+            }, methods, PersistentListenerMode.Bool);
+            GetMethodsForTargetAndMode(target, new[]
+            {
+                typeof(Object),
+            }, methods, PersistentListenerMode.Object, true);
             GetMethodsForTargetAndMode(target, Type.EmptyTypes, methods, PersistentListenerMode.Void);
             if (methods.Count <= 0)
                 return;
@@ -441,7 +516,7 @@ namespace com.llamagod.Editor
             string targetName)
         {
             foreach (var method in methods.OrderBy(e => e.MethodInfo.Name.StartsWith("set_") ? 0 : 1)
-                         .ThenBy(e => e.MethodInfo.Name))
+                .ThenBy(e => e.MethodInfo.Name))
                 AddFunctionsForScript(menu, listener, method, targetName);
         }
 
@@ -478,7 +553,7 @@ namespace com.llamagod.Editor
             var on = objectReferenceValue == method.Target && stringValue == method.MethodInfo.Name && mode1 == mode2;
             if (on && mode1 == PersistentListenerMode.Object && method.MethodInfo.GetParameters().Length == 1)
                 on &= method.MethodInfo.GetParameters()[0].ParameterType.AssemblyQualifiedName ==
-                      propertyRelative.stringValue;
+                    propertyRelative.stringValue;
             var formattedMethodName = GetFormattedMethodName(targetName, method.MethodInfo.Name,
                 stringBuilder.ToString(),
                 mode1 == PersistentListenerMode.EventDefined);
@@ -513,20 +588,26 @@ namespace com.llamagod.Editor
                 : $"{targetName}/{methodName} ({args})";
         }
 
-        private static void SetEventFunction(object source) => ((UnityEventFunction)source).Assign();
+        private static void SetEventFunction(object source)
+        {
+            ((UnityEventFunction)source).Assign();
+        }
 
-        private static void ClearEventFunction(object source) => ((UnityEventFunction)source).Clear();
+        private static void ClearEventFunction(object source)
+        {
+            ((UnityEventFunction)source).Clear();
+        }
 
         protected class State
         {
-            internal ReorderableList MReorderableList;
             public int LastSelectedIndex;
+            internal ReorderableList MReorderableList;
         }
 
         private class Styles
         {
-            public readonly GUIContent IconToolbarMinus = EditorGUIUtility.IconContent("Toolbar Minus");
             public readonly GUIStyle GenericFieldStyle = EditorStyles.label;
+            public readonly GUIContent IconToolbarMinus = EditorGUIUtility.IconContent("Toolbar Minus");
             public readonly GUIStyle RemoveButton = "InvisibleButton";
         }
 
@@ -605,4 +686,5 @@ namespace com.llamagod.Editor
             }
         }
     }
+#endif
 }

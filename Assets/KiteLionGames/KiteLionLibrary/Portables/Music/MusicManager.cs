@@ -1,4 +1,35 @@
-﻿//using System.Collections;
+#region FileHeader
+
+// test
+// Project: Assembly-CSharp
+// File:    MusicManager.cs
+// Author:  Eliot CS
+// Created: 2024.09.18.01.09.15
+// Edited: 2024.09.19.01.09.08
+//
+// Copyright (c) 2024 SomeGameDevs, LLC. All rights reserved.
+//
+// This source code is the property of SomeGameDevs, LLC and may not be
+// copied, distributed, modified, or used in any way without prior written
+// permission from SomeGameDevs, LLC.
+//
+// Description:
+// [Provide a brief description of what this file/class does.]
+//
+// Previous Header (if any):
+//
+// License:
+// This code is provided "as is," without warranty of any kind, express or
+// implied, including but not limited to the warranties of merchantability,
+// fitness for a particular purpose, and noninfringement. In no event shall
+// the authors or copyright holders be liable for any claim, damages, or
+// other liability, whether in an action of contract, tort, or otherwise,
+// arising from, out of, or in connection with the software or the use or
+// other dealings in the software.
+
+#endregion
+
+//using System.Collections;
 //using System.Collections.Generic;
 //using UnityEngine;
 
@@ -36,20 +67,20 @@
 
 //    public void SwitchSong(int SongNum)
 //    {
-//        KiteLionGames.BetterDebug.CBUG.Do("Switch");
+//        CBUG.Do("Switch");
 //        if (isSwitching || currentSongNum == SongNum)
 //        {
 //            nextSongNum = SongNum;
 //            return;
 //        }
 
-//        KiteLionGames.BetterDebug.CBUG.Do("Switch");
+//        CBUG.Do("Switch");
 //        currentSongNum = SongNum;
 //        isSwitching = true;
 //        nextSongNum = -1;
 //        if (musicBox1IsActive)
 //        {
-//            KiteLionGames.BetterDebug.CBUG.Do("Fading out 1");
+//            CBUG.Do("Fading out 1");
 //            musicBox1IsActive = false;
 //            fadeLength = TransitionLength[SongNum];
 //            MusicBox1.time = TransitionPos[SongNum];
@@ -61,7 +92,7 @@
 //        }
 //        else
 //        {
-//            KiteLionGames.BetterDebug.CBUG.Do("Fading out 2");
+//            CBUG.Do("Fading out 2");
 //            musicBox1IsActive = true;
 //            fadeLength = TransitionLength[SongNum];
 //            MusicBox2.time = TransitionPos[SongNum];
@@ -80,12 +111,12 @@
 //        if (from < to)
 //            lerpUp = true;
 
-//        KiteLionGames.BetterDebug.CBUG.Do("Lerping 1");
+//        CBUG.Do("Lerping 1");
 
 //        float startTime = Time.time;
 //        if (lerpUp)
 //        {
-//            KiteLionGames.BetterDebug.CBUG.Do("LERP UP");
+//            CBUG.Do("LERP UP");
 //            while (MusicBox1.volume <= to - 0.01f)
 //            {
 //                MusicBox1.volume = Mathf.Lerp(from, to, (Time.time - startTime) / fadeLength);
@@ -95,7 +126,7 @@
 //        }
 //        else
 //        {
-//            KiteLionGames.BetterDebug.CBUG.Do("LERP DOWN");
+//            CBUG.Do("LERP DOWN");
 //            while (MusicBox1.volume >= to + 0.01f)
 //            {
 //                MusicBox1.volume = Mathf.Lerp(from, to, (Time.time - startTime) / fadeLength);
@@ -105,7 +136,7 @@
 //        }
 
 //        isSwitching = false;
-//        KiteLionGames.BetterDebug.CBUG.Do("IsSwitching IS OFF in 1");
+//        CBUG.Do("IsSwitching IS OFF in 1");
 //        //Only on LerpVolume1 ...??
 //        if (nextSongNum != -1)
 //        {
@@ -120,12 +151,12 @@
 //        if (from < to)
 //            lerpUp = true;
 
-//        KiteLionGames.BetterDebug.CBUG.Do("Lerping 2");
+//        CBUG.Do("Lerping 2");
 
 //        float startTime = Time.time;
 //        if (lerpUp)
 //        {
-//            KiteLionGames.BetterDebug.CBUG.Do("LERP UP");
+//            CBUG.Do("LERP UP");
 //            while (MusicBox2.volume <= to - 0.01f)
 //            {
 //                MusicBox2.volume = Mathf.Lerp(from, to, (Time.time - startTime) / fadeLength);
@@ -135,8 +166,8 @@
 //        }
 //        else
 //        {
-//            KiteLionGames.BetterDebug.CBUG.Do("LERP DOWN");
-//            KiteLionGames.BetterDebug.CBUG.Do("Playing down to " + to + " and currentVol for 2 is: " + MusicBox2.volume);
+//            CBUG.Do("LERP DOWN");
+//            CBUG.Do("Playing down to " + to + " and currentVol for 2 is: " + MusicBox2.volume);
 //            while (MusicBox2.volume >= to + 0.01f)
 //            {
 //                MusicBox2.volume = Mathf.Lerp(from, to, (Time.time - startTime) / fadeLength);
@@ -146,7 +177,7 @@
 //        }
 
 //        isSwitching = false;
-//        KiteLionGames.BetterDebug.CBUG.Do("IsSwitching IS OFF in 2");
+//        CBUG.Do("IsSwitching IS OFF in 2");
 //        //NOT Only on LerpVolume1 ...??
 //        if (nextSongNum != -1)
 //        {

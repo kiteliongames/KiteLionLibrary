@@ -1,20 +1,51 @@
+#region FileHeader
+
+// test
+// Project: Assembly-CSharp
+// File:    ImageImporter.cs
+// Author:  Eliot CS
+// Created: 2024.09.18.01.09.15
+// Edited: 2024.09.19.01.09.59
+//
+// Copyright (c) 2024 SomeGameDevs, LLC. All rights reserved.
+//
+// This source code is the property of SomeGameDevs, LLC and may not be
+// copied, distributed, modified, or used in any way without prior written
+// permission from SomeGameDevs, LLC.
+//
+// Description:
+// [Provide a brief description of what this file/class does.]
+//
+// Previous Header (if any):
+//
+// License:
+// This code is provided "as is," without warranty of any kind, express or
+// implied, including but not limited to the warranties of merchantability,
+// fitness for a particular purpose, and noninfringement. In no event shall
+// the authors or copyright holders be liable for any claim, damages, or
+// other liability, whether in an action of contract, tort, or otherwise,
+// arising from, out of, or in connection with the software or the use or
+// other dealings in the software.
+
+#endregion
+
 /* Copyright (C) KiteLion Games, LLC - All Rights Reserved
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
- * 
+ *
  * Written by Eliot Carney-Seim <support@kiteliongames.com>, January 2023
  */
 
-using KiteLionGames.BetterDebug;
-using KiteLionGames.Common;
-using KiteLionGames.Legal;
 using System;
 using System.IO;
+using KiteLionGames.KiteLionLibrary.Portables.BetterDebug;
+using KiteLionGames.KiteLionLibrary.Portables.Legal.Legal;
+using KiteLionGames.KiteLionLibrary.Portables.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
 
 //NOTICE A: REMOVAL OR MODIFICATION OF THE LINES ABOVE 'NOTICE B' VOIDS ANY AND ALL RESPONSIBLITY AND SUPPORT OF THIS SOFTWARE BY KITELION GAMES, LLC AND IT'S PARTNERS.
-namespace KiteLionGames.Utilities.ImageImporter
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox
 {
     [Flags]
     public enum ImportOptions
@@ -28,45 +59,19 @@ namespace KiteLionGames.Utilities.ImageImporter
 
     public class ImageImporter : ILegal
     {
-
-
-        public string KiteLionGamesSoftwareName { get => typeof(ImageImporter).Name; }
-        public string URI { get; private set; }
-        public byte[] ResultImageBytes { get; private set; }
-        public float? Progress { get { return _webRequest == null ? -1f : _webRequest.downloadProgress; } } //todo change when make local async
-                                                                                                            //todo properly implement downloadProgress https://docs.unity3d.com/ScriptReference/Networking.DownloadHandler.html
-        public ImportOptions Options { get => _importOptions; set => _importOptions = value; }
-        public bool Complete { get => _isFinishedLoading; }
-
         private static readonly string _testURLImage = "https://upload.wikimedia.org/wikipedia/en/2/27/Bliss_%28Windows_XP%29.png";
-        private static readonly int _minPNGSize = 119; //bytes. 119 is the size of the smallest png I could find on my computer. I'm using this to check if the png is empty or not.
-        private bool _isWeb;
-        private bool _isLocal;
-        private bool _isFinishedLoading;
-        private Action<byte[]> _onFinishedLoading { get; set; }
+        private static readonly int _minPNGSize = 119;//bytes. 119 is the size of the smallest png I could find on my computer. I'm using this to check if the png is empty or not.
+        private readonly bool _isLocal;
+        private readonly bool _isWeb;
+        private readonly Material _targetToBlitTo;
         private UnityWebRequest _webRequest;
-        private Material _targetToBlitTo;
-        private ImportOptions _importOptions = ImportOptions.None;
-
-        public Action<byte[]> OnFinishedLoading
-        {
-            get => _onFinishedLoading;
-            set
-            {
-                _onFinishedLoading += value;
-                if (_isFinishedLoading)
-                {
-                    _onFinishedLoading.Invoke(ResultImageBytes);
-                }
-            }
-        }
 
         public ImageImporter(string uri, ImportOptions options = ImportOptions.None, Material targetToBlitTo = null)
         {
             Options = options;
             _targetToBlitTo = targetToBlitTo;
             Copyright.RecordUsage(this);
-            string s = Tools.RemoveWhitespace(uri)[^4..];
+            var s = Tools.RemoveWhitespace(uri)[^ 4..];
             if (s != ".png")
             {
                 CBUG.Error("Only PNGs are supported");
@@ -77,11 +82,34 @@ namespace KiteLionGames.Utilities.ImageImporter
             _isLocal = new Uri(URI).IsFile;
         }
 
+        public string URI { get; }
+        public byte[] ResultImageBytes { get; private set; }
+        public float? Progress { get => _webRequest == null ? -1f : _webRequest.downloadProgress; }//todo change when make local async
+        //todo properly implement downloadProgress https://docs.unity3d.com/ScriptReference/Networking.DownloadHandler.html
+        public ImportOptions Options { get; set; } = ImportOptions.None;
+        public bool Complete { get; private set; }
+        private Action<byte[]> _onFinishedLoading { get; set; }
+
+        public Action<byte[]> OnFinishedLoading
+        {
+            get => _onFinishedLoading;
+            set
+            {
+                _onFinishedLoading += value;
+                if (Complete)
+                {
+                    _onFinishedLoading.Invoke(ResultImageBytes);
+                }
+            }
+        }
+
+
+        public string KiteLionGamesSoftwareName { get => typeof(ImageImporter).Name; }
+
         /// <summary>
-        /// Uses given uri to GET an image and apply it to the material.
-        /// URI can be local or web.
-        /// 
-        /// PNG ONLY. Thanks
+        ///     Uses given uri to GET an image and apply it to the material.
+        ///     URI can be local or web.
+        ///     PNG ONLY. Thanks
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public ImageImporter ImportAsync()
@@ -94,11 +122,11 @@ namespace KiteLionGames.Utilities.ImageImporter
             else if (_isLocal)
             {
                 CBUG.Do("Loading texture from local file ...");
-                byte[] bytes = File.ReadAllBytes(URI); //todo make this async
+                var bytes = File.ReadAllBytes(URI);//todo make this async
                 if (PassesByteSanityTestHelper(bytes))
                 {
                     ResultImageBytes = bytes;
-                    _isFinishedLoading = true;
+                    Complete = true;
                     OnFinishedLoading?.Invoke(ResultImageBytes);
                 }
                 else
@@ -114,7 +142,7 @@ namespace KiteLionGames.Utilities.ImageImporter
         }
 
         /// <summary>
-        /// Downloads the image from the test url and applies it to the material.
+        ///     Downloads the image from the test url and applies it to the material.
         /// </summary>
         /// <param name="uri"></param>
         /// <param name="targetMaterial"></param>
@@ -127,27 +155,23 @@ namespace KiteLionGames.Utilities.ImageImporter
 
         private void OnDownloadCompleteHelper(AsyncOperation result)
         {
-            bool failed = true;
+            var failed = true;
             if (_webRequest.result == UnityWebRequest.Result.Success)
             {
                 if (PassesByteSanityTestHelper(_webRequest.downloadHandler.data))
                 {
-                    Texture2D texture = DownloadHandlerTexture.GetContent(_webRequest);
+                    var texture = DownloadHandlerTexture.GetContent(_webRequest);
                     if (texture != null)
                     {
-                        byte[] textureData = new byte[_webRequest.downloadHandler.data.Length];
+                        var textureData = new byte[_webRequest.downloadHandler.data.Length];
                         Array.Copy(_webRequest.downloadHandler.data, textureData, _webRequest.downloadHandler.data.Length);
 
                         ResultImageBytes = textureData;
                         failed = false;
-                        _isFinishedLoading = true;
-                        if ((_importOptions & ImportOptions.None) == ImportOptions.None)
+                        Complete = true;
+                        if ((Options & ImportOptions.None) == ImportOptions.None)
                         {
                             OnFinishedLoading?.Invoke(ResultImageBytes);
-                        }
-                        else
-                        {
-
                         }
                     }
                     else
@@ -173,7 +197,7 @@ namespace KiteLionGames.Utilities.ImageImporter
         }
 
         /// <summary>
-        /// Validates the byte array is big enough to be a PNG.
+        ///     Validates the byte array is big enough to be a PNG.
         /// </summary>
         /// <param name="bytes">the serialized png.</param>
         /// <returns>True if passes.</returns>
@@ -194,7 +218,7 @@ namespace KiteLionGames.Utilities.ImageImporter
                 CBUG.Error("No material to blit to");
                 return;
             }
-            Texture2D texture = new Texture2D(2, 2);
+            var texture = new Texture2D(2, 2);
             texture.LoadImage(ResultImageBytes);
             _targetToBlitTo.mainTexture = texture;
         }
