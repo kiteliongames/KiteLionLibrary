@@ -43,7 +43,7 @@ namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox
         /// <summary>
         ///     todo: manage accessing of this list
         /// </summary>
-        public static List<GameObject> List = new List<GameObject>();
+        public static readonly List<GameObject> List = new List<GameObject>();
         private void Start()
         {
             DontDestroyOnLoad(this.gameObject);

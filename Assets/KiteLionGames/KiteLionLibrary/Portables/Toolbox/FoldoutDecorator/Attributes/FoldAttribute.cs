@@ -39,8 +39,8 @@ namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Attri
 {
     public class FoldoutAttribute : PropertyAttribute
     {
-        public bool foldEverything;
-        public string name;
+        public readonly bool foldEverything;
+        public readonly string name;
 
         /// <summary>Adds the property to the specified foldout group.</summary>
         /// <param name="name">Name of the foldout group.</param>

@@ -349,11 +349,11 @@ namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Edito
 
     internal static class StyleFramework
     {
-        public static GUIStyle box;
-        public static GUIStyle boxChild;
-        public static GUIStyle foldout;
-        public static GUIStyle button;
-        public static GUIStyle text;
+        public static readonly GUIStyle box;
+        public static readonly GUIStyle boxChild;
+        public static readonly GUIStyle foldout;
+        public static readonly GUIStyle button;
+        public static readonly GUIStyle text;
 
         static StyleFramework()
         {
@@ -457,7 +457,7 @@ namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Edito
 
     internal static class EditorTypes
     {
-        public static Dictionary<int, List<FieldInfo>> fields = new Dictionary<int, List<FieldInfo>>(FastComparable.Default);
+        public static readonly Dictionary<int, List<FieldInfo>> fields = new Dictionary<int, List<FieldInfo>>(FastComparable.Default);
 
         public static int Get(Object target, out List<FieldInfo> objectFields)
         {
@@ -481,7 +481,7 @@ namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Edito
 
     internal class FastComparable : IEqualityComparer<int>
     {
-        public static FastComparable Default = new FastComparable();
+        public static readonly FastComparable Default = new FastComparable();
 
         public bool Equals(int x, int y)
         {

@@ -171,7 +171,7 @@ namespace KiteLionGames.KiteLionLibrary.Portables.BetterDebug
             var prevSet = CBUGRef.Options.isEnabledForUnityLog;
             // Log methods print to Unity Console. Set this to false temporarily to prevent inf. recurs.
             CBUGRef.Options.isEnabledForUnityLog = false;
-            
+
             var line = "UnityConsole::" + type + ": " + LogString;
             switch (type)
             {
@@ -380,6 +380,7 @@ namespace KiteLionGames.KiteLionLibrary.Portables.BetterDebug
                 return null;
             }
 
+            //todo swap this w BetterDebug?
             var myCBUG = GameObject.FindGameObjectWithTag(nameof(CBUG));
             if (myCBUG is not null)
                 return myCBUG.GetComponent<CBUG>();

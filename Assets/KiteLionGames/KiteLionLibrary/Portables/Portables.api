@@ -1,99 +1,9 @@
 // This file is generated. Do not modify by hand.
 // XML documentation file not found. To check if public methods have XML comments,
 // make sure the XML doc file is present and located next to the scraped dll
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.BetterTag
+namespace KiteLionGames.KiteLionLibrary.Portables.BetterDebug
 {
-    public static class GameObjectExtension
-    {
-        public static UnityEngine.GameObject[] FindGameObjectsWithBetterTag(this UnityEngine.GameObject gameObject, Tag.label tag, bool includeInactive = false);
-        public static UnityEngine.GameObject FindGameObjectWithBetterTag(this UnityEngine.GameObject gameObject, Tag.label tag, bool includeInactive = false);
-        public static Tag GetTag(this UnityEngine.Component component);
-        public static Tag GetTag(this UnityEngine.GameObject gameObject);
-        public static Tag GetTag(this UnityEngine.MonoBehaviour monoBehaviour);
-        public static Tag GetTag(this UnityEngine.Transform transform);
-    }
-
-    public static class GameObjectHelper
-    {
-        public static UnityEngine.GameObject[] FindGameObjectsWithTag(Tag.label label);
-        public static UnityEngine.GameObject FindGameObjectWithTag(Tag.label label);
-    }
-
-    [Unity.VisualScripting.InspectorLabel(@"Better Tag")] public class Tag : UnityEngine.MonoBehaviour
-    {
-        public static bool ADD_COMPONENT_IF_NOT_FOUND = true;
-        public static System.Collections.Generic.Dictionary<Tag.label, UnityEngine.GameObject> TAGGED_GAMEOBJECTS;
-        public Tag.label Flags { get; }
-        public Tag() {}
-        public void AddFlag(Tag.label flag);
-        public bool ContainsFlag(Tag.label flag);
-        public static void CreateTagComponent(UnityEngine.GameObject TaglessObj, Tag.label flags);
-        public static UnityEngine.GameObject[] FindGameObjectsWithBetterTag(Tag.label label, bool includeInactive = false);
-        public static UnityEngine.GameObject FindGameObjectWithBetterTag(Tag.label label, bool includeInactive = false);
-        public Tag.label Get();
-        public static System.Nullable<Tag.label> Get(UnityEngine.GameObject Tagged);
-        public static System.Nullable<Tag.label> Get(UnityEngine.Transform Tagged);
-        public int GetFlagCount();
-        public Tag.label[] GetLabels();
-        public static Tag GetTagComponent(UnityEngine.GameObject Tagged);
-        public static Tag GetTagComponent(UnityEngine.GameObject Tagged, bool createIfNotFound, Tag.label tag = Tag.label.Untagged);
-        public bool HasFlag(Tag.label flag);
-        public static Tag.label op_Explicit(Tag tag);
-        public void OverwriteFlags(Tag.label flags);
-        public void RemoveFlag(Tag.label flag);
-        public override string ToString();
-        [System.Flags] public enum label
-        {
-            ________________________________unused = -2147483648,
-            _______________________________unused = 1073741824,
-            ______________________________unused = 536870912,
-            _____________________________unused = 268435456,
-            ____________________________unused = 134217728,
-            ___________________________unused = 67108864,
-            _________________________unused = 16777216,
-            _____________________unused = 1048576,
-            ___________________unused = 262144,
-            ________________unused = 32768,
-            _______________unused = 16384,
-            ___________unused = 1024,
-            ___unused = 4,
-            BlankSpace = 4194304,
-            Card = 512,
-            Deck = 2048,
-            Discard = 2097152,
-            Dragger = 8192,
-            Enemy = 32,
-            EnemyHand = 128,
-            EnemyPlayZone = 64,
-            Everything = -1,
-            GameplayCode = 8388608,
-            Hand = 4096,
-            Hoverable = 33554432,
-            InvisibleWall = 524288,
-            Locals = 2,
-            MainCamera = 8,
-            Player = 16,
-            PlayZone = 131072,
-            PlayZoneBarrier = 256,
-            Tabletop = 65536,
-            Tools = 1,
-            Untagged = 0,
-        }
-    }
-}
-
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.BetterTag.Editor
-{
-    [UnityEditor.CanEditMultipleObjects] [UnityEditor.CustomEditor(typeof(Tag))] public class TagEditor : UnityEditor.Editor
-    {
-        public TagEditor() {}
-        public override void OnInspectorGUI();
-    }
-}
-
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.CBUG
-{
-    [UnityEngine.RequireComponent(typeof(UnityEngine.UI.Text))] public class CBUG : UnityEngine.MonoBehaviour, DuckProject.KiteLionGames.KiteLionLibrary.Portables.Legal.Legal.ILegal
+    [UnityEngine.RequireComponent(typeof(UnityEngine.UI.Text))] public class CBUG : UnityEngine.MonoBehaviour, KiteLionGames.KiteLionLibrary.Portables.Legal.Legal.ILegal
     {
         public static int CCounter = 0;
         [JetBrains.Annotations.ItemNotNull] public static object[] INSPECT_OBJECTS;
@@ -138,7 +48,85 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.CBUG
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.Abstracts
+namespace KiteLionGames.KiteLionLibrary.Portables.BetterTag
+{
+    public static class GameObjectExtension
+    {
+        public static UnityEngine.GameObject[] FindGameObjectsWithBetterTag(this UnityEngine.GameObject gameObject, Tag.label tag, bool includeInactive = false);
+        public static UnityEngine.GameObject FindGameObjectWithBetterTag(this UnityEngine.GameObject gameObject, Tag.label tag, bool includeInactive = false);
+        public static Tag GetTag(this UnityEngine.Component component);
+        public static Tag GetTag(this UnityEngine.GameObject gameObject);
+        public static Tag GetTag(this UnityEngine.MonoBehaviour monoBehaviour);
+        public static Tag GetTag(this UnityEngine.Transform transform);
+    }
+
+    public static class GameObjectHelper
+    {
+        public static UnityEngine.GameObject[] FindGameObjectsWithTag(Tag.label label);
+        public static UnityEngine.GameObject FindGameObjectWithTag(Tag.label label);
+    }
+
+    [Unity.VisualScripting.InspectorLabel(@"Better Tag")] public class Tag : UnityEngine.MonoBehaviour
+    {
+        public const bool ADD_COMPONENT_IF_NOT_FOUND = true;
+        public static System.Collections.Generic.Dictionary<Tag.label, UnityEngine.GameObject> TAGGED_GAMEOBJECTS;
+        public Tag.label Flags { get; }
+        public Tag() {}
+        public void AddFlag(Tag.label flag);
+        public bool ContainsFlag(Tag.label flag);
+        public static void CreateTagComponent(UnityEngine.GameObject TaglessObj, Tag.label flags);
+        public static UnityEngine.GameObject[] FindGameObjectsWithBetterTag(Tag.label label, bool includeInactive = false);
+        public static UnityEngine.GameObject FindGameObjectWithBetterTag(Tag.label label, bool includeInactive = false);
+        public Tag.label Get();
+        public static System.Nullable<Tag.label> Get(UnityEngine.GameObject Tagged);
+        public static System.Nullable<Tag.label> Get(UnityEngine.Transform Tagged);
+        public int GetFlagCount();
+        public Tag.label[] GetLabels();
+        public static Tag GetTagComponent(UnityEngine.GameObject Tagged);
+        public static Tag GetTagComponent(UnityEngine.GameObject Tagged, bool createIfNotFound, Tag.label tag = Tag.label.Untagged);
+        public bool HasFlag(Tag.label flag);
+        public static Tag.label op_Explicit(Tag tag);
+        public void OverwriteFlags(Tag.label flags);
+        public void RemoveFlag(Tag.label flag);
+        public override string ToString();
+        [System.Flags] public enum label
+        {
+            BlankSpace = 4194304,
+            CameraStartAnimator = 262144,
+            CameraStartPosition = 131072,
+            Card = 512,
+            Deck = 2048,
+            Discard = 2097152,
+            Dragger = 8192,
+            Enemy = 32,
+            EnemyHand = 128,
+            EnemyPlayZone = 64,
+            Everything = -1,
+            GameplayCode = 8388608,
+            Hand = 4096,
+            InvisibleWall = 524288,
+            Locals = 2,
+            MainCamera = 8,
+            Player = 16,
+            PlayZoneBarrier = 256,
+            Tabletop = 65536,
+            Tools = 1,
+            Untagged = 0,
+            WorldHubButton = 33554432,
+        }
+    }
+}
+
+namespace KiteLionGames.KiteLionLibrary.Portables.BetterTag.Editor
+{
+    [UnityEditor.CanEditMultipleObjects] [UnityEditor.CustomEditor(typeof(Tag))] public class TagEditor : UnityEditor.Editor
+    {
+        public TagEditor() {}
+        public override void OnInspectorGUI();
+    }
+}
+
+namespace KiteLionGames.KiteLionLibrary.Portables.Controllers.Abstracts
 {
     public abstract class PlayerController : UnityEngine.MonoBehaviour
     {
@@ -149,7 +137,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.Abstra
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.Flying
+namespace KiteLionGames.KiteLionLibrary.Portables.Controllers.Flying
 {
     public class PlaneControls : UnityEngine.MonoBehaviour
     {
@@ -177,7 +165,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.Flying
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS
+namespace KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS
 {
     public class TPSGenericController : UnityEngine.MonoBehaviour
     {
@@ -191,9 +179,9 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS.Controllers
+namespace KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS.Controllers
 {
-    public abstract class ControllerThirdPerson : DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.Abstracts.PlayerController
+    public abstract class ControllerThirdPerson : KiteLionGames.KiteLionLibrary.Portables.Controllers.Abstracts.PlayerController
     {
         public float AccelerationSpeedForwardAir = 0.5f;
         public float AccelerationSpeedForwardGrounded = 0.5f;
@@ -204,7 +192,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS.Co
         public float DecelerationSpeedHorizontalAir = 0.5f;
         public float DecelerationSpeedHorizontalGrounded = 0.5f;
         public bool EnableDefaultGravity;
-        public DuckProject.KiteLionGames.KiteLionLibrary.Portables.Environmental.Forces.ExternalForce ExternalForces;
+        public KiteLionGames.KiteLionLibrary.Portables.Environmental.Forces.ExternalForce ExternalForces;
         public float ForwardSpeed;
         public float HorizontalSpeed;
         public bool isControlsDisabled;
@@ -222,7 +210,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS.Co
         public float MaxSpeedVertical;
         public int TotalJumpsAllowed;
         protected ControllerThirdPerson() {}
-        public void AddExternalForce(DuckProject.KiteLionGames.KiteLionLibrary.Portables.Environmental.Forces.ExternalForce newForce);
+        public void AddExternalForce(KiteLionGames.KiteLionLibrary.Portables.Environmental.Forces.ExternalForce newForce);
         public override void Die();
         public void RemoveExternalForce();
         public override void Respawn(UnityEngine.Vector3 spawnPoint);
@@ -230,7 +218,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Controllers.TPS.Co
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Editor
+namespace KiteLionGames.KiteLionLibrary.Portables.Editor
 {
     public class GenerateTags : UnityEditor.AssetPostprocessor
     {
@@ -239,17 +227,17 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Editor
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Environmental
+namespace KiteLionGames.KiteLionLibrary.Portables.Environmental
 {
     public static class Forces
     {
-        public static float G = 9.81f;
+        public static readonly float G = 9.81f;
         public static UnityEngine.Vector3 Gravity3 { get; }
         public delegate UnityEngine.Vector3 ExternalForce();
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Legal.Legal
+namespace KiteLionGames.KiteLionLibrary.Portables.Legal.Legal
 {
     public static class Copyright
     {
@@ -262,18 +250,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Legal.Legal
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.Boot.Toolbox
-{
-    public class CopyMeBoot : UnityEngine.MonoBehaviour
-    {
-        public DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.CopyToNewProjects.CopyMeMain.Scenes FirstScene;
-        public static bool IsBooted;
-        public CopyMeBoot() {}
-        protected void Start();
-    }
-}
-
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.SanityTests.Scripts
+namespace KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.SanityTests.Scripts
 {
     public class SanityTestCharacterController : UnityEngine.MonoBehaviour
     {
@@ -291,7 +268,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.San
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.SanityTests.SinglePlayerLocalHDRP
+namespace KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.SanityTests.SinglePlayerLocalHDRP
 {
     public class SanityTestScriptHDRP : UnityEngine.MonoBehaviour
     {
@@ -300,8 +277,15 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.SceneTemplates.San
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox
 {
+    [UnityEngine.RequireComponent(typeof(UnityEngine.AudioListener))] public class AudioListenerOrganizer : UnityEngine.MonoBehaviour
+    {
+        public AudioListenerOrganizer() {}
+        protected void Awake();
+        protected void OnDestroy();
+    }
+
     [System.Obsolete(@"No alternative in unity!")] public class Connection
     {
         public Connection() {}
@@ -309,44 +293,9 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox
         public static bool GetInternetConnectionAsync(int timeoutMS = 10000, string url = default(string));
     }
 
-    public static class CopyMeBootSceneEnforcer
-    {
-        public static System.Collections.Generic.Dictionary<string, string> ActiveSceneToBootScene { get; }
-        public static bool CanEnforce { get; }
-        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)] public static void OnBeforeSceneLoad();
-    }
-
-    public class CopyMeSplashToNextScene : UnityEngine.MonoBehaviour
-    {
-        public UnityEngine.Camera[] CamerasToDisable;
-        public CopyToNewProjects.CopyMeMain.Scenes[] NextScenes;
-        [UnityEngine.Min(0.01f)] public float SkipCooldownAfter = 0.5f;
-        public UnityEngine.AudioListener SplashAudioListener;
-        public UnityEngine.MeshRenderer SplashScreenImageRenderer;
-        public UnityEngine.Video.VideoPlayer SplashScreenVideoPlayer;
-        public CopyMeSplashToNextScene() {}
-        protected void LateUpdate();
-        protected void Start();
-        public class SplashData
-        {
-            public float Duration;
-            public UnityEngine.Sprite Image;
-            public CopyMeSplashToNextScene.SplashData.SplashType Type;
-            public string URL;
-            public UnityEngine.Video.VideoClip Video;
-            public SplashData() {}
-            public enum SplashType
-            {
-                Image = 1,
-                URL = 2,
-                Video = 0,
-            }
-        }
-    }
-
     public class DontDestroyThis : UnityEngine.MonoBehaviour
     {
-        public static System.Collections.Generic.List<UnityEngine.GameObject> List;
+        public static readonly System.Collections.Generic.List<UnityEngine.GameObject> List;
         public DontDestroyThis() {}
     }
 
@@ -362,12 +311,12 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox
         public static string GetPath(string fileName, string fileExtension, string folderPath = @"");
     }
 
-    public class GameSaveLoad : DuckProject.KiteLionGames.KiteLionLibrary.Portables.Legal.Legal.ILegal
+    public class GameSaveLoad : KiteLionGames.KiteLionLibrary.Portables.Legal.Legal.ILegal
     {
         public static bool SafeToMakeChanges = true;
         public static bool IsGameDataLoaded { get; }
         public string KiteLionGamesSoftwareName { get; }
-        public static DuckProject.KiteLionGames.KiteLionLibrary.Portables.Utilities.Tools.ByteArrayExtensions.ByteArrayPool SAVE_DATA { get; }
+        public static KiteLionGames.KiteLionLibrary.Portables.Utilities.Tools.ByteArrayExtensions.ByteArrayPool SAVE_DATA { get; }
         public static string SaveDirectoryPath { get; }
         public static string SaveFilePath { get; }
         public GameSaveLoad() {}
@@ -380,7 +329,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox
         public static void WipeSaveFile();
     }
 
-    public class ImageImporter : DuckProject.KiteLionGames.KiteLionLibrary.Portables.Legal.Legal.ILegal
+    public class ImageImporter : KiteLionGames.KiteLionLibrary.Portables.Legal.Legal.ILegal
     {
         public bool Complete { get; }
         public string KiteLionGamesSoftwareName { get; }
@@ -411,10 +360,16 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox
 
     [UnityEditor.CustomPropertyDrawer(typeof(MinMaxSliderAttribute))] public class MinMaxSliderDrawer : UnityEditor.PropertyDrawer
     {
-        public float floatFieldWidth = 50f;
-        public float labelWidth = 100f;
+        public readonly float floatFieldWidth = 50f;
+        public readonly float labelWidth = 100f;
         public MinMaxSliderDrawer() {}
         public override void OnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    public static class ObjectExtensions
+    {
+        public static T FindSingleOrThrow<T>() where T : UnityEngine.Component;
+        public static T FindSingleOrThrow<T>(this UnityEngine.Object o) where T : UnityEngine.Component;
     }
 
     public class ReadOnlyAttribute : UnityEngine.PropertyAttribute
@@ -429,16 +384,6 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox
         public float RotSpeedZ;
         public float SpeedMultiplier = 1f;
         public RotateMe() {}
-    }
-
-    public class SceneLoader
-    {
-        public bool IfExistsThenReload;
-        public bool LoadAdditive;
-        public float LoadDelay;
-        public CopyToNewProjects.CopyMeMain.Scenes SceneToLoad;
-        public SceneLoader(CopyToNewProjects.CopyMeMain.Scenes sceneToLoad, bool reloadIfExists = false, bool loadAdditive = false, float loadDelay = 0f) {}
-        public void DoLoad();
     }
 
     public class URLLoader : UnityEngine.MonoBehaviour
@@ -493,7 +438,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.Common
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.Common
 {
     public class SetMainCamera : UnityEngine.MonoBehaviour
     {
@@ -502,31 +447,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.Common
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.CopyToNewProjects
-{
-    public class CopyMeMain : UnityEngine.MonoBehaviour
-    {
-        public static readonly System.Collections.Generic.List<string> EditorOnlyScenes;
-        public CopyMeMain() {}
-        public static string FindScenePath(string sceneName);
-        public static void LoadSceneBuildAgnostic(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode);
-        public static UnityEngine.AsyncOperation LoadSceneBuildAgnosticAsync(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode);
-        protected void Start();
-        protected void Update();
-        public enum Scenes
-        {
-            BootSample = 0,
-            MenuSample = 2,
-            SplashSample = 1,
-        }
-    }
-
-    [UnityEditor.InitializeOnLoad] public static class CopyMeStartup
-    {
-    }
-}
-
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.Editor
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.Editor
 {
     public class ForceReserialization : UnityEngine.MonoBehaviour
     {
@@ -563,17 +484,17 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.Editor
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Attributes
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Attributes
 {
     public class FoldoutAttribute : UnityEngine.PropertyAttribute
     {
-        public bool foldEverything;
-        public string name;
+        public readonly bool foldEverything;
+        public readonly string name;
         public FoldoutAttribute(string name, bool foldEverything = false) {}
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Editor
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDecorator.Editor
 {
     [UnityEditor.InitializeOnLoad] public static class EditorFramework
     {
@@ -588,7 +509,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.FoldoutDec
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.Utilities.Camera
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.Utilities.Camera
 {
     public class RotateFollow : UnityEngine.MonoBehaviour
     {
@@ -615,7 +536,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.Utilities.
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.WebGL
+namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox.WebGL
 {
     public class WebGLDownload : UnityEngine.MonoBehaviour
     {
@@ -668,7 +589,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Toolbox.WebGL
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Utilities
+namespace KiteLionGames.KiteLionLibrary.Portables.Utilities
 {
     public class Tools : UnityEngine.MonoBehaviour
     {
@@ -708,7 +629,7 @@ namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Utilities
     }
 }
 
-namespace DuckProject.KiteLionGames.KiteLionLibrary.Portables.Utilities.Scripts
+namespace KiteLionGames.KiteLionLibrary.Portables.Utilities.Scripts
 {
     public static class Logging
     {

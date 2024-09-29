@@ -35,11 +35,14 @@ using System.Linq;
 using KiteLionGames.KiteLionLibrary.Portables.BetterDebug;
 using Unity.VisualScripting;
 using UnityEngine;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace KiteLionGames.KiteLionLibrary.Portables.BetterTag
 {
-    //todo: On rightclick->find references: show all objects with this tag IN EDITOR!
-//todo: subgroups
+    /// <summary>
+    /// todo: On rightclick->find references: show all objects with this tag IN EDITOR!
+    /// todo: subgroups
+    /// </summary>
     public static class GameObjectExtension
     {
         /// <summary>
@@ -128,7 +131,9 @@ namespace KiteLionGames.KiteLionLibrary.Portables.BetterTag
             Untagged = 0,//default, unavailable label
             Tools = 1 << 0,//available labels
             Locals = 1 << 1,
+/*
             ___unused = 1 << 2,
+*/
             MainCamera = 1 << 3,
             Player = 1 << 4,
             Enemy = 1 << 5,
@@ -136,28 +141,45 @@ namespace KiteLionGames.KiteLionLibrary.Portables.BetterTag
             EnemyHand = 1 << 7,
             PlayZoneBarrier = 1 << 8,
             Card = 1 << 9,
+/*
             ___________unused = 1 << 10,
+*/
             Deck = 1 << 11,
             Hand = 1 << 12,
             Dragger = 1 << 13,
+/*
             _______________unused = 1 << 14,
             ________________unused = 1 << 15,
+*/
             Tabletop = 1 << 16,
-            PlayZone = 1 << 17,
-            ___________________unused = 1 << 18,
+            /// <summary>
+            /// Where the player's camera should go when spawning in world hub.
+            /// </summary>
+            CameraStartPosition = 1 << 17,
+            CameraStartAnimator = 1 << 18,
+
             InvisibleWall = 1 << 19,
+/*
             _____________________unused = 1 << 20,
+*/
             Discard = 1 << 21,
             BlankSpace = 1 << 22,
             GameplayCode = 1 << 23,
+/*
             _________________________unused = 1 << 24,
-            Hoverable = 1 << 25,
+*/
+            /// <summary>
+            /// Tied to the quantum menu button that when fired, launches world hub.
+            /// </summary>
+            WorldHubButton = 1 << 25,
+/*
             ___________________________unused = 1 << 26,
             ____________________________unused = 1 << 27,
             _____________________________unused = 1 << 28,
             ______________________________unused = 1 << 29,
             _______________________________unused = 1 << 30,
             ________________________________unused = 1 << 31,//last available label
+*/
             Everything = ~0,//default, unavailable label //Max 62 available labels
         }
 
@@ -166,7 +188,7 @@ namespace KiteLionGames.KiteLionLibrary.Portables.BetterTag
         /// <summary>
         ///     Adds Tag component to GameObject if not found.
         /// </summary>
-        public static bool ADD_COMPONENT_IF_NOT_FOUND = true;
+        public const bool ADD_COMPONENT_IF_NOT_FOUND = true;
 
         [SerializeField]
         private label _flags = 0;
@@ -341,7 +363,11 @@ namespace KiteLionGames.KiteLionLibrary.Portables.BetterTag
             }
         }
 
-        //Remove a Flag.
+        /// <summary>
+        /// Remove a flag.
+        /// </summary>
+        /// <param name="flag"></param>
+        /// <exception cref="Exception"></exception>
         public void RemoveFlag(label flag)
         {
             if (flag == label.Untagged)
@@ -379,7 +405,7 @@ namespace KiteLionGames.KiteLionLibrary.Portables.BetterTag
         #region STATICS
 
         /// <summary>
-        ///     Better Tag Extension
+        /// Better Tag Extension, not performant don't run every frame.
         /// </summary>
         /// <param name="label">Better Tag label</param>
         /// <param name="includeInactive">True = include disabled gameobjects.</param>
@@ -387,13 +413,13 @@ namespace KiteLionGames.KiteLionLibrary.Portables.BetterTag
         public static GameObject FindGameObjectWithBetterTag(label label, bool includeInactive = false)
         {
             //gameObject.scene.GetRootGameObjects().Select(x => x.FindGameObjectWithBetterTag(label, includeInactive)).Where(x => x != null).FirstOrDefault();
-            var Tags = FindObjectsByType<Tag>(includeInactive ? FindObjectsInactive.Include : FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            var tags = FindObjectsByType<Tag>(includeInactive ? FindObjectsInactive.Include : FindObjectsInactive.Exclude, FindObjectsSortMode.None);
 
-            return Tags.FirstOrDefault(x => (label)x == label)?.gameObject;
+            return tags.FirstOrDefault(x => (label)x == label)?.gameObject;
         }
 
         /// <summary>
-        ///     Better Tag Extension
+        ///     Better Tag Extension, not performant don't run every frame.
         /// </summary>
         /// <param name="label">Better Tag label</param>
         /// <param name="includeInactive">True = include disabled gameobjects.</param>

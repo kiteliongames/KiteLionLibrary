@@ -39,7 +39,7 @@ namespace KiteLionGames.KiteLionLibrary.Portables.Environmental
         ///     todo description
         /// </summary>
         public delegate Vector3 ExternalForce();
-        public static float G = 9.81f;
+        public static readonly float G = 9.81f;
 
         /// <summary>
         ///     todo NAME

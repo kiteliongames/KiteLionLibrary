@@ -51,8 +51,8 @@ namespace KiteLionGames.KiteLionLibrary.Portables.Toolbox
     [CustomPropertyDrawer(typeof(MinMaxSliderAttribute))]
     public class MinMaxSliderDrawer : PropertyDrawer
     {
-        public float floatFieldWidth = 50;
-        public float labelWidth = 100;
+        public readonly float floatFieldWidth = 50;
+        public readonly float labelWidth = 100;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
